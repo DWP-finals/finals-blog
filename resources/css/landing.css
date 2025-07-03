@@ -103,8 +103,8 @@ ul {
 .btn {
     font-size: 2vh;
     font-weight: 600;
-    padding-top: 1vh;
-
+    padding-top: 0;
+    padding-left: 2vw;
     color: white;
     border-radius: 2vh;
     background-color: #442010;
