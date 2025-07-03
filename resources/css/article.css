@@ -1,0 +1,14 @@
+.article-img {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 10vh;
+    align-items: center;
+    position: relative;
+}
+
+.imgcontainer {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
