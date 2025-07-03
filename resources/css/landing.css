@@ -103,10 +103,11 @@ ul {
 }
 
 .btn {
+    font-family: Domine;
     font-size: 2vh;
     font-weight: 600;
-    padding-top: 1vh;
-    padding-bottom: 1vh;
+    padding-top: 1.5vh;
+    padding-bottom: 1.5vh;
     padding-right: 2vw;
     padding-left: 2vw;
     color: white;
