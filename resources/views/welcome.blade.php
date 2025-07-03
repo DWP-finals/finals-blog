@@ -25,7 +25,7 @@
                     <li><a href = "#">HOME</a></li>
                     <li><a href = "#">ABOUT</a></li>
                     <li><a href = "#">CONTACT</a></li>
-                    <button class="signup">Sign Up</button>
+                    <button class="btn">Sign Up</button>
                     <li class = "dropdown">
                         <i class="ri-menu-3-line"></i>
                         <div class = "dropdown_content">

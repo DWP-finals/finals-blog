@@ -99,3 +99,10 @@ ul {
   width: 30px;
   height: 110px;
 }
+
+.btn {
+    font-size: 2vh;
+    color: white;
+    border-radius: 1vh;
+    background-color: #442010;
+}
