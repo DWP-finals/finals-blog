@@ -4,8 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" href="/resources/assets/icons8-coffee-48.png">
-        <link href="/resources/css/app.css" rel="stylesheet">
         @vite('resources/css/landing.css')
+        @vite('/resources/css/app.css')
 
         <title>insert blog name here</title>
         <!-- Fonts -->

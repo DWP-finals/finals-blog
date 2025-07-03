@@ -5,6 +5,97 @@
 @source "../../node_modules/flowbite";
 
 
-h1 {
+/* ======> NAVIGATION BAR <====== */
+.navbar {
     font-family: 'Playfair Display';
+    display: flex;
+    background-color: white;
+    color: #442010;
+    justify-content: space-between;
+    width: 100%;
+    padding: 2rem 4rem;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.05);
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.05);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.05);
+}
+
+.navbar a {
+    color: #442010;
+    font-size: 3vh;
+    font-weight: 500;
+}
+
+.logo {
+    flex-shrink: 0;
+    padding: 0 30px;
+}
+
+.navbar_content {
+    float: right;
+}
+
+.navbar_items {
+    display: flex;
+    gap: 3rem;
+}
+
+.dropdown {
+    position: relative;
+    cursor: pointer;
+
+}
+
+.dropdown_content {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    position: absolute;
+    overflow: hidden;
+    background-color: #333;
+    border-radius: 5px;
+    width: 110px;
+    gap: 1.2rem;
+    padding: 1.2rem 1rem;
+    right: 0;
+    top: calc(100% + 20px); /* set the px according to preferred space between the icon and dropdown shi */
+    z-index: 100;
+    pointer-events: none;
+
+    /* transitions */
+    opacity:0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity .1s ease-in, transform .1s ease-in, visibility .1s ease-out;
+}
+
+
+.dropdown:hover .dropdown_content {
+  display: flex;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.dropdown::after {
+    /* adding these kasi kapag tinatanggal hover nawawala agad dropdown */
+  content: '';
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 30px;
+  height: 110px;
+}
+
+.btn {
+    font-family: Domine;
+    font-size: 2vh;
+    font-weight: 600;
+    padding-top: 1.5vh;
+    padding-bottom: 1.5vh;
+    padding-right: 2vw;
+    padding-left: 2vw;
+    color: white;
+    border-radius: 2vh;
+    background-color: #442010;
 }
