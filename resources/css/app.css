@@ -1,2 +1,15 @@
 @import "tailwindcss";
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin"; /*add to all css*/
 @source "../views";
+@source "../../node_modules/flowbite";
+
+
+theme {
+    /*colors*/
+    --brown: #452011;
+    --white: #FFFFFF;
+    --beige: #F5F0F1;
+    --black: #000000;
+    --yellow: #DEB976;
+}
