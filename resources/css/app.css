@@ -22,6 +22,7 @@
     justify-content: space-between;
     height: 16vh;
     width: 100%;
+    min-width: 100%;
     padding: 2rem 4rem;
     box-shadow: 10px 8px 72px 3px rgba(201,201,201,0.13);
     -webkit-box-shadow: 10px 8px 72px 3px rgba(201,201,201,0.13);
