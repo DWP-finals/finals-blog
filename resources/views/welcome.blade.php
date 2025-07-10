@@ -32,7 +32,7 @@
             </div>
         </nav>
         <div class="carousel-container">
-            <h2>Featured Posts of the Week</h2>
+            <h2>Featured Posts</h2>
             <div class="carousel">
                 <div class="carousel-track">
                     <div class="carousel-item">
