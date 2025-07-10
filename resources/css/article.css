@@ -17,16 +17,22 @@
     
 
 }
+
 .containerImg {
     height: 60vh;
-    width: 120vh;
+    width: 110vh;
     flex-shrink: 0;
     overflow: hidden;
+    margin-bottom: 3rem;
     /* to center postImg inside containerImg */
     display: flex; 
     align-items: center;
+
 }
 
+.article {
+    width: 110vh;
+}
 .postImg {
     object-fit: cover;
     justify-content: center;
@@ -50,4 +56,28 @@ h1 {
     width: 100%;
     justify-content: space-between;
     margin-bottom: 1rem;
+    font-family: 'Domine';
+    color: #787879 ;
+    font-size: 2.3vh;
+}
+
+h3 {
+    font-family: 'Playfair Display';
+    font-weight: 900;
+    font-size: 3.5vh;
+}
+
+.line {
+    font-weight: 900;
+    color: rgb(71, 11, 11);
+    font-size: 10vh;
+    margin-top: -4.7rem;
+}
+
+p {
+    overflow: hidden;
+    font-family: 'Domine';
+    font-size: 2.3vh;
+    text-align: justify;
+
 }
