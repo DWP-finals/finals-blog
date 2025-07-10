@@ -23,37 +23,16 @@
             </div>
             <div class = "navbar_content">
                 <ul class = "navbar_items">
-                    <li><a href = "#">Home</a></li>
-                    <li><a href = "#">About</a></li>
-                    <li><a href = "#">Contact</a></li>
+                    <li style="padding-right: 1.5rem;"><a href = "#">Home</a></li>
+                    <li style="padding-right: 1.5rem;"><a href = "#">About</a></li>
+                    <li style="padding-right: 1.5rem;"><a href = "#">Contact</a></li>
                     <button class="btn">Log In</button>
-                    <li class = "dropdown">
-                        <i class="ri-menu-3-line"></i>
-                        <div class = "dropdown_content">
-                            <a href = "#">Account</a>
-                            <a href = "#">My Posts</a>
-                            <a href = "#">Log Out</a>
-                        </div>
-                    </li>
+                    <button class="btn">Sign Up</button>
                 </ul>
             </div>
         </nav>
         <div class="sec1">
-            <div class="slider">
-                <div class="slides">
-                    <div id="slide-1">1</div>
-                    <div id="slide-2">2</div>
-                    <div id="slide-3">3</div>
-                    <div id="slide-4">4</div>
-                    <div id="slide-5">5</div>
-                </div>
-                <br>
-                <a href="#slide-1"></a>
-                <a href="#slide-2"></a>
-                <a href="#slide-3"></a>
-                <a href="#slide-4"></a>
-                <a href="#slide-5"></a>
-            </div>
+
         </div>
     </body>
 </html>
