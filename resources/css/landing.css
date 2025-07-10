@@ -11,6 +11,7 @@
   margin: 0;
   box-sizing: border-box;
   background-color: rgb(255, 255, 251);
+  font-family: 'Playfair Display';
 }
 
 body {
@@ -18,6 +19,7 @@ body {
     grid-row-start: 1;
     grid-row-end: 1;
     margin: 0;
+    overflow-x: hidden;
 }
 
 a {
@@ -28,10 +30,241 @@ ul {
     list-style: none;
 }
 
-.sec1 {
-    padding-top: 10vh;
-    display: grid;
-    justify-content: center;
+
+
+/* Carousel Container */
+.carousel-container {
+    width: 80%;
+    max-width: 70vw;
+    margin: 5vh auto;
+    background-color: transparent;
+    padding: 20px;
+    border-radius: 8px;
+    position: relative; /* For positioning navigation and indicators */
+    overflow: hidden; /* Crucial: Hides anything outside the visible carousel area */
+}
+
+.carousel-container h2 {
+    font-size: 6vh;
+    color: #442010;
+    font-weight: 600;
+    margin-bottom: 10vh;
+}
+
+/* Carousel Inner Wrapper (the visible window) */
+.carousel {
+    display: flex; /* Arranges items in a row */
+    overflow: hidden; /* Ensure items outside the view are hidden */
     width: 100%;
-    margin: 0;
+    height: 400px; /* Fixed height for consistency, adjust as needed */
+    align-items: center; /* Vertically align content */
+    position: relative; /* For any internal positioning relative to this window */
+    margin-bottom: 8vh;
+}
+
+/* Carousel Track (contains all items, moves horizontally) */
+.carousel-track {
+    display: flex; /* Makes all carousel-items line up horizontally */
+    white-space: nowrap; /* Prevents items from wrapping to the next line */
+    transition: transform 0.5s ease-in-out; /* Smooth transition for slides */
+    /* Transform property will be controlled by JavaScript */
+}
+
+/* Individual Carousel Item */
+.carousel-item {
+    flex: 0 0 auto; /* Prevent items from growing/shrinking, and don't allow wrapping */
+    width: 100%; /* Each item takes full width of the visible carousel area. Adjust if you want to show multiple items */
+    max-width: 30vw; /* Set a max-width for individual items to control their size */
+    margin-right: 2vw; /* Space between items */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    padding: 15px;
+    text-align: center;
+    background-color: transparent;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    display: flex; /* Use flexbox for internal content alignment */
+    flex-direction: column; /* Stack image and text vertically */
+    align-items: center; /* Center content horizontally */
+    justify-content: space-between; /* Distribute space between items if needed */
+    height: 60vh; /* Take full height of the track */
+    padding-bottom: 4vh;
+}
+
+.carousel-item img {
+    max-width: 100%;
+    width: 20vw;
+    height: 20vh; /* Fixed height for images for consistent layout */
+    object-fit: cover; /* Ensures images cover the area without distortion */
+    border-radius: 5px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-item h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.carousel-item h3 a {
+    font-size: 3.5vh;
+    text-decoration: none;
+    color: #442010;
+    font-weight: 400;
+    white-space: normal; /* Allow text to wrap within the title */
+}
+
+.carousel-item h3 a:hover {
+    text-decoration: underline;
+}
+
+.carousel-item p {
+    font-size: 2vh;
+    line-height: 1.5;
+    color: #555;
+    margin-bottom: 15px;
+    white-space: normal; /* Allow text to wrap */
+}
+
+.carousel-item .post-date {
+    font-size: 0.85em;
+    color: #777;
+    font-style: italic;
+    white-space: normal;
+}
+
+/* Navigation Buttons */
+.carousel-button {
+    height: 6vh;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #442010;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 2vh;
+    z-index: 10; /* Ensure buttons are above carousel content */
+    transition: background-color 0.3s ease;
+    outline: none; /* Remove focus outline */
+}
+
+.carousel-button:hover {
+    background-color: #62331e;
+}
+
+.carousel-button.prev {
+    left: 10px;
+}
+
+.carousel-button.next {
+    right: 10px;
+}
+
+/* Indicators (Dots) */
+.carousel-indicators {
+    position: absolute;
+    bottom: 20px; /* Position below the carousel items */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px; /* Space between dots */
+    z-index: 10;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.indicator.active {
+    background-color: #442010; /* Active dot color */
+    transform: scale(1.2); /* Slightly enlarge active dot */
+}
+
+.indicator:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .carousel-container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .carousel {
+        height: 350px;
+    }
+
+    .carousel-item {
+        max-width: 300px;
+        margin-right: 15px;
+    }
+
+    .carousel-item img {
+        height: 180px;
+    }
+
+    .carousel-item h3 {
+        font-size: 1.4em;
+    }
+
+    .carousel-item p {
+        font-size: 0.95em;
+    }
+
+    .carousel-button {
+        padding: 8px 12px;
+        font-size: 1.2em;
+    }
+
+    .indicator {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-container {
+        margin: 20px auto;
+        padding: 10px;
+    }
+
+    .carousel {
+        height: 300px;
+    }
+
+    .carousel-item {
+        max-width: 90%;
+        margin-right: 10px;
+    }
+
+    .carousel-item img {
+        height: 140px;
+    }
+
+    .carousel-item h3 {
+        font-size: 1.2em;
+    }
+
+    .carousel-item p {
+        font-size: 0.85em;
+    }
+
+    .carousel-button {
+        padding: 6px 10px;
+        font-size: 1em;
+        left: 5px;
+        right: 5px;
+    }
+
+    .carousel-indicators {
+        bottom: 10px;
+    }
 }
