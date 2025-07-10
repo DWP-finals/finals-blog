@@ -1,14 +1,53 @@
-.article-img {
+
+@import "tailwindcss";
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin"; /*add to all css*/
+@source "../views";
+@source "../../node_modules/flowbite";
+
+.container {
+    width: 80%;
+    padding: 20px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 10vh;
+    flex-direction: row;
+    align-content: center;
+    overflow: hidden;
+    margin: 0 auto;
+
+    
+
+}
+.containerImg {
+    height: 60vh;
+    width: 120vh;
+    flex-shrink: 0;
+    overflow: hidden;
+    /* to center postImg inside containerImg */
+    display: flex; 
     align-items: center;
-    position: relative;
 }
 
-.imgcontainer {
+.postImg {
     object-fit: cover;
+    justify-content: center;
+}
+
+.others {
     width: 100%;
-    height: 100%;
+    margin-left: 3rem;
+    overflow: hidden;
+}
+
+h1 {
+    font-family: 'Playfair Display';
+    font-weight: 900;
+    font-size: 6vh;
+    margin-bottom: 0.2rem;
+}
+
+.details {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 1rem;
 }

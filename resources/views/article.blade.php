@@ -4,9 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <title>Document</title>
     <link href="/resources/css/app.css" rel="stylesheet">
     @vite('resources/css/article.css')
+    @vite('/resources/css/app.css')
+  
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Domine:wght@400..700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!--========== NAVIGATION BAR ==========-->
@@ -17,10 +25,10 @@
         </div>
         <div class = "navbar_content">
             <ul class = "navbar_items">
-                <li><a href = "#">HOME</a></li>
-                <li><a href = "#">ABOUT</a></li>
-                <li><a href = "#">CONTACT</a></li>
-                <button class="btn">Sign Up</button>
+                <li><a href = "#">Home</a></li>
+                <li><a href = "#">About</a></li>
+                <li><a href = "#">Contact</a></li>
+                <button class="btn">Log In</button>
                 <li class = "dropdown">
                     <i class="ri-menu-3-line"></i>
                     <div class = "dropdown_content">
@@ -34,8 +42,20 @@
     </nav>
 
     <!--========== ARTICLE IMAGE CONTAINER ==========-->
-    <div class = "article-img">
-        <img class = "imgcontainer" src = "img.jpg">
+    <div class = "container">
+        <div class = "article">
+            <h1>Flavors and Profiles of Coffee</h1>
+            <div class = "details">
+                <h3 class = "author">by Dana Alania</h3>
+                <h3 class = "date"> Last edited on July 10, 2025</h3>
+            </div>
+            <div class = "containerImg">
+                <img class = "postImg" src = "{{asset('storage/images/img.jpg')}}">
+            </div>
+        </div>
+        <div class = "others">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
     </div>
 
 </body>
