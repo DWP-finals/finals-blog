@@ -118,162 +118,170 @@
             <div class="carousel-indicators">
         </div>
 
-    <script>
-        const carousel = document.querySelector('.carousel');
-        const carouselTrack = document.querySelector('.carousel-track');
-        const carouselItems = document.querySelectorAll('.carousel-item');
-        const prevButton = document.querySelector('.carousel-button.prev');
-        const nextButton = document.querySelector('.carousel-button.next');
-        const indicatorsContainer = document.querySelector('.carousel-indicators');
+        <script>
+            const carousel = document.querySelector('.carousel');
+            const carouselTrack = document.querySelector('.carousel-track');
+            const carouselItems = document.querySelectorAll('.carousel-item');
+            const prevButton = document.querySelector('.carousel-button.prev');
+            const nextButton = document.querySelector('.carousel-button.next');
+            const indicatorsContainer = document.querySelector('.carousel-indicators');
 
-        const originalItemCount = carouselItems.length / 3; // Assuming we duplicated original set 3 times
-        const uniqueItems = Array.from(carouselItems).slice(0, originalItemCount); // Get only the first set of unique items
+            const originalItemCount = carouselItems.length / 3; // Assuming we duplicated original set 3 times
+            const uniqueItems = Array.from(carouselItems).slice(0, originalItemCount); // Get only the first set of unique items
 
-        let currentIndex = 0; // Tracks the index of the current unique item (for indicators)
-        let scrollPosition = 0; // Tracks the pixel scroll position
-        const scrollSpeed = 0.5; // Pixels per frame
-        let autoScrollInterval; // To store the interval ID for stopping/starting auto-scroll
-        let animationFrameId; // To store the requestAnimationFrame ID
+            let currentIndex = 0; // Tracks the index of the current unique item (for indicators)
+            let scrollPosition = 0; // Tracks the pixel scroll position
+            const scrollSpeed = 0.5; // Pixels per frame
+            let autoScrollInterval; // To store the interval ID for stopping/starting auto-scroll
+            let animationFrameId; // To store the requestAnimationFrame ID
 
-        // Calculate item width including margin
-        const itemWidth = carouselItems[0].offsetWidth + (parseFloat(getComputedStyle(carouselItems[0]).marginRight) || 0);
-        const totalOriginalWidth = itemWidth * originalItemCount; // Width of one complete set of unique items
+            // Calculate item width including margin
+            const itemWidth = carouselItems[0].offsetWidth + (parseFloat(getComputedStyle(carouselItems[0]).marginRight) || 0);
+            const totalOriginalWidth = itemWidth * originalItemCount; // Width of one complete set of unique items
 
-        // 1. Create Indicators
-        function createIndicators() {
-            uniqueItems.forEach((_, index) => {
-                const indicator = document.createElement('div');
-                indicator.classList.add('indicator');
-                if (index === currentIndex) {
-                    indicator.classList.add('active');
-                }
-                indicator.addEventListener('click', () => {
-                    goToSlide(index);
-                    resetAutoScroll(); // Reset auto-scroll timer after manual interaction
+            // 1. Create Indicators
+            function createIndicators() {
+                uniqueItems.forEach((_, index) => {
+                    const indicator = document.createElement('div');
+                    indicator.classList.add('indicator');
+                    if (index === currentIndex) {
+                        indicator.classList.add('active');
+                    }
+                    indicator.addEventListener('click', () => {
+                        goToSlide(index);
+                        resetAutoScroll(); // Reset auto-scroll timer after manual interaction
+                    });
+                    indicatorsContainer.appendChild(indicator);
                 });
-                indicatorsContainer.appendChild(indicator);
-            });
-        }
+            }
 
-        // 2. Update Indicators
-        function updateIndicators() {
-            const indicators = document.querySelectorAll('.indicator');
-            indicators.forEach((indicator, index) => {
-                indicator.classList.remove('active');
-                if (index === currentIndex) {
-                    indicator.classList.add('active');
+            // 2. Update Indicators
+            function updateIndicators() {
+                const indicators = document.querySelectorAll('.indicator');
+                indicators.forEach((indicator, index) => {
+                    indicator.classList.remove('active');
+                    if (index === currentIndex) {
+                        indicator.classList.add('active');
+                    }
+                });
+            }
+
+            // 3. Go to a specific slide (for buttons and indicators)
+            function goToSlide(index, smooth = true) {
+                currentIndex = index;
+                const targetScrollPosition = itemWidth * (originalItemCount + index); // Target the duplicate set
+
+                if (smooth) {
+                    // Use CSS transition for smooth manual slide
+                    carouselTrack.style.transition = 'transform 0.5s ease-in-out';
+                } else {
+                    carouselTrack.style.transition = 'none'; // No transition for instant jumps
                 }
-            });
-        }
-
-        // 3. Go to a specific slide (for buttons and indicators)
-        function goToSlide(index, smooth = true) {
-            currentIndex = index;
-            const targetScrollPosition = itemWidth * (originalItemCount + index); // Target the duplicate set
-
-            if (smooth) {
-                // Use CSS transition for smooth manual slide
-                carouselTrack.style.transition = 'transform 0.5s ease-in-out';
-            } else {
-                carouselTrack.style.transition = 'none'; // No transition for instant jumps
+                carouselTrack.style.transform = `translateX(-${targetScrollPosition}px)`;
+                scrollPosition = targetScrollPosition; // Update scrollPosition to match
+                updateIndicators();
             }
-            carouselTrack.style.transform = `translateX(-${targetScrollPosition}px)`;
-            scrollPosition = targetScrollPosition; // Update scrollPosition to match
-            updateIndicators();
-        }
 
-        // 4. Handle Next Slide
-        function showNextSlide() {
-            currentIndex = (currentIndex + 1) % originalItemCount;
-            // When we reach the end of the *original* set, we need to transition to the first duplicate
-            // The magic for infinite loop happens when the last visible item is part of the first duplicate set.
-            // When the current scroll position is just past the original set, we instantly snap back to the start.
+            // 4. Handle Next Slide
+            function showNextSlide() {
+                currentIndex = (currentIndex + 1) % originalItemCount;
+                // When we reach the end of the *original* set, we need to transition to the first duplicate
+                // The magic for infinite loop happens when the last visible item is part of the first duplicate set.
+                // When the current scroll position is just past the original set, we instantly snap back to the start.
 
-            // To ensure smooth transition to next, let the JS continue moving
-            // Then check if we are at the wrap-around point
-            let targetScroll = scrollPosition + itemWidth;
-            carouselTrack.style.transition = 'transform 0.5s ease-in-out'; // Smooth transition for manual/auto slide
-            carouselTrack.style.transform = `translateX(-${targetScroll}px)`;
-            scrollPosition = targetScroll;
+                // To ensure smooth transition to next, let the JS continue moving
+                // Then check if we are at the wrap-around point
+                let targetScroll = scrollPosition + itemWidth;
+                carouselTrack.style.transition = 'transform 0.5s ease-in-out'; // Smooth transition for manual/auto slide
+                carouselTrack.style.transform = `translateX(-${targetScroll}px)`;
+                scrollPosition = targetScroll;
 
-            // If we've scrolled past the first set of unique items, instantly snap back
-            // This happens after the transition is complete, to avoid a visible jump
-            if (currentIndex === 0) { // If it wrapped around
-                 // Wait for the transition to finish before snapping
-                setTimeout(() => {
+                // If we've scrolled past the first set of unique items, instantly snap back
+                // This happens after the transition is complete, to avoid a visible jump
+                if (currentIndex === 0) { // If it wrapped around
+                    // Wait for the transition to finish before snapping
+                    setTimeout(() => {
+                        carouselTrack.style.transition = 'none'; // Disable transition for snap
+                        scrollPosition = itemWidth * originalItemCount; // Jump back to the start of the first duplicated set
+                        carouselTrack.style.transform = `translateX(-${scrollPosition}px)`;
+                    }, 500); // Match this timeout to your CSS transition duration
+                }
+
+                updateIndicators();
+            }
+
+            // 5. Handle Previous Slide
+            function showPrevSlide() {
+                currentIndex = (currentIndex - 1 + originalItemCount) % originalItemCount;
+
+                // Similar logic for going backwards: if we are at the very beginning of the original set
+                // instantly jump to the equivalent position in the last duplicated set, then transition.
+                if (scrollPosition <= itemWidth * originalItemCount) { // If near the first item of the original set
                     carouselTrack.style.transition = 'none'; // Disable transition for snap
-                    scrollPosition = itemWidth * originalItemCount; // Jump back to the start of the first duplicated set
+                    scrollPosition = itemWidth * (originalItemCount * 2); // Jump to the start of the second duplicated set
                     carouselTrack.style.transform = `translateX(-${scrollPosition}px)`;
-                }, 500); // Match this timeout to your CSS transition duration
+                    // Force a reflow to apply the instant snap before the next transition
+                    carouselTrack.offsetHeight;
+                }
+
+                let targetScroll = scrollPosition - itemWidth;
+                carouselTrack.style.transition = 'transform 0.5s ease-in-out'; // Smooth transition
+                carouselTrack.style.transform = `translateX(-${targetScroll}px)`;
+                scrollPosition = targetScroll;
+                updateIndicators();
             }
 
-            updateIndicators();
-        }
-
-        // 5. Handle Previous Slide
-        function showPrevSlide() {
-            currentIndex = (currentIndex - 1 + originalItemCount) % originalItemCount;
-
-            // Similar logic for going backwards: if we are at the very beginning of the original set
-            // instantly jump to the equivalent position in the last duplicated set, then transition.
-            if (scrollPosition <= itemWidth * originalItemCount) { // If near the first item of the original set
-                 carouselTrack.style.transition = 'none'; // Disable transition for snap
-                 scrollPosition = itemWidth * (originalItemCount * 2); // Jump to the start of the second duplicated set
-                 carouselTrack.style.transform = `translateX(-${scrollPosition}px)`;
-                 // Force a reflow to apply the instant snap before the next transition
-                 carouselTrack.offsetHeight;
+            // 6. Auto-scrolling logic
+            function startAutoScroll() {
+                // Clear any existing interval to prevent multiple intervals running
+                if (autoScrollInterval) {
+                    clearInterval(autoScrollInterval);
+                }
+                // Set an interval to automatically move to the next slide
+                autoScrollInterval = setInterval(() => {
+                    showNextSlide();
+                }, 3000); // Change slide every 3 seconds (3000 ms)
             }
 
-            let targetScroll = scrollPosition - itemWidth;
-            carouselTrack.style.transition = 'transform 0.5s ease-in-out'; // Smooth transition
-            carouselTrack.style.transform = `translateX(-${targetScroll}px)`;
-            scrollPosition = targetScroll;
-            updateIndicators();
-        }
-
-        // 6. Auto-scrolling logic
-        function startAutoScroll() {
-            // Clear any existing interval to prevent multiple intervals running
-            if (autoScrollInterval) {
+            function stopAutoScroll() {
                 clearInterval(autoScrollInterval);
             }
-            // Set an interval to automatically move to the next slide
-            autoScrollInterval = setInterval(() => {
+
+            // 7. Reset Auto-scroll timer (e.g., after manual interaction)
+            function resetAutoScroll() {
+                stopAutoScroll();
+                startAutoScroll();
+            }
+
+            // Event Listeners
+            prevButton.addEventListener('click', () => {
+                showPrevSlide();
+                resetAutoScroll();
+            });
+
+            nextButton.addEventListener('click', () => {
                 showNextSlide();
-            }, 3000); // Change slide every 3 seconds (3000 ms)
-        }
+                resetAutoScroll();
+            });
 
-        function stopAutoScroll() {
-            clearInterval(autoScrollInterval);
-        }
+            // Pause on hover over the entire carousel container
+            carousel.addEventListener('mouseenter', stopAutoScroll);
+            carousel.addEventListener('mouseleave', startAutoScroll);
 
-        // 7. Reset Auto-scroll timer (e.g., after manual interaction)
-        function resetAutoScroll() {
-            stopAutoScroll();
-            startAutoScroll();
-        }
-
-        // Event Listeners
-        prevButton.addEventListener('click', () => {
-            showPrevSlide();
-            resetAutoScroll();
-        });
-
-        nextButton.addEventListener('click', () => {
-            showNextSlide();
-            resetAutoScroll();
-        });
-
-        // Pause on hover over the entire carousel container
-        carousel.addEventListener('mouseenter', stopAutoScroll);
-        carousel.addEventListener('mouseleave', startAutoScroll);
-
-        // Initial setup
-        createIndicators();
-        // Start by displaying the first item of the *first duplicate set* to allow smooth backward navigation
-        goToSlide(0, false); // Go to the first item (of duplicate set) instantly
-        startAutoScroll(); // Start auto-scrolling
-    </script>
+            // Initial setup
+            createIndicators();
+            // Start by displaying the first item of the *first duplicate set* to allow smooth backward navigation
+            goToSlide(0, false); // Go to the first item (of duplicate set) instantly
+            startAutoScroll(); // Start auto-scrolling
+        </script>
+        </div>
+        <div class="recent-posts">
+            <h2>Latest Posts</h2>
+            <div class="row">
+                <div class="column">test</div>
+                <div class="column">test</div>
+                <div class="column">test</div>
+            </div>
         </div>
     </body>
 </html>
