@@ -16,6 +16,7 @@ a:hover {
     align-content: center;
     overflow: hidden;
     margin: 0 auto;
+    margin-bottom: 9rem
 }
 
 .containerImg {
@@ -37,6 +38,7 @@ a:hover {
     font-size: 1em;
     font-style: italic;
     text-align: right;
+    align-items: flex-start;
 }
 
 .article {
@@ -62,6 +64,7 @@ h1 {
     font-weight: 900;
     font-size: 3em;
     margin-bottom: 0.2rem;
+    line-height: 1.2;
 }
 
 .details {
@@ -72,6 +75,7 @@ h1 {
     font-family: 'Domine';
     color: #787879 ;
     font-size: 1em;
+    
 }
 
 h3 {
@@ -140,6 +144,7 @@ p {
     color: #787879 ;
     line-height: 2;
     text-align: left;
+    line-height: 1.5;
     
 }
 
@@ -152,3 +157,73 @@ p {
     border: none;
 }
 
+@media (max-width: 1240px) {
+    .otherImgContainer {
+        display: none;
+    }
+    .otherContentContainer {
+        margin-left: 0;
+    }
+    .containerImg {
+        margin-bottom: 1rem;
+        height: 40vh;
+
+    }
+}
+
+
+@media (max-width: 1030px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+    h1 {
+        font-size: 1.65em;
+    }
+    
+    p, .details, .tags {
+        font-size: 0.9em;
+    }
+
+
+    .article {
+        margin-bottom: 4rem;
+    }
+    .otherImgContainer {
+        display: flex;
+        width: 10vw;
+    }
+    .otherContentContainer {
+        margin-left: 2rem;
+    }
+    h3 {
+        font-size: 1.5em;
+    }
+    .others {
+        max-width: 90vw;
+
+    }
+    .otherAuthor {
+        font-size: 0.75em;
+    }
+}
+
+@media (max-width: 680px) {
+    .containerImg {
+        margin-bottom: 1rem;
+        height: 30vh;
+
+    }
+    .otherAuthor {
+        font-size: 0.65em;
+    }
+    .otherImgContainer {
+        display: flex;
+        width: 18vw;
+        height: 12vh
+    }
+    .others {
+        max-width: 70vw;
+        
+    }
+}
