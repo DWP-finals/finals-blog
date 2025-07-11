@@ -300,10 +300,11 @@ ul {
 
 .column-container {
     margin: 2;
-    height: 20vh;
+    height: 50vh;
     width: 80%;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    border-width: .5vw;
+    border-width: .1vw;
+    border-radius: 1vw;
     border-color: grey;
 }
 
