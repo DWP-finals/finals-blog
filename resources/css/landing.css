@@ -284,28 +284,68 @@ ul {
     color: #442010;
     font-weight: 600;
     padding-left: 14vw;
+    user-select: none;
 }
 
 .row {
     padding-top: 4vh;
     padding-left: 10vw;
     padding-right: 10vw;
+        display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 /* Create three equal columns that floats next to each other */
 .column {
-    float: left;
+    margin: auto;
     width: 33.33%;
+    min-width: 350px;
+    margin-bottom: 2vh;
 }
 
 .column-container {
-    margin: 2;
     height: 50vh;
-    width: 80%;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    border-width: .1vw;
+    width: 90%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.17);
     border-radius: 1vw;
-    border-color: grey;
+}
+
+.column-container > h1 {
+    font-family: 'Playfair Display';
+    font-weight: 600;
+    font-size: 1.80em;
+    color: #442010;
+    text-align: left;
+    padding-left: 1vw;
+}
+
+.imgdiv {
+    height: 50%;
+    background-image: url(https://picsum.photos/300/200);
+    background-size: cover;
+    overflow: auto;
+    user-select: none;
+}
+
+.contentdiv {
+    height: 50%;
+    padding: 1vh 1vw 1vh 1vw;
+}
+
+.contentdiv > .author {
+    color: grey;
+    font-size: .75em;
+}
+
+.contentdiv > .tags {
+    color: rgb(163, 163, 163);
+    font-style: italic;
+    font-size: .75em;
+}
+
+.contentdiv > .des {
+    font-size: .75em;
 }
 
 /* Clear floats after the columns */

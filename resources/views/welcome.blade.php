@@ -306,10 +306,44 @@
             <h2>Latest Posts</h2>
             <div class="row">
                 <div class="column">
-                    <div class="column-container"></div>
+                    <div class="column-container">
+                        <div class="imgdiv"></div>
+                        <div class="contentdiv">
+                            <h1>Test title</h1>
+                            <p class="tags">#Coffee</p>
+                            <p class="author">Juliana Jimeno</p>
+                            <p class="des">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis vulputate nisi. Quisque laoreet urna augue. Ut vel ex odio. Proin maximus sem finibus nunc ornare egestas.
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="column">test</div>
-                <div class="column">test</div>
+                <div class="column">
+                    <div class="column-container">
+                        <div class="imgdiv"></div>
+                        <div class="contentdiv">
+                            <h1>Test title</h1>
+                            <p class="tags">#Coffee</p>
+                            <p class="author">Juliana Jimeno</p>
+                            <p class="des">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis vulputate nisi. Quisque laoreet urna augue. Ut vel ex odio. Proin maximus sem finibus nunc ornare egestas.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="column-container">
+                        <div class="imgdiv"></div>
+                        <div class="contentdiv">
+                            <h1>Test title</h1>
+                            <p class="tags">#Coffee</p>
+                            <p class="author">Juliana Jimeno</p>
+                            <p class="des">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis vulputate nisi. Quisque laoreet urna augue. Ut vel ex odio. Proin maximus sem finibus nunc ornare egestas.
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </body>
