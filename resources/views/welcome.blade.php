@@ -37,8 +37,8 @@
                         <label for="password"><b>Password</b></label>
                         <input type="password" placeholder="Enter password" name="password" required>
 
-                        <button type="submit" class="button">Log In</button>
-                        <button type="button" class="button cancel">Cancel</button>
+                        <button type="submit" class="button" onclick="logIn()">Log In</button>
+                        <button type="button" class="button cancel" onclick="closeFormLogIn()">Cancel</button>
                     </form>
                 </div>
 
