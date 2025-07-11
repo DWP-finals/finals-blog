@@ -9,7 +9,7 @@
     <link href="/resources/css/app.css" rel="stylesheet">
     @vite('resources/css/article.css')
     @vite('/resources/css/app.css')
-  
+
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
@@ -24,20 +24,13 @@
             <a href = "index.html" class = "blog_name">Blog Name</a>
         </div>
         <div class = "navbar_content">
-            <ul class = "navbar_items">
-                <li><a href = "#">Home</a></li>
-                <li><a href = "#">About</a></li>
-                <li><a href = "#">Contact</a></li>
-                <button class="btn">Log In</button>
-                <li class = "dropdown">
-                    <i class="ri-menu-3-line"></i>
-                    <div class = "dropdown_content">
-                        <a href = "#">Account</a>
-                        <a href = "#">My Posts</a>
-                        <a href = "#">Log Out</a>
-                    </div>
-                </li>
-            </ul>
+                <ul class = "navbar_items">
+                    <li style="padding-right: 1.5rem;"><a href = "#">Home</a></li>
+                    <li style="padding-right: 1.5rem;"><a href = "#">About</a></li>
+                    <li style="padding-right: 1.5rem;"><a href = "#">Contact</a></li>
+                    <button class="btn" onclick="openFormLogIn()">Log In</button>
+                    <button class="btn" onclick="openFormSignUp()">Sign Up</button>
+                </ul>
         </div>
     </nav>
 

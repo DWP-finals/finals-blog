@@ -101,6 +101,9 @@
   height: 110px;
 }
 
+
+/*form*/
+
 .btn {
     font-family: Domine;
     font-size: 2vh;
@@ -112,4 +115,54 @@
     color: white;
     border-radius: 2vh;
     background-color: #442010;
+}
+
+.form {
+    min-height: fit-content;
+    height: 20vh;
+    display: none;
+    align-self: center;
+    top: 0;
+}
+
+.form-container {
+    min-height: fit-content;
+    height: 15vh;
+    width: 14vw;
+    padding: .2vw;
+    background-color: white;
+}
+
+.form-container input[type=text], .form-container[type=password] {
+    width: 100%;
+    border: none;
+    background: #f1f1f1;
+}
+
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+.form-container .btn {
+    font-size: 1.5vh;
+    background-color: #442010;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+    margin-bottom:10px;
+    opacity: 0.8;
+}
+
+.form-container .cancel {
+    border: .1vh;
+    border-color: #62331e;
+    color: #62331e;
+    background-color: white;
+}
+
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
 }

@@ -26,9 +26,38 @@
                     <li style="padding-right: 1.5rem;"><a href = "#">Home</a></li>
                     <li style="padding-right: 1.5rem;"><a href = "#">About</a></li>
                     <li style="padding-right: 1.5rem;"><a href = "#">Contact</a></li>
-                    <button class="btn">Log In</button>
-                    <button class="btn">Sign Up</button>
+                    <button class="btn" onclick="openFormLogIn()">Log In</button>
+                    <button class="btn" onclick="openFormSignUp()">Sign Up</button>
                 </ul>
+                <div class="form" id="login">
+                    <form action="" class="form-container">
+                        <h1>Log In</h1>
+                        <label for="email"><b>Email</b></label>
+                        <input type="text" placeholder="Enter email address" name="email" required>
+                        <label for="password"><b>Password</b></label>
+                        <input type="password" placeholder="Enter password" name="password" required>
+
+                        <button type="submit" class="btn">Log In</button>
+                        <button type="button" class="btn cancel" onclick="closeFormLogIn()">Cancel</button>
+                    </form>
+                </div>
+
+                <script>
+                    function openFormLogIn() {
+                        document.getElementById("login").style.display = "block";
+                    }
+
+                    function closeFormLogIn() {
+                        document.getElementById("login").style.display = "none";
+                    }
+                    function openFormSignUp() {
+                        document.getElementById("signup").style.display = "block";
+                    }
+
+                    function closeFormSignUp() {
+                        document.getElementById("signup").style.display = "none";
+                    }
+                </script>
             </div>
         </nav>
         <div class="carousel-container">
@@ -278,7 +307,9 @@
         <div class="recent-posts">
             <h2>Latest Posts</h2>
             <div class="row">
-                <div class="column">test</div>
+                <div class="column">
+                    <div class="column-container"></div>
+                </div>
                 <div class="column">test</div>
                 <div class="column">test</div>
             </div>
