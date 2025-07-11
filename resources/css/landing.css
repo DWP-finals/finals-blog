@@ -35,7 +35,7 @@ ul {
 /* Carousel Container */
 .carousel-container {
     width: 80%;
-    max-width: 70vw;
+    max-width: 80vw;
     margin: 5vh auto;
     background-color: transparent;
     padding: 2vh;
@@ -48,7 +48,8 @@ ul {
     font-size: 6vh;
     color: #442010;
     font-weight: 600;
-    margin-bottom: 10vh;
+    margin-bottom: 8vh;
+    user-select: none;
 }
 
 /* Carousel Inner Wrapper (the visible window) */
@@ -80,8 +81,8 @@ ul {
     padding: 15px;
     text-align: center;
     background-color: transparent;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    border-radius: .5vw;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.208);
     display: flex; /* Use flexbox for internal content alignment */
     flex-direction: column; /* Stack image and text vertically */
     align-items: center; /* Center content horizontally */
@@ -96,7 +97,8 @@ ul {
     height: 20vh; /* Fixed height for images for consistent layout */
     object-fit: cover; /* Ensures images cover the area without distortion */
     border-radius: 5px;
-    margin-bottom: 15px;
+    margin-top: 1.5vw;
+    margin-bottom: 1.5vw;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -109,7 +111,7 @@ ul {
     font-size: 3.5vh;
     text-decoration: none;
     color: #442010;
-    font-weight: 400;
+    font-weight: 600;
     white-space: normal; /* Allow text to wrap within the title */
 }
 
@@ -294,6 +296,15 @@ ul {
 .column {
     float: left;
     width: 33.33%;
+}
+
+.column-container {
+    margin: 2;
+    height: 20vh;
+    width: 80%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    border-width: .5vw;
+    border-color: grey;
 }
 
 /* Clear floats after the columns */
