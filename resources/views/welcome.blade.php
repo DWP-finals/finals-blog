@@ -38,7 +38,7 @@
                         <input type="password" placeholder="Enter password" name="password" required>
 
                         <button type="submit" class="button">Log In</button>
-                        <button type="button" class="button cancel" onclick="goToPage()">Cancel</button>
+                        <button type="button" class="button cancel">Cancel</button>
                     </form>
                 </div>
 
@@ -54,10 +54,6 @@
 
                     function closeFormLogIn() {
                         document.getElementById("login").style.display = "none";
-                    }
-
-                    function goToPage() {
-                        window.location.href= "/resources/views/register.blade.php"
                     }
                 </script>
             </div>
