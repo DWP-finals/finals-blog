@@ -37,12 +37,17 @@
                         <label for="password"><b>Password</b></label>
                         <input type="password" placeholder="Enter password" name="password" required>
 
-                        <button type="submit" class="btn">Log In</button>
-                        <button type="button" class="btn cancel" onclick="closeFormLogIn()">Cancel</button>
+                        <button type="submit" class="button">Log In</button>
+                        <button type="button" class="button cancel" onclick="goToPage()">Cancel</button>
                     </form>
                 </div>
 
                 <script>
+                    function logIn() {
+                        // some function here
+                        document.getElementById("login").style.display = "none";
+                    }
+
                     function openFormLogIn() {
                         document.getElementById("login").style.display = "block";
                     }
@@ -50,12 +55,9 @@
                     function closeFormLogIn() {
                         document.getElementById("login").style.display = "none";
                     }
-                    function openFormSignUp() {
-                        document.getElementById("signup").style.display = "block";
-                    }
 
-                    function closeFormSignUp() {
-                        document.getElementById("signup").style.display = "none";
+                    function goToPage() {
+                        window.location.href= "/resources/views/register.blade.php"
                     }
                 </script>
             </div>
