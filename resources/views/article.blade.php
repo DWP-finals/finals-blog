@@ -25,18 +25,11 @@
         </div>
         <div class = "navbar_content">
             <ul class = "navbar_items">
-                <li><a href = "#">Home</a></li>
-                <li><a href = "#">About</a></li>
-                <li><a href = "#">Contact</a></li>
+                <li style="padding-right: 1.5rem;"><a href = "#">Home</a></li>
+                <li style="padding-right: 1.5rem;"><a href = "#">About</a></li>
+                <li style="padding-right: 1.5rem;"><a href = "#">Contact</a></li>
                 <button class="btn">Log In</button>
-                <li class = "dropdown">
-                    <i class="ri-menu-3-line"></i>
-                    <div class = "dropdown_content">
-                        <a href = "#">Account</a>
-                        <a href = "#">My Posts</a>
-                        <a href = "#">Log Out</a>
-                    </div>
-                </li>
+                <button class="btn">Sign Up</button>
             </ul>
         </div>
     </nav>
@@ -62,10 +55,48 @@
         </div>
         <div class = "others">
             <h3>Other Posts</h3>
+    
+            <div class = "other card1"> <!-- other contains img and content of a card -->
+                <div class = "otherImgContainer">
+                    <img class = "img1" src = "{{asset('storage/images/coffee5.jpg')}}">
+                </div>
+                <div class = "otherContentContainer">
+                    <a href = "#" class = "otherTitle">Origin of Coffee</p>
+                    <p class = "otherAuthor">by Dana Alania</p>
+                </div>
+            </div>
             <hr class = "line">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <div class = "other card2"> <!-- other contains img and content of a card -->
+                <div class = "otherImgContainer">
+                    <img class = "img1" src = "{{asset('storage/images/coffee4.jpg')}}">
+                </div>
+                <div class = "otherContentContainer">
+                    <a href = "#" class = "otherTitle">Kape Kape KAPE</p>
+                    <p class = "otherAuthor">by Dana Alania</p>
+                </div>
+            </div>
+            <hr class = "line">
+            <div class = "other card3"> <!-- other contains img and content of a card -->
+                <div class = "otherImgContainer">
+                    <img class = "img1" src = "{{asset('storage/images/coffee3.jpg')}}">
+                </div>
+                <div class = "otherContentContainer">
+                    <a href = "#" class = "otherTitle">Kape Kape KAPE</p>
+                    <p class = "otherAuthor">by Dana Alania</p>
+                </div>
+            </div>
+            <hr class = "line">
+            <div class = "other card4"> <!-- other contains img and content of a card -->
+                <div class = "otherImgContainer">
+                    <img class = "img1" src = "{{asset('storage/images/coffee2.jpg')}}">
+                </div>
+                <div class = "otherContentContainer">
+                    <a href = "#" class = "otherTitle">Why I Go to Starbucks Despite It Tasting Awful</p>
+                    <p class = "otherAuthor">by Dana Alania</p>
+                </div>
+            </div>
+            <hr class = "line">
         </div>
     </div>
-
 </body>
 </html>

@@ -5,6 +5,9 @@
 @source "../views";
 @source "../../node_modules/flowbite";
 
+a:hover {
+    text-decoration: underline;
+}
 .container {
     width: 80%;
     padding: 20px;
@@ -31,13 +34,13 @@
     margin-bottom:1.5rem;
     font-family: 'Domine';
     color: #787879 ;
-    font-size: 2.3vh;
+    font-size: 1em;
     font-style: italic;
     text-align: right;
 }
 
 .article {
-    max-width: 50vw;
+    max-width: 55vw;
 }
 .postImg {
     object-fit: cover;
@@ -49,13 +52,15 @@
     width: 100%;
     margin-left: 3rem;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 
 }
 
 h1 {
     font-family: 'Playfair Display';
     font-weight: 900;
-    font-size: 6vh;
+    font-size: 3em;
     margin-bottom: 0.2rem;
 }
 
@@ -66,30 +71,84 @@ h1 {
     margin-bottom: 1rem;
     font-family: 'Domine';
     color: #787879 ;
-    font-size: 2.3vh;
+    font-size: 1em;
 }
 
 h3 {
     font-family: 'Playfair Display';
     font-weight: 900;
-    font-size: 3.5vh;
+    font-size: 1.75em;
 }
 .others h3 {
     margin-bottom: 1rem;
 }
 
-.line {
-    margin-bottom: 1rem;
-    color: rgb(71, 11, 11);
-    background-color: rgb(71, 11, 11);
-    height: 0.5vh;
-    width: 8vw;
-    border: none;
-}
 
 p {
     overflow: hidden;
     font-family: 'Domine';
-    font-size: 2.3vh;
+    font-size: 1em;
     text-align: justify;
 }
+
+/*=== OTHER POSTS ===*/
+
+.other {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    margin-bottom: 1.5rem;
+
+
+}
+
+.otherImgContainer {
+    height: 13vh;
+    width: 6vw;
+    flex-shrink: 0;
+    overflow: hidden;
+    /* to center postImg inside containerImg */
+    display: flex; 
+    align-items: center;
+    user-select: none;
+}
+
+.img1 {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.otherContentContainer {
+    margin-left: 1rem;
+    
+}
+
+.otherTitle {
+    font-size: 1.25em;
+    font-family: 'Playfair Display';
+    text-align: left;
+    font-weight: 700;
+    line-height: 1.2;
+    cursor: pointer;
+
+}
+
+.otherAuthor {
+    font-size: 1rem;
+    font-family: 'Domine';
+    color: #787879 ;
+    line-height: 2;
+    text-align: left;
+    
+}
+
+.line {
+    margin-bottom: 1.5rem;
+    color: rgb(71, 11, 11);
+    background-color: rgb(71, 11, 11);
+    height: 0.1vh;
+    width: 100%;
+    border: none;
+}
+
