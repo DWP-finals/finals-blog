@@ -1,0 +1,21 @@
+@import "tailwindcss";
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin"; /*add to all css*/
+@source "../views";
+@source "../../node_modules/flowbite";
+
+.container {
+    display: flex;
+    flex-direction: row;
+    max-width: 100%;
+    height: 90vh;
+}
+
+.dashboard {
+    width: 20vw;
+    margin: 2rem;
+}
+.content {
+    background-color: #000;
+    width: 100%;
+}
