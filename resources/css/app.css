@@ -152,6 +152,7 @@
 
 .form-container input[type=text], .form-container input[type=password] {
     font-family: 'Domine';
+    font-size: .75em;
     padding: 1vh 1vw 1vh 1vw;
     width: 100%;
     border: none;
