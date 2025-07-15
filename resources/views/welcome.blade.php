@@ -27,7 +27,7 @@
                     <li style="padding-right: 1.5rem;"><a href = "#">About</a></li>
                     <li style="padding-right: 1.5rem;"><a href = "#">Contact</a></li>
                     <button class="btn" onclick="openFormLogIn()">Log In</button>
-                    <button class="btn" onclick="openFormSignUp()">Sign Up</button>
+                    <button class="btn" onclick="goToSignUp()">Sign Up</button>
                 </ul>
                 <div class="form" id="login">
                     <form action="" class="form-container">
@@ -59,6 +59,10 @@
                     function closeFormLogIn() {
                         document.getElementById("login").style.display = "none";
                         document.getElementById("overlay").style.display = "none";
+                    }
+
+                    function goToSignUp() {
+                        window.location.href = "/resources/views/register.blade.php";
                     }
                 </script>
             </div>

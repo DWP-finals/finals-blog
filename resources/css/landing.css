@@ -7,11 +7,12 @@
 
 /* ======> OVERALL <====== */
 * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  background-color: rgb(255, 255, 251);
-  font-family: 'Playfair Display';
+    scroll-behavior: smooth;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: rgb(255, 255, 251);
+    font-family: 'Playfair Display';
 }
 
 body {
