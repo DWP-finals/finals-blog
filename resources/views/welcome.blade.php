@@ -60,10 +60,6 @@
                         document.getElementById("login").style.display = "none";
                         document.getElementById("overlay").style.display = "none";
                     }
-
-                    function goToSignUp() {
-                        window.location.href = "/resources/views/register.blade.php";
-                    }
                 </script>
             </div>
         </nav>
