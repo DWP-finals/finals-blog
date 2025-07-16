@@ -5,21 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link href="/resources/css/app.css" rel="stylesheet">
+
     @vite('resources/css/dashboard.css')
-    @vite('/resources/css/app.css')
+
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Domine:wght@400..700&display=swap" rel="stylesheet">
+    
 </head>
 <body>
     <script>
-        function changeContent(hide,show) {
-            document.getElementById(hide).style.display="none";
-            document.getElementById(show).style.display="block";
+        function changeContent(contentId, btnSelected) {
+            // gonna leave comments for each block of code here kasi baka makalimutan ko how all these work
+            
+            // to hide all divs under content onli by default
+            document.querySelectorAll('.content > div').forEach(div => {
+                div.classList.add('hidden'); // adds tailwind hidden to class name of selected divs
+            });
+
+            // unhide the selected div
+            const currentContent = document.getElementById(contentId);
+            if (currentContent) {
+                currentContent.classList.remove('hidden'); // basically removes the tailwind hidden from class name to display block :DD
+            }
+
+            // style of button when not hovered/selected (sets unhovered/deselected to default) 
+            document.querySelectorAll('.btnDashboard').forEach(btn => {
+                btn.classList.remove('text-white', 'font-bold');
+                btn.classList.add('text-[#9a9594]');
+            });
+            
+            // selected button ( , this)  will have these stuff
+            btnSelected.classList.remove('text-[#9a9594]');
+            btnSelected.classList.add('text-white');
         }
     </script>
 
@@ -29,16 +50,16 @@
         <div class = "dashboard">
             <ul class = "options">
                 <li class = "logo"><img src = "{{asset('storage/images/icons8-coffee-48.png')}}"></li>
-                <li><a href = "#" class = "button btnManage" onclick="replace(this, 'manage')">Manage Posts</a></li>
-                <li><a href = "#" class = "button btnCreate" onclick="replace(this, 'create')">Create Post</a></li>
-                <li><a href = "#" class = "button btn3">Drafts</a></li>
-                <li><a href = "#" class = "button btn4">Analytics</a></li>
+                <li><a href = "#" class = "button btnDashboard text-white" onclick="changeContent('manage', this)">Manage Posts</a></li>
+                <li><a href = "#" class = "button btnDashboard text-[#9a9594]" onclick="changeContent('create', this)">Create Post</a></li>
+                <li><a href = "#" class = "button btnDashboard text-[#9a9594]">Drafts</a></li>
+                <li><a href = "#" class = "button btnDashboard text-[#9a9594]">Analytics</a></li>
             </ul>
             <hr class = "hrDashboard">
             <ul class = "optionsFromNavbar">
-                <li><a href = "#" class = "button btn5">About</a></li>
-                <li><a href = "#" class = "button btn6">Contact</a></li>
-                <li><a href = "#" class = "button btn7">Log Out</a></li>
+                <li><a href = "#" class = "button btnNavbar">About</a></li>
+                <li><a href = "#" class = "button btnNavbar">Contact</a></li>
+                <li><a href = "#" class = "button btnNavbar">Log Out</a></li>
             </ul>
         </div>
         <div class = "content">
