@@ -12,38 +12,47 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Domine:wght@400..700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!--========== NAVIGATION BAR ==========-->
-    <nav class = "navbar" class="shadow-md">
-        <div class = "logo">
-            <i class="ri-cup-line"></i>
-            <a href = "index.html" class = "blog_name">Blog Name</a>
-        </div>
-        <div class = "navbar_content">
-                <ul class = "navbar_items">
-                    <li style="padding-right: 1.5rem;"><a href = "#">Home</a></li>
-                    <li style="padding-right: 1.5rem;"><a href = "#">About</a></li>
-                    <li style="padding-right: 1.5rem;"><a href = "#">Contact</a></li>
-                    <button class="btn" onclick="openFormLogIn()">Log In</button>
-                    <button class="btn" onclick="openFormSignUp()">Sign Up</button>
-                </ul>
-        </div>
-    </nav>
+    <script>
+        function changeContent(hide,show) {
+            document.getElementById(hide).style.display="none";
+            document.getElementById(show).style.display="block";
+        }
+    </script>
+
 
     <!--========== ARTICLE IMAGE CONTAINER ==========-->
     <div class = "container">
         <div class = "dashboard">
-            <ul>
-                <li><a href = "#">Manage Posts</a></li>
-                <li><a href = "#">Create Post</a></li>
-                <li><a href = "#">Drafts</a></li>
-                <li><a href = "#">Analytics</a></li>
+            <ul class = "options">
+                <li class = "logo"><img src = "{{asset('storage/images/icons8-coffee-48.png')}}"></li>
+                <li><a href = "#" class = "button btnManage" onclick="replace(this, 'manage')">Manage Posts</a></li>
+                <li><a href = "#" class = "button btnCreate" onclick="replace(this, 'create')">Create Post</a></li>
+                <li><a href = "#" class = "button btn3">Drafts</a></li>
+                <li><a href = "#" class = "button btn4">Analytics</a></li>
+            </ul>
+            <hr class = "hrDashboard">
+            <ul class = "optionsFromNavbar">
+                <li><a href = "#" class = "button btn5">About</a></li>
+                <li><a href = "#" class = "button btn6">Contact</a></li>
+                <li><a href = "#" class = "button btn7">Log Out</a></li>
             </ul>
         </div>
         <div class = "content">
-            <h3>hi</h3>
+            <!-- MANAGE POSTS -->
+            <div id = "manage">
+                <h1>Manage Posts</h1>
+                <h2>Profile</h2><hr>
+                <h2>Personal Details</h3><hr>
+            </div>
+            <div id = "create">
+                <h1>Create Posts</h1>
+                <h2>create create create</h2>
+
+            </div>
         </div>
     </div>
 </body>
