@@ -27,7 +27,7 @@
                     <li style="padding-right: 1.5rem;"><a href = "#">About</a></li>
                     <li style="padding-right: 1.5rem;"><a href = "#">Contact</a></li>
                     <button class="btn" onclick="openFormLogIn()">Log In</button>
-                    <button class="btn" onclick="openFormSignUp()">Sign Up</button>
+                    <button class="btn" onclick="goToSignUp()">Sign Up</button>
                 </ul>
                 <div class="form" id="login">
                     <form action="" class="form-container">
@@ -42,18 +42,23 @@
                     </form>
                 </div>
 
+                <div id="overlay"></div>
+
                 <script>
                     function logIn() {
                         // some function here
                         document.getElementById("login").style.display = "none";
+                        document.getElementById("overlay").style.display = "none";
                     }
 
                     function openFormLogIn() {
                         document.getElementById("login").style.display = "block";
+                        document.getElementById("overlay").style.display = "block";
                     }
 
                     function closeFormLogIn() {
                         document.getElementById("login").style.display = "none";
+                        document.getElementById("overlay").style.display = "none";
                     }
                 </script>
             </div>
@@ -304,6 +309,47 @@
         </div>
         <div class="recent-posts">
             <h2>Latest Posts</h2>
+            <div class="row">
+                <div class="column">
+                    <div class="column-container">
+                        <div class="imgdiv"></div>
+                        <div class="contentdiv">
+                            <h1>Test title</h1>
+                            <p class="tags">#Coffee</p>
+                            <p class="author">Juliana Jimeno</p>
+                            <p class="des">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis vulputate nisi. Quisque laoreet urna augue. Ut vel ex odio. Proin maximus sem finibus nunc ornare egestas.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="column-container">
+                        <div class="imgdiv"></div>
+                        <div class="contentdiv">
+                            <h1>Test title</h1>
+                            <p class="tags">#Coffee</p>
+                            <p class="author">Juliana Jimeno</p>
+                            <p class="des">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis vulputate nisi. Quisque laoreet urna augue. Ut vel ex odio. Proin maximus sem finibus nunc ornare egestas.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="column-container">
+                        <div class="imgdiv"></div>
+                        <div class="contentdiv">
+                            <h1>Test title</h1>
+                            <p class="tags">#Coffee</p>
+                            <p class="author">Juliana Jimeno</p>
+                            <p class="des">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis vulputate nisi. Quisque laoreet urna augue. Ut vel ex odio. Proin maximus sem finibus nunc ornare egestas.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="column">
                     <div class="column-container">
