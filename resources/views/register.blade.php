@@ -22,6 +22,14 @@
             <div class="container">
                 <div class="row">
                     <div class="col-1">
+                        <label for="name"><b>Name</b></label>
+                    </div>
+                    <div class="col-2">
+                        <input type="text" placeholder="Enter your name" name="name" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-1">
                         <label for="email"><b>Email</b></label>
                     </div>
                     <div class="col-2">
