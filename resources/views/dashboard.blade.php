@@ -66,8 +66,11 @@
             <!-- MANAGE POSTS -->
             <div id = "manage">
                 <h1>Manage Posts</h1>
-                <h2>Profile</h2><hr>
-                <h2>Personal Details</h3><hr>
+                <div class = "arrangement">
+                    <button type = "button" class = "arrangementBtn"><img class = "sort" width="24" height="24" src="https://img.icons8.com/forma-light/24/352b28/generic-sorting.png" alt="generic-sorting"/>Sort</button>
+                    <button type = "button" class = "arrangementBtn"><img class = "filter" width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/352b28/horizontal-settings-mixer--v1.png" alt="horizontal-settings-mixer--v1"/>Filter</button>
+                </div>
+
             </div>
             <div id = "create">
                 <h1>Create Posts</h1>

@@ -21,7 +21,7 @@ html, body {
 .dashboard {
     width: 18vw;
     background-color: #352B28;
-    border-radius: 50px;
+
     margin: 1rem;
     padding: 3rem;
     padding-bottom: 5rem;
@@ -73,21 +73,21 @@ html, body {
 h1 {
     font-family: 'Domine';
     font-weight: 900;
-    font-size: 3em;
+    font-size: 2em;
     margin-bottom: 2rem;
     line-height: 1.2;
 }
 
 h2 {
-    font-family: 'Inter';
-    font-weight: 600;
-    font-size: 1.75em;
+    font-family: 'Domine';
+    font-weight: 700;
+    font-size: 1.25em;
     margin-bottom: 1rem;
 }
 
 #manage, #create {
     background-color: #F5F0F1;
-    border-radius: 50px;
+    border-radius: 5vh;
     padding: 5rem;
     margin: 1rem;
     min-height: calc(100vh - 2rem);
@@ -95,5 +95,37 @@ h2 {
     box-sizing: border-box;
 }
 
+/* === MANAGE POSTS === */
+.arrangement {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
 
+.arrangementBtn {
+
+    background-color: #edd6c8;
+    border-radius: 1vh ;
+    width: 5vw;
+    padding: 0.25rem;
+    color: #352B28;
+    font-family: 'Domine';
+    font-size: 0.85rem;
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+    gap: 0.15rem;
+    align-items: center;
+}
+
+.sort {
+    width: 1vw;
+    height: 2.25vh;
+    
+}
+
+.filter {
+    width: 1vw;
+    height: 2.25vh;
+}
 
