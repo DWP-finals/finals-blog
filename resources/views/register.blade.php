@@ -12,53 +12,38 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Domine:wght@400..700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="row">
         <div class="left">
-            <h1>Register Now</h1>
-            <div class="container">
-                <div class="row">
-                    <div class="col-1">
-                        <label for="name"><b>Name</b></label>
-                    </div>
-                    <div class="col-2">
-                        <input type="text" placeholder="Enter your name" name="name" required>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-1">
-                        <label for="email"><b>Email</b></label>
-                    </div>
-                    <div class="col-2">
-                        <input type="text" placeholder="Enter email address" name="email" required>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-1">
-                        <label for="password"><b>Password</b></label>
-                    </div>
-                    <div class="col-2">
-                        <input type="password" placeholder="Enter secure password" name="password" required>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-1">
-                        <label for="cpassword"><b>Confirm Password</b></label>
-                    </div>
-                    <div class="col-2">
-                        <input type="password" placeholder="Re-enter password" name="cpassword" required>
-                    </div>
-                </div>
-                <button class="button" onclick="">Create Account</button>
+            <div class="leftcon1">
+                <img src="\storage\images\icons8-coffee-beans-100.png">
+                <h1>Blog Title?</h1>
+            </div>
+            <div class="leftcon2">
+                <h2>Never miss a post</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</p>
             </div>
         </div>
         <div class="right">
-            <h3>Already have an account?</h3>
-            <p class="subheading">Log in through the home page and continue where you left off!</p>
-            <button class="home">Home</button>
+            <form action="#">
+                <div class="formcontainer">
+                    <h1>Create an account</h1>
+                    <label for="email"><b>Email Address</b></label>
+                    <input type="text" placeholder="Enter email address" name="email" required></input>
+                    <label for="name"><b>Name</b></label>
+                    <input type="text" placeholder="Enter your name here" name="name" required></input>
+                    <label for="password"><b>Password</b></label>
+                    <input type="password" placeholder="Enter a secure password" name="password" required></input>
+                    <label for="cpassword"><b>Confirm Password</b></label>
+                    <input type="password" placeholder="Re-enter password" name="cpassword" required></input>
+                    <div class="center">
+                        <button type="submit" class="button" onclick="#">Sign Up</button>
+                        <p onclick="window.location='{{ url("/") }}'">Already have an account? Log In</p>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </body>

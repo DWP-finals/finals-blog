@@ -8,8 +8,6 @@ class RegisterController extends Controller
 {
     public function index() //GET
     {
-
-
         return view('register');
     }
 }
