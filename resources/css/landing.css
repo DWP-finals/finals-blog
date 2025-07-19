@@ -6,13 +6,19 @@
 
 /* ======> OVERALL <====== */
 * {
-    scroll-behavior: smooth;
-    padding: 0;
-    margin: 0;
     box-sizing: border-box;
-    background-color: rgb(255, 255, 251);
-    font-family: 'Playfair Display';
+    scroll-behavior: smooth;
+    margin: 0;
 }
+
+.hero {
+    background-image: url("/public/storage/images/pexels-chevanon-302901.jpg");
+    background-repeat: no-repeat;
+    background-size:  100%;
+    width: 100%;
+    height: 80vh;
+}
+
 
 body {
     display: grid;
@@ -22,338 +28,226 @@ body {
     overflow-x: hidden;
 }
 
-a {
-    text-decoration: none;
-}
-
-ul {
-    list-style: none;
-}
-
-
-
-/* Carousel Container */
-.carousel-container {
-    width: 80%;
-    max-width: 80vw;
-    margin: 5vh auto;
-    background-color: transparent;
-    padding: 2vh;
-    border-radius: 8px;
-    position: relative; /* For positioning navigation and indicators */
-    overflow: hidden; /* Crucial: Hides anything outside the visible carousel area */
-}
-
-.carousel-container h2 {
-    font-size: 3em;
-    color: #442010;
-    font-weight: 600;
-    margin-bottom: 8vh;
+.quote {
     user-select: none;
-}
-
-/* Carousel Inner Wrapper (the visible window) */
-.carousel {
-    display: flex; /* Arranges items in a row */
-    overflow: hidden; /* Ensure items outside the view are hidden */
-    width: 100%;
-    height: 66vh; /* Fixed height for consistency, adjust as needed */
-    align-items: center; /* Vertically align content */
-    position: relative; /* For any internal positioning relative to this window */
-    margin-bottom: 8vh;
-}
-
-/* Carousel Track (contains all items, moves horizontally) */
-.carousel-track {
-    display: flex; /* Makes all carousel-items line up horizontally */
-    white-space: nowrap; /* Prevents items from wrapping to the next line */
-    transition: transform 0.5s ease-in-out; /* Smooth transition for slides */
-    /* Transform property will be controlled by JavaScript */
-}
-
-/* Individual Carousel Item */
-.carousel-item {
-    flex: 0 0 auto; /* Prevent items from growing/shrinking, and don't allow wrapping */
-    width: 100%; /* Each item takes full width of the visible carousel area. Adjust if you want to show multiple items */
-    max-width: 30vw; /* Set a max-width for individual items to control their size */
-    margin-right: 2vw; /* Space between items */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
-    padding: 15px;
-    text-align: center;
-    background-color: transparent;
-    border-radius: .5vw;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.208);
-    display: flex; /* Use flexbox for internal content alignment */
-    flex-direction: column; /* Stack image and text vertically */
-    align-items: center; /* Center content horizontally */
-    justify-content: space-between; /* Distribute space between items if needed */
-    height: 60vh; /* Take full height of the track */
-    padding-bottom: 4vh;
-}
-
-.carousel-item img {
-    max-width: 100%;
-    width: 20vw;
-    height: 20vh; /* Fixed height for images for consistent layout */
-    object-fit: cover; /* Ensures images cover the area without distortion */
-    border-radius: 5px;
-    margin-top: 1.5vw;
-    margin-bottom: 1.5vw;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.carousel-item h3 {
-    margin-top: 0;
-    margin-bottom: 10px;
-}
-
-.carousel-item h3 a {
-    font-size: 1.75em;
-    text-decoration: none;
-    color: #442010;
+    margin-top: 7%;
+    margin-left: 10%;
+    margin-right: 40%;
+    float: left;
+    font-family: 'Libre Baskerville';
+    font-size: 4vw;
     font-weight: 600;
-    white-space: normal; /* Allow text to wrap within the title */
-}
-
-.carousel-item h3 a:hover {
-    text-decoration: underline;
-}
-
-.carousel-item p {
-    font-family: 'Domine';
-    font-size: 1em;
-    line-height: 1.5;
-    color: #555;
-    margin-bottom: 15px;
-    white-space: normal; /* Allow text to wrap */
-}
-
-.carousel-item .post-date {
-    font-size: 0.85em;
-    color: #777;
-    font-family: 'Domine';
-    white-space: normal;
-}
-
-/* Navigation Buttons */
-.carousel-button {
-    height: 5vh;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: #442010;
     color: white;
-    border: none;
-    padding: 1vh 1vw;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 2vh;
-    z-index: 10; /* Ensure buttons are above carousel content */
-    transition: background-color 0.3s ease;
-    outline: none; /* Remove focus outline */
+    background-color: transparent;
+    user-select: none;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.34);
 }
 
-.carousel-button:hover {
-    background-color: #62331e;
+.quote:after {
+    clear: both;
 }
 
-.carousel-button.prev {
-    left: 10px;
-}
-
-.carousel-button.next {
-    right: 10px;
-}
-
-/* Indicators (Dots) */
-.carousel-indicators {
-    position: absolute;
-    bottom: 20px; /* Position below the carousel items */
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 10px; /* Space between dots */
-    z-index: 10;
-}
-
-.indicator {
-    width: 12px;
-    height: 12px;
-    background-color: rgba(0, 0, 0, 0.3);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.indicator.active {
-    background-color: #442010; /* Active dot color */
-    transform: scale(1.2); /* Slightly enlarge active dot */
-}
-
-.indicator:hover {
-    background-color: rgba(0, 0, 0, 0.6);
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .carousel-container {
-        width: 95%;
-        padding: 15px;
-    }
-
-    .carousel {
-        height: 350px;
-    }
-
-    .carousel-item {
-        max-width: 300px;
-        margin-right: 15px;
-    }
-
-    .carousel-item img {
-        height: 180px;
-    }
-
-    .carousel-item h3 {
-        font-size: 1.4em;
-    }
-
-    .carousel-item p {
-        font-size: 0.95em;
-    }
-
-    .carousel-button {
-        padding: 8px 12px;
-        font-size: 1.2em;
-    }
-
-    .indicator {
-        width: 10px;
-        height: 10px;
-    }
-}
-
-@media (max-width: 480px) {
-    .carousel-container {
-        margin: 20px auto;
-        padding: 10px;
-    }
-
-    .carousel {
-        height: 300px;
-    }
-
-    .carousel-item {
-        max-width: 90%;
-        margin-right: 10px;
-    }
-
-    .carousel-item img {
-        height: 140px;
-    }
-
-    .carousel-item h3 {
-        font-size: 1.2em;
-    }
-
-    .carousel-item p {
-        font-size: 0.85em;
-    }
-
-    .carousel-button {
-        padding: 6px 10px;
-        font-size: 1em;
-        left: 5px;
-        right: 5px;
-    }
-
-    .carousel-indicators {
-        bottom: 10px;
-    }
-
-
-}
-
-.recent-posts {
-    position: relative;
-    padding: 2vh;
-}
-
-.recent-posts > h2 {
-    font-size: 3em;
-    color: #442010;
-    font-weight: 600;
-    padding-left: 14vw;
+.explore {
+    margin-top: 3%;
+    margin-left: 18%;
+    background-color: #6F4E37;
+    color: white;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-top: 1.25vh;
+    padding-bottom: 1.25vh;
+    border-color: white;
+    border-width: .10vw;
+    font-family: 'Libre Baskerville';
+    font-size: 1.10vw;
+    transition: 0.3s;
     user-select: none;
 }
 
-.row {
-    padding-top: 4vh;
-    padding-left: 10vw;
-    padding-right: 10vw;
-        display: flex;
-    flex-direction: row;
+.explore:hover {
+    background-color: #60412a;
+}
+
+.featuredsec {
+    margin-top: 3%;
+    margin-bottom: 3%;
+    width: 100%;
+    box-sizing: border-box;
+    -ms-user-select: none;
+}
+
+.featuredsec h1 {
+    margin-left: 11%;
+    color: black;
+    font-family: 'Libre Baskerville';
+    font-size: 1.75vw;
+    user-select: none;
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1vh;
+}
+
+.card {
+    width: 25vw;
+    background-color: white;
+    overflow: hidden;
+    margin: .5vw;
+}
+
+.card img {
+    width: 100%;
+    user-select: none;
+}
+
+.tags {
+    margin-top: 1.5vh;
+    font-family: 'Libre Franklin';
+    color: #D3C0B3;
+    font-size: .75vw;
+}
+
+.card-container h3 {
+    font-family: 'Franklin Baskerville';
+    font-size: 1.75vw;
+    margin-bottom: 1.5vh;
+}
+
+.info {
+    font-family: 'Libre Franklin';
+    color: rgb(145, 145, 145);
+    font-size: .75vw;
+    margin-bottom: 1.5vh;
+}
+
+@media screen and (max-width: 720px) {
+  .card {
+   width: 100%
+  }
+}
+
+.cardsec {
+    width: 100%;
+    background-color: #D3C0B3;
+    padding-top: 4%;
+    user-select: none;
+}
+
+.card-container2 {
+    display: flex;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
-/* Create three equal columns that floats next to each other */
-.column {
-    margin: auto;
-    width: 33.33%;
-    min-width: 350px;
-    margin-bottom: 2vh;
-}
-
-.column-container {
-    min-height: fit-content;
-    height: 65vh;
-    width: 90%;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.17);
-    border-radius: 1vw;
-}
-
-.imgdiv {
+.partition {
     height: 50%;
-    background-image: url(https://picsum.photos/400);
-    background-size: cover;
-    overflow: auto;
+}
+
+.card2 {
+    padding-left: 1.25vw;
+    border-radius: .5vw;
+    width: 20vw;
+    background-color: white;
+    overflow: hidden;
+    margin-top: 5vh;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    margin-bottom: 8vh;
+}
+
+.cardsec h1 {
+    text-align: center;
+    color: #6F4E37;
+    font-family: 'Libre Baskerville';
+    font-size: 2vw;
     user-select: none;
 }
 
-.contentdiv {
-    height: 50%;
-    padding-left: 1.5vw;
+.cardsec .subheading {
+    text-align: center;
+    color: #6F4E37;
+    font-family: 'Libre Baskerville';
+    font-size: 1vw;
+    padding-bottom: .25%;
+    user-select: none;
 }
 
-.contentdiv > h1 {
-    font-family: 'Playfair Display';
-    font-weight: 600;
-    font-size: 1.25em;
-    color: #442010;
-    text-align: left;
-    padding-top: 1vh;
+.cardsec h2 {
+    color: #6F4E37;
+    font-family: 'Libre Baskerville';
+    font-size: 1.75vw;
+    padding-top: 10vh;
+    margin-right: 20%;
+    user-select: none;
 }
 
-.contentdiv > .author {
-    color: grey;
-    font-size: 1em;
+.cardsec .body {
+    color: #6F4E37;
+    font-family: 'Libre Franklin';
+    font-size: 1vw;
+    padding-bottom: 8vh;
+    margin-right: 20%;
+    user-select: none;
+    margin-bottom: 16vh;
 }
 
-.contentdiv > .tags {
-    color: rgb(163, 163, 163);
-    font-style: italic;
-    font-size: .80em;
+.cta {
+    margin-top: 10vh;
+    width: 100%;
+    background-color: white;
 }
 
-.contentdiv > .des {
-    padding-top: 1vh;
-    padding-bottom: 1vh;
-    font-size: 1em;
+.ctacol {
+    float: left;
+    width: 50%;
+    margin-bottom: 10vh;
 }
 
-/* Clear floats after the columns */
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
+.ctacol h3 {
+    padding-left: 2vw;
+    font-family: 'Libre Baskerville';
+    font-size: 3vw;
+    color: #6F4E37;
+    user-select: none;
+}
+
+.ctacol .more {
+    font-family: 'Libre Franklin';
+    margin-top: 2vh;
+    margin-right: 20%;
+    color: #6F4E37;
+    user-select: none;
+    padding-left: 2vw;
+}
+
+.ctacol img {
+    float: right;
+    width: 40vw;
+    height: 30vh;
+    margin-right: 2vw;
+    margin-left: 8vw;
+}
+
+.signup {
+    margin-top: 3%;
+    margin-left: 2vw;
+    background-color: #6F4E37;
+    color: white;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-top: 1.25vh;
+    padding-bottom: 1.25vh;
+    border-color: white;
+    border-width: .10vw;
+    font-family: 'Libre Baskerville';
+    font-size: 1.10vw;
+    transition: 0.3s;
+    user-select: none;
+}
+
+.signup:hover {
+    background-color: #60412a;
 }

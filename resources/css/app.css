@@ -1,9 +1,11 @@
-@import "tailwindcss";
-@import "flowbite/src/themes/default";
-@plugin "flowbite/plugin"; /*add to all css*/
-@source "../views";
-@source "../../node_modules/flowbite";
-
+@import 'tailwindcss';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* ======> NAVIGATION BAR <====== */
 
@@ -16,7 +18,6 @@
 ::-webkit-scrollbar {
   width: .5vw;
 }
-
 /* Track */
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
@@ -32,111 +33,93 @@
   background: #61311c;
 }
 
-.navbar {
-    top: 0;
-    position: sticky;
-    z-index: 100;
-    font-family: 'Playfair Display';
-    display: flex;
-    background-color: rgb(255, 255, 251);
-    color: #442010;
-    justify-content: space-between;
-    height: 14vh;
-    width: 100%;
-    min-width: 100%;
-    padding: 2rem 4rem;
-    box-shadow: 10px 8px 72px 3px rgba(201,201,201,0.13);
-    -webkit-box-shadow: 10px 8px 72px 3px rgba(201,201,201,0.13);
-    -moz-box-shadow: 10px 8px 72px 3px rgba(201,201,201,0.13);
+/* NAVBAR */
+
+.header {
+    font-family: 'Libre Baskerville';
+    background-color: transparent;
+    user-select: none;
+    margin-top: 3vh;
 }
 
-.navbar a {
-    color: #442010;
-    font-size: 1.75em;
-    font-weight: 600;
-    position: sticky;
-    top: 0;
-    overflow: hidden;
-    user-select: none;
+.nav {
+    background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
+    width: 92%;
+    margin-inline: auto ;
 }
 
 .logo {
-    flex-shrink: 0;
-    padding: 0 30px;
-}
-
-.navbar_content {
-    float: right;
-}
-
-.navbar_items {
+    background-color: transparent;
     display: flex;
-    gap: 1.5rem;
+    gap: 1vw;
 }
 
-.dropdown {
-    position: relative;
-    cursor: pointer;
-
+.logo img {
+    width: 2.25vw;
+    background-color: transparent;
 }
 
-.dropdown_content {
-    display: flex;
-    flex-direction: column;
-    text-align: right;
-    position: absolute;
-    overflow: hidden;
-    background-color: #333;
-    border-radius: 5px;
-    width: 110px;
-    gap: 1.2rem;
-    padding: 1.2rem 1rem;
-    right: 0;
-    top: calc(100% + 20px); /* set the px according to preferred space between the icon and dropdown shi */
-    z-index: 100;
-    pointer-events: none;
-
-    /* transitions */
-    opacity:0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: opacity .1s ease-in, transform .1s ease-in, visibility .1s ease-out;
-}
-
-
-.dropdown:hover .dropdown_content {
-  display: flex;
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-.dropdown::after {
-    /* adding these kasi kapag tinatanggal hover nawawala agad dropdown */
-  content: '';
-  position: absolute;
-  top: 100%;
-  right: 0;
-  width: 30px;
-  height: 110px;
-}
-
-.btn {
-    font-family: Domine;
-    font-size: 2vh;
-    font-weight: 600;
-    padding-top: 1.5vh;
-    padding-bottom: 1.5vh;
-    padding-right: 2vw;
-    padding-left: 2vw;
+.logo h1 {
+    font-family: 'Libre Franklin';
+    font-size: 1.5vw;
+    background-color: transparent;
     color: white;
-    border-radius: 2vh;
-    background-color: #442010;
+}
+
+.ulcon {
+    background-color: transparent;
+}
+
+.ul-nav {
+    background-color: transparent;
+    display: flex;
+    justify-items: center;
+    gap: 6vw;
+}
+
+li {
+    color: white;
+    background-color: transparent;
+}
+
+.li-a {
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.34);
+    font-size: 1.25vw;
+    font-weight: 500;
+    background-color: transparent;
+}
+
+.containbutton {
+    background-color: transparent;
+}
+
+.login {
+    background-color: #6F4E37;
+    color: white;
+    padding-left: 2.1vw;
+    padding-right: 2.1vw;
+    padding-top: .75vh;
+    padding-bottom: .75vh;
+    border-color: white;
+    border-width: .10vw;
+    font-family: 'Libre Franklin';
+    font-size: 1vw;
+    transition: 0.3s;
     user-select: none;
 }
 
+.login:hover {
+    background-color: #60412a;
+}
+
+/*LOG IN FORM*/
+
 .form {
+    border-radius: 1.5vw;
+    background-color: white;
     z-index: 3;
     font-family: 'Domine';
     width: 20vw;
@@ -144,9 +127,8 @@
     height: 10vh;
     display: none;
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 10%;
+    right: 4%;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.161);
 }
 
@@ -157,28 +139,31 @@
     margin-top: 2vh;
     margin-left: 2vw;
     margin-right: 2vw;
+    user-select: none;
 }
 
 .form-container > h1 {
-    font-family: 'Domine';
-    padding-top: 2.5vh;
-    text-align: center;
-    font-weight: 1000;
-    font-size: 1.5em;
+    font-family: 'Libre Baskerville';
+    color: #6F4E37;
+    padding-top: 2vh;
+    padding-bottom: 1vh;
+    font-weight: 800;
+    font-size: 1.25vw;
     user-select: none;
 }
 
 .form-container > label {
-    font-size: 1em;
+    font-size: .80vw;
     font-weight: 400;
-    font-family: 'Domine';
-    padding-bottom: 1vh;
+    font-family: 'Libre Baskerville';
+    color: #6F4E37;
+    padding-bottom: 1.25vh;
     user-select: none;
 }
 
 .form-container input[type=text], .form-container input[type=password] {
-    font-family: 'Domine';
-    font-size: .75em;
+    font-family: 'Libre Baskerville';
+    font-size: .75vw;
     padding: 1vh 1vw 1vh 1vw;
     width: 100%;
     border: none;
@@ -192,9 +177,9 @@
 }
 
 .form-container .button {
-    font-family: 'Domine';
-    font-size: .875em;
-    font-weight: 700;
+    font-family: 'Libre Baskerville';
+    font-size: .75vw;
+    font-weight: 600;
     background-color: #442010;
     color: white;
     height: 5vh;
@@ -221,6 +206,15 @@
   opacity: 1;
 }
 
+.form-container > p {
+    text-decoration: underline;
+    text-align: center;
+    padding-bottom: 1vh;
+    font-family: 'Libre Baskerville';
+    color: grey;
+    font-size: .75vw;
+}
+
 #overlay {
   position: fixed;
   display: none;
@@ -233,3 +227,37 @@
   background-color: rgba(0,0,0,0.5);
   z-index: 2;
 }
+
+/*FOOTER*/
+
+.footer {
+    width: 100%;
+    height: 15vh;
+    background-color: white;
+    border-top: .1vw grey solid;
+}
+
+.footer h5 {
+    text-align: center;
+    font-family: 'Libre Baskerville';
+    font-size: 1.25vw;
+    color: #6F4E37;
+    user-select: none;
+    padding-top: 1vh;
+
+}
+
+.footer h6 {
+    text-align: center;
+    font-family: 'Libre Baskerville';
+    font-size: .75vw;
+    color: gray;
+    user-select: none;
+    padding-bottom: 3vh;
+}
+
+.footer img {
+    padding-top: 2vh;
+    margin: auto;
+}
+
