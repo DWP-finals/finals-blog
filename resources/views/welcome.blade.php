@@ -146,6 +146,7 @@
             <img src="\storage\images\icons8-coffee-48.png"></img>
             <h5>Blog Title</h5>
             <h6>COPYRIGHT © 2025</h6>
+            <h6><a target="_blank" href="https://icons8.com/icon/oZJK8H59OkPG/coffee-bean">Coffee Bean</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a></h6>
         </div>
     </body>
 </html>

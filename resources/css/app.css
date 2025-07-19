@@ -237,9 +237,10 @@ li {
 
 .footer {
     width: 100%;
-    height: 15vh;
+    height: 18vh;
     background-color: white;
     border-top: .1vw grey solid;
+    margin-bottom: 2vh;
 }
 
 .footer h5 {
@@ -258,7 +259,6 @@ li {
     font-size: .75vw;
     color: gray;
     user-select: none;
-    padding-bottom: 3vh;
 }
 
 .footer img {
