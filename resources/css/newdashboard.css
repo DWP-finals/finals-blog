@@ -1,0 +1,160 @@
+html, body {
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style-type: none;
+    text-decoration: none;
+    
+    
+    
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    max-width: 100%;
+
+}
+
+
+/* === SIDEBAR === */
+.sidebar {
+    font-family: 'Libre Baskerville';
+    background-color: #D3C0B3;
+    min-width: 230px; /* for now (para di masyado maliit sidebar while testing whaha */
+    max-width: 20vw;
+    padding: 2rem;
+    gap: 3rem;
+    display: flex;
+    flex-direction: column;
+    color:#6F4E37;
+}
+
+.sidebar h2 {
+    font-family: 'Libre Baskerville';
+    font-weight: 500;
+}
+
+.dashboardOptions a, .accountOptions a{
+    color:#6F4E37;
+    line-height: 5vh;
+    position: relative;
+
+    gap: 8px;
+}
+
+.logo {
+    margin-bottom: 5vh;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color:#6F4E37;
+}
+
+hr {
+    color: #6F4E37;
+    background-color: #6F4E37;
+    height: 0.5px;
+    width: 70%;
+    border: none;
+    margin-left: 0;
+}
+
+.icon {
+    display: inline-flex;
+    align-items: center;
+    
+    
+
+
+}
+.manageIcon {
+    width: 18px;
+    height: 18px;
+    margin-bottom: 0.3vh;
+
+}
+
+.dashboardOptions a::after, .accountOptions a::after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    left: 0;
+    bottom: 4px;
+    width: 0;
+    background: #6F4E37;
+    transition: width .3s ease-in-out;
+}
+
+.dashboardOptions a:hover:after, .accountOptions a:hover:after {
+    width: 100%;
+}
+
+
+/* === CONTENT === */
+
+.content {
+    padding: 5rem;
+    width: 100%;
+}
+
+/* === MANAGE POSTS === */
+
+.manageHeading h1 {
+    font-family: 'Libre Baskerville';
+    font-weight: 500;
+}
+
+.manageHeading a {
+    font-family: 'Libre Baskerville';
+}
+
+.manageHeading p {
+    font-family: 'Libre Franklin';
+    font-size: 0.8em;
+    color: #757575;
+}
+.manageHeadingText {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+
+.manageHeadingText a {
+    color: black;
+    position: relative;
+    padding-bottom: 4px;
+    
+}
+.manageHeading p {
+    margin: 0;
+    margin-top: -20px;
+}
+
+.manageHeadingText a::after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    background: #6F4E37;
+    transition: width .3s ease-in-out;
+}
+
+.manageHeadingText a:hover:after {
+    width: 100%;
+}
+
+
+

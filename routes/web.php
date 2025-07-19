@@ -12,6 +12,6 @@ Route::get('/', function () {
 
 Route::get('/article', [ArticleController::class, 'index']);
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/newdashboard', [DashboardController::class, 'index']);
 
 Route::get('register', [RegisterController::class, 'index']);

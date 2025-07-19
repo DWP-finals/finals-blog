@@ -42,6 +42,13 @@
             btnSelected.classList.remove('text-[#9a9594]');
             btnSelected.classList.add('text-white');
         }
+        function toggleSort() {
+            let jsSortOverlay = document.querySelector(".sortOverlay");
+            if (jsSortOverlay.style.display === 'none')
+                jsSortOverlay.style.display = 'flex';
+            else
+                jsSortOverlay.style.display = 'none';
+        }
     </script>
 
 
@@ -49,9 +56,9 @@
     <div class = "container">
         <div class = "dashboard">
             <ul class = "options">
-                <li class = "logo"><img src = "{{asset('storage/images/icons8-coffee-48.png')}}"></li>
+                <li class = "logo"><a href = "#"><img src = "{{asset('storage/images/icons8-coffee-48.png')}}"></a></li>
                 <li><a href = "#" class = "button btnDashboard text-white" onclick="changeContent('manage', this)">Manage Posts</a></li>
-                <li><a href = "#" class = "button btnDashboard text-[#9a9594]" onclick="changeContent('create', this)">Create Post</a></li>
+                <li><a href = "#" class = "button btnDashboard text-[#9a9594]" onclick="changeContent('create', this)"><img width="48" height="48" src="https://img.icons8.com/external-tanah-basah-glyph-tanah-basah/48/9a9594/external-Write-business-tanah-basah-glyph-tanah-basah.png" alt="external-Write-business-tanah-basah-glyph-tanah-basah"/>Create Post</a></li>
                 <li><a href = "#" class = "button btnDashboard text-[#9a9594]">Drafts</a></li>
                 <li><a href = "#" class = "button btnDashboard text-[#9a9594]">Analytics</a></li>
             </ul>
@@ -67,10 +74,27 @@
             <div id = "manage">
                 <h1>Manage Posts</h1>
                 <div class = "arrangement">
-                    <button type = "button" class = "arrangementBtn"><img class = "sort" width="24" height="24" src="https://img.icons8.com/forma-light/24/352b28/generic-sorting.png" alt="generic-sorting"/>Sort</button>
-                    <button type = "button" class = "arrangementBtn"><img class = "filter" width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/352b28/horizontal-settings-mixer--v1.png" alt="horizontal-settings-mixer--v1"/>Filter</button>
-                </div>
+                    <div class = "sort">
+                        <button type = "button" class = "arrangementBtn" onclick = "toggleSort()"><img class = "sortIcon" width="24" height="24" src="https://img.icons8.com/forma-light/24/352b28/generic-sorting.png" alt="generic-sorting"/><p>Sort</p></button>
+                        <div class = "sortOverlay">
 
+                            <label for = "sortOptions">Sort by: </label>
+                            <select id = "sortOptions">
+                                <option value = "title">Title</option>
+                                <option value = "date">Last Edited</option>
+                            </select>
+                            <label for = "sortOrder">Order: </label>
+                            <select id = "sortOrder">
+                                <option value = "ascending">Ascending</option>
+                                <option value = "descending">Descending</option>
+                            </select>
+
+
+                        </div>
+                    </div>
+                    <button type = "button" class = "arrangementBtn"><img class = "filterIcon" width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/352b28/horizontal-settings-mixer--v1.png" alt="horizontal-settings-mixer--v1"/><p>Filter</p></button>
+
+                </div>
             </div>
             <div id = "create">
                 <h1>Create Posts</h1>
