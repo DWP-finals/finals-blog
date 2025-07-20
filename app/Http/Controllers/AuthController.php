@@ -36,7 +36,7 @@ class AuthController extends Controller {
 
         if (Auth::attempt($fields)) {
             $request->session()->regenerate();
-            return redirect()->route('dashboard')->with('success', 'Logged in successfully.');
+            return redirect()->route('newdashboard')->with('success', 'Logged in successfully.'); //may have to change back to dashboard
         }
 
         return redirect()->back()->withErrors([
