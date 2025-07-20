@@ -10,6 +10,6 @@ class DashboardController extends Controller
     {
 
 
-        return view('dashboard');
+        return view('newdashboard');
     }
 }

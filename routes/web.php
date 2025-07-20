@@ -13,7 +13,11 @@ Route::get('/', function () {
 
 Route::get('/article', [ArticleController::class, 'index']);
 
+<<<<<<< HEAD
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+=======
+Route::get('/newdashboard', [DashboardController::class, 'index']);
+>>>>>>> b1c4bd6e9b72fe7270f60e38bae5ef6d9d1b71ab
 
 Route::get('/register', [RegisterController::class, 'index']);
 
