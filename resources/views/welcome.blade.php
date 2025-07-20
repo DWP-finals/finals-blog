@@ -15,16 +15,17 @@
     </head>
     <body>
         <div class="form" id="login">
-            <form action="" class="form-container">
+            <form action="{{ route('login') }}" method="POST" class="form-container">
+                @csrf
                 <h1>Log In</h1>
                 <label for="email"><b>Email</b></label>
                 <input type="text" placeholder="Enter email address" name="email" required></input>
                 <label for="password"><b>Password</b></label>
                 <input type="password" placeholder="Enter password" name="password" required></input>
 
-                <button type="submit" class="button" onclick="logIn()">Log In</button>
+                <button type="submit" class="button">Log In</button>
                 <button type="button" class="button cancel" onclick="closeFormLogIn()">Cancel</button>
-                <p onclick="window.location='{{ url("register") }}'">Create an Account</p>
+                <p onclick="window.location='{{ url('register') }}'">Create an Account</p>
             </form>
         </div>
         <div id="overlay"></div>
