@@ -27,7 +27,8 @@
             </div>
         </div>
         <div class="right">
-            <form action="#">
+            <form action="{{ route('register') }}" method="POST">
+                @csrf
                 <div class="formcontainer">
                     <h1>Create an account</h1>
                     <label for="email"><b>Email Address</b></label>
@@ -37,7 +38,7 @@
                     <label for="password"><b>Password</b></label>
                     <input type="password" placeholder="Enter a secure password" name="password" required></input>
                     <label for="cpassword"><b>Confirm Password</b></label>
-                    <input type="password" placeholder="Re-enter password" name="cpassword" required></input>
+                    <input type="password" placeholder="Re-enter password" name="password_confirmation" required></input>
                     <div class="center">
                         <button type="submit" class="button" onclick="#">Sign Up</button>
                         <p onclick="window.location='{{ url("/") }}'">Already have an account? Log In</p>
