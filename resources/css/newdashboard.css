@@ -187,7 +187,6 @@ hr {
 
 }
 
-
 .manageHeadingText a {
     color: black;
     position: relative;
@@ -210,10 +209,48 @@ hr {
     transition: width .3s ease-in-out;
 }
 
+.manageSettings {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.settingsBtn {
+    background-color: #6F4E37;
+    padding: 0.25rem;
+    width: 4.8vw;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    gap: 0.15rem;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Libre Franklin';
+    font-size: 0.8em;
+}
+
+.sortIcon {
+    width: 14px;
+    height: 14px;
+
+
+}
+
 .manageHeadingText a:hover:after {
     width: 100%;
 }
 
+.postImgContainer {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+.postImg {
+    object-fit: cover;
+}
 
 
 
@@ -258,6 +295,13 @@ hr {
     hr {
         margin: 2rem auto;
         width: 50%;
+    }
+    .settingsBtn p {
+        display: none;
+    }
+    .settingsBtn {
+        min-width: 0;
+        width: 25px;
     }
 }
 

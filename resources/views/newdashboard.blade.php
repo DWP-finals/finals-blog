@@ -74,7 +74,33 @@
                         <p>DASHBOARD&nbsp;&nbsp; >&nbsp;&nbsp; Manage Posts</p>
                 </div>
                 <div class = "manageSettings">
-                    
+                    <div class = "sort">
+                        <button type = "button" class = "settingsBtn"><img class = "sortIcon" width="24" height="24" src="https://img.icons8.com/ios-filled/24/FFFFFF/sorting-arrows.png" alt="sorting-arrows"/><p>Sort</p></button>
+                        <div class = "sortOverlay">
+                        </div>
+                    </div>
+                    <!--<div class = "filter">
+                        <button type = "button" class = "settingsBtn">FILTER</button>
+                        <div class = "filterOverlay">
+                        </div>
+                    </div>-->
+                </div>
+                <div class = "managePosts">
+                    <div class = "post post-1">
+                        <div class = "postImgContainer">
+                            <img class = "postImg" src = "{{asset('storage/images/coffee2.jpg')}}">
+                        </div>
+                        <div class = "postDetails">
+                            <div class = "postTitleDate">
+                                <p class = "title">Why Starbucks Is Overrated And Sells Awful Drinks Yet I Still Buy From Them</p>
+                                <p class = "date">PUBLISHED JULY 19, 2025</p>
+                            </div>
+                        </div>
+                        <div class = "postActions">
+
+                        </div>
+
+                    </div>
                 </div>
             </div>
 
