@@ -266,7 +266,7 @@ hr {
     padding-right: 2.5rem;
     flex-wrap: nowrap;
     height: 1
-    
+
 }
 
 .postImgContainer {
@@ -293,7 +293,7 @@ hr {
     align-items: center;
     gap: 0.7rem;
     margin-right: 0;
-    
+
 }
 .postDetails {
     display: flex;
@@ -309,7 +309,7 @@ hr {
     font-family: 'Libre Franklin';
     font-size: 0.8em;
     color: #575757;
-    
+
 }
 
 .managePosts {
@@ -327,7 +327,7 @@ hr {
     .dashboardOptions li,
     .accountOptions li,
     .manageIcon {
-        transition: all 0.5s ease-in-out; 
+        transition: all 0.5s ease-in-out;
     }
 
     .dashboardOptions p, .accountOptions p {
@@ -385,6 +385,10 @@ hr {
 }
 
 /* === CREATE POST === */
+
+#create {
+    width: 100%;
+}
 
 .createHeading h1 {
     font-family: 'Libre Baskerville';
@@ -450,12 +454,14 @@ hr {
 }
 
 input[type="text"], textarea, .tags-input > input[type="text"] {
+    min-height: 5vh;
     outline: #3E3E3E;
     font-family: 'Libre Franklin';
     font-size: .8em;
     background-color: #F2F2F2;
     width: 100%;
     border-radius: .5vw;
+    padding-left: 10px;
 }
 
 textarea {
