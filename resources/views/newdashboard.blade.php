@@ -206,6 +206,119 @@
                         </div>
 
                     </div>
+
+                                        <div class = "post post-7">
+                        <div class = "postImgContainer">
+                            <img class = "postImg" src = "{{asset('storage/images/coffee4.jpg')}}">
+                        </div>
+                        <div class = "postDetails">
+                            <div class = "postTitleDate">
+                                <p class = "title">Why Starbucks Is Overrated And Sells Awful Drinks Yet I Still Buy From Them</p>
+                                <p class = "date">PUBLISHED &nbsp;• &nbsp;JULY 19, 2025</p>
+                            </div>
+                        </div>
+                        <div class = "postActions">
+                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/material-rounded/24/FAB005/edit.png" alt="edit"/></a>
+                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/24/FA5252/filled-trash.png" alt="filled-trash"/></a>
+                        </div>
+
+                    </div>
+                                        <div class = "post post-7">
+                        <div class = "postImgContainer">
+                            <img class = "postImg" src = "{{asset('storage/images/coffee4.jpg')}}">
+                        </div>
+                        <div class = "postDetails">
+                            <div class = "postTitleDate">
+                                <p class = "title">Why Starbucks Is Overrated And Sells Awful Drinks Yet I Still Buy From Them</p>
+                                <p class = "date">PUBLISHED &nbsp;• &nbsp;JULY 19, 2025</p>
+                            </div>
+                        </div>
+                        <div class = "postActions">
+                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/material-rounded/24/FAB005/edit.png" alt="edit"/></a>
+                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/24/FA5252/filled-trash.png" alt="filled-trash"/></a>
+                        </div>
+
+                    </div>
+                                        <div class = "post post-7">
+                        <div class = "postImgContainer">
+                            <img class = "postImg" src = "{{asset('storage/images/coffee4.jpg')}}">
+                        </div>
+                        <div class = "postDetails">
+                            <div class = "postTitleDate">
+                                <p class = "title">Why Starbucks Is Overrated And Sells Awful Drinks Yet I Still Buy From Them</p>
+                                <p class = "date">PUBLISHED &nbsp;• &nbsp;JULY 19, 2025</p>
+                            </div>
+                        </div>
+                        <div class = "postActions">
+                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/material-rounded/24/FAB005/edit.png" alt="edit"/></a>
+                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/24/FA5252/filled-trash.png" alt="filled-trash"/></a>
+                        </div>
+
+                    </div>
+                                        <div class = "post post-7">
+                        <div class = "postImgContainer">
+                            <img class = "postImg" src = "{{asset('storage/images/coffee4.jpg')}}">
+                        </div>
+                        <div class = "postDetails">
+                            <div class = "postTitleDate">
+                                <p class = "title">Why Starbucks Is Overrated And Sells Awful Drinks Yet I Still Buy From Them</p>
+                                <p class = "date">PUBLISHED &nbsp;• &nbsp;JULY 19, 2025</p>
+                            </div>
+                        </div>
+                        <div class = "postActions">
+                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/material-rounded/24/FAB005/edit.png" alt="edit"/></a>
+                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/24/FA5252/filled-trash.png" alt="filled-trash"/></a>
+                        </div>
+
+                    </div>
+                                        <div class = "post post-7">
+                        <div class = "postImgContainer">
+                            <img class = "postImg" src = "{{asset('storage/images/coffee4.jpg')}}">
+                        </div>
+                        <div class = "postDetails">
+                            <div class = "postTitleDate">
+                                <p class = "title">Why Starbucks Is Overrated And Sells Awful Drinks Yet I Still Buy From Them</p>
+                                <p class = "date">PUBLISHED &nbsp;• &nbsp;JULY 19, 2025</p>
+                            </div>
+                        </div>
+                        <div class = "postActions">
+                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/material-rounded/24/FAB005/edit.png" alt="edit"/></a>
+                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/24/FA5252/filled-trash.png" alt="filled-trash"/></a>
+                        </div>
+
+                    </div>
+                                        <div class = "post post-7">
+                        <div class = "postImgContainer">
+                            <img class = "postImg" src = "{{asset('storage/images/coffee4.jpg')}}">
+                        </div>
+                        <div class = "postDetails">
+                            <div class = "postTitleDate">
+                                <p class = "title">Why Starbucks Is Overrated And Sells Awful Drinks Yet I Still Buy From Them</p>
+                                <p class = "date">PUBLISHED &nbsp;• &nbsp;JULY 19, 2025</p>
+                            </div>
+                        </div>
+                        <div class = "postActions">
+                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/material-rounded/24/FAB005/edit.png" alt="edit"/></a>
+                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/24/FA5252/filled-trash.png" alt="filled-trash"/></a>
+                        </div>
+
+                    </div>
+                                        <div class = "post post-7">
+                        <div class = "postImgContainer">
+                            <img class = "postImg" src = "{{asset('storage/images/coffee4.jpg')}}">
+                        </div>
+                        <div class = "postDetails">
+                            <div class = "postTitleDate">
+                                <p class = "title">Why Starbucks Is Overrated And Sells Awful Drinks Yet I Still Buy From Them</p>
+                                <p class = "date">PUBLISHED &nbsp;• &nbsp;JULY 19, 2025</p>
+                            </div>
+                        </div>
+                        <div class = "postActions">
+                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/material-rounded/24/FAB005/edit.png" alt="edit"/></a>
+                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/24/FA5252/filled-trash.png" alt="filled-trash"/></a>
+                        </div>
+
+                    </div>
                     
                 </div>
             </div>
