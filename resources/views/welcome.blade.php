@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+    {{--@if (Auth::check())
+        <p>Logged in as {{ Auth::user()->name }} ({{ Auth::user()->name }})</p>
+    @else
+        <p>Not logged in</p>
+    @endif (This is just for debugging, can confirm that you're logged in as whoever)--}}
+
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
