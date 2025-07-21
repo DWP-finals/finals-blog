@@ -116,7 +116,7 @@
                         </div>
                         <div class = "postDetails">
                             <div class = "postTitleDate">
-                                <p class = "title">Why Starbucks Is Overrated And Sells Awful Drinks Yet I Still Buy From Them</p>
+                                <p class = "title">kape</p>
                                 <p class = "date">PUBLISHED &nbsp;• &nbsp;JULY 19, 2025</p>
                             </div>
                         </div>
