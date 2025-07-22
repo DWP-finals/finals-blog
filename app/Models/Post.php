@@ -18,11 +18,12 @@ class Post extends Model
     ];
 
     protected $casts = [
-        'published_date' => 'date_time',
+        'published_date' => 'datetime',
     ];
 
     public function users() {
-        return $this->belongsToMany(User::class)->withPivot('author_role');
+        return $this->belongsToMany(User::class, 'post_user_relationship')
+                    ->withPivot('author_role');
     }
 
     public function tags() {
