@@ -60,12 +60,17 @@
             <div>
                 <h2>Account Settings</h2>
                 <ul class = "accountOptions">
-                    <li><a class = "icon" href = "#"><img class = "manageIcon" width="24" height="24" src="https://img.icons8.com/material-rounded/24/6f4e37/guest-male.png" alt="guest-male"/><p>Profile</p></a></li>
-                    <li><a class = "icon" href = "#"><img class = "manageIcon" width="24" height="24" src="https://img.icons8.com/forma-bold-filled/24/6f4e37/settings.png" alt="settings"/><p>Settings</p></a></li>
-                    <li><a class = "icon" href = "#"><img class = "manageIcon" width="24" height="24" src="https://img.icons8.com/material-rounded/24/6f4e37/exit.png" alt="exit"/><p>Log Out</p></a></li>
+                    <li><a class = "icon" href = "#" onclick = "changeContent('profile', this)"><img class = "manageIcon" width="24" height="24" src="https://img.icons8.com/material-rounded/24/6f4e37/guest-male.png" alt="guest-male"/><p>Profile & Settings</p></a></li>
+                    <li><a class = "icon" href = "{{ url('/') }}" onclick="logout()"><img class = "manageIcon" width="24" height="24" src="https://img.icons8.com/material-rounded/24/6f4e37/exit.png" alt="exit"/><p>Log Out</p></a></li>
                 </ul>
             </div>
         </div>
+
+        <script>
+            function logout() {
+
+            }
+        </script>
 
         <div class = "content">
             <!-- === MANAGE POSTS === -->
@@ -156,8 +161,6 @@
                 </div>
             </div>
             <!-- === CREATE POSTS === -->
-            <form method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data">
-                @csrf
                 <div id = "create" class = "hidden">
                     <div class="createHeading">
                         <div class="createHeadingText">
@@ -166,146 +169,154 @@
                         </div>
                         <p>DASHBOARD&nbsp;&nbsp; >&nbsp;&nbsp; Create a Post</p>
                     </div>
-                    <div class="formcontainer">
-                        <br>
-                        <label for="input-file" id="drop-area">
-                            <input type="file"  accept="image/*" id="input-file" name="image" hidden>
-                            <div id="img-view">
-                                <img src="\storage\images\icons8-cloud-upload-100.png">
-                                <p>DRAG AND DROP OR CLICK</p>
-                                <span>Upload an image from computer</span>
+                    <form method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data">
+                    @csrf
+                        <div class="formcontainer">
+                            <br>
+                            <label for="input-file" id="drop-area">
+                                <input type="file"  accept="image/*" id="input-file" name="image" hidden>
+                                <div id="img-view">
+                                    <img src="\storage\images\icons8-cloud-upload-100.png">
+                                    <p>DRAG AND DROP OR CLICK</p>
+                                    <span>Upload an image from computer</span>
+                                </div>
+                            </label>
+                            <script>
+                                const dropArea = document.getElementById("drop-area");
+                                const inputFile = document.getElementById("input-file");
+                                const imageView = document.getElementById("img-view");
+
+                                inputFile.addEventListener("change", uploadImage);
+
+                                function uploadImage() {
+                                    let imgLink = URL.createObjectURL(inputFile.files[0]);
+                                    imageView.style.backgroundImage = `url(${imgLink})`;
+                                    imageView.textContent = " ";
+                                    imageView.style.border = "none";
+                                    imageView.style.backgroundSize = "cover";
+                                    imageView.style.backgroundPosition = "center";
+                                    imageView.style.backgroundRepeat = "no-repeat";
+                                }
+
+                                dropArea.addEventListener("dragover", function(e) {
+                                    e.preventDefault();
+                                });
+                                dropArea.addEventListener("drop", function(e) {
+                                    e.preventDefault();
+                                    inputFile.files = e.dataTransfer.files;
+                                    uploadImage();
+                                });
+
+                            </script>
+                            <label for="title">Title</label>
+                            <input type="text" placeholder="Enter title here" name="title" required>
+                            <label for="content">Content</label>
+                            <textarea placeholder="Share your thoughts here" name="content" required></textarea>
+                            <label for="contributor">Contributors</label>
+                            <div class="cont-input">
+                                <ul id="contributors"></ul>
+                                <input type="text" id="input-contributor" placeholder="Enter the names of contributors and press the enter key to confirm" />
+                                <input type="hidden" name="contributors" value="[]">
                             </div>
-                        </label>
-                        <script>
-                            const dropArea = document.getElementById("drop-area");
-                            const inputFile = document.getElementById("input-file");
-                            const imageView = document.getElementById("img-view");
 
-                            inputFile.addEventListener("change", uploadImage);
 
-                            function uploadImage() {
-                                let imgLink = URL.createObjectURL(inputFile.files[0]);
-                                imageView.style.backgroundImage = `url(${imgLink})`;
-                                imageView.textContent = " ";
-                                imageView.style.border = "none";
-                                imageView.style.backgroundSize = "cover";
-                                imageView.style.backgroundPosition = "center";
-                                imageView.style.backgroundRepeat = "no-repeat";
-                            }
+                            <script>
+                                const conts = document.getElementById('contributors');
+                                const inputc = document.getElementById('input-contributor');
 
-                            dropArea.addEventListener("dragover", function(e) {
-                                e.preventDefault();
-                            });
-                            dropArea.addEventListener("drop", function(e) {
-                                e.preventDefault();
-                                inputFile.files = e.dataTransfer.files;
-                                uploadImage();
-                            });
+                                inputc.addEventListener('keydown', function (event) {
 
-                        </script>
-                        <label for="title">Title</label>
-                        <input type="text" placeholder="Enter title here" name="title" required>
-                        <label for="content">Content</label>
-                        <textarea placeholder="Share your thoughts here" name="content" required></textarea>
-                        <label for="contributor">Contributors</label>
-                        <div class="cont-input">
-                            <ul id="contributors"></ul>
-                            <input type="text" id="input-contributor" placeholder="Enter the names of contributors and press the enter key to confirm" />
-                            <input type="hidden" name="contributors" value="[]">
-                        </div>
+                                    if (event.key === 'Enter') {
 
-                        <script>
-                            const conts = document.getElementById('contributors');
-                            const inputc = document.getElementById('input-contributor');
+                                        event.preventDefault();
+                                        const cont = document.createElement('li');
 
-                            inputc.addEventListener('keydown', function (event) {
+                                        const contContent = inputc.value.trim();
 
-                                if (event.key === 'Enter') {
 
-                                    event.preventDefault();
-                                    const cont = document.createElement('li');
+                                        if (contContent !== '') {
 
-                                    const contContent = inputc.value.trim();
+                                            cont.innerText = contContent;
+                                            cont.innerHTML += '<button class="delete-button"> x</button>';
+                                            conts.appendChild(cont);
+                                            inputc.value = '';
+                                        }
 
-                                    if (contContent !== '') {
-
-                                        cont.innerText = contContent;
-                                        cont.innerHTML += '<button class="delete-button"> x</button>';
-                                        conts.appendChild(cont);
-                                        inputc.value = '';
                                     }
-                                }
-                            });
+                                });
 
-                            conts.addEventListener('click', function (event) {
 
-                                if (event.target.classList.contains('delete-button')) {
-                                    event.target.parentNode.remove();
-                                }
-                            });
-                        </script>
+                                conts.addEventListener('click', function (event) {
 
-                        <label for="tags">Tags</label>
-                        <div class="tags-input">
-                            <ul id="tags"></ul>
-                            <input type="text" id="input-tag" placeholder="Enter tag and press the enter key to confirm" />
-                            <input type="hidden" name="tags">
-                        </div>
-
-                        <script>
-                            const tags = document.getElementById('tags');
-                            const inputt = document.getElementById('input-tag');
-
-                            inputt.addEventListener('keydown', function (event) {
-
-                                if (event.key === 'Enter') {
-
-                                    event.preventDefault();
-                                    const tag = document.createElement('li');
-
-                                    const tagContent = inputt.value.trim();
-
-                                    if (tagContent !== '') {
-
-                                        tag.innerText = tagContent;
-                                        tag.innerHTML += '<button class="delete-button"> x</button>';
-                                        tags.appendChild(tag);
-                                        inputt.value = '';
+                                    if (event.target.classList.contains('delete-button')) {
+                                        event.target.parentNode.remove();
                                     }
-                                }
-                            });
+                                });
+                            </script>
 
-                            tags.addEventListener('click', function (event) {
+                            <label for="tags">Tags</label>
+                            <div class="tags-input">
+                                <ul id="tags"></ul>
+                                <input type="text" id="input-tag" placeholder="Enter tag and press the enter key to confirm" />
+                                <input type="hidden" name="tags">
+                            </div>
 
-                                if (event.target.classList.contains('delete-button')) {
+                            <script>
+                                const tags = document.getElementById('tags');
+                                const inputt = document.getElementById('input-tag');
 
-                                    event.target.parentNode.remove();
-                                }
-                            });
-                        </script>
-                        <div class="button-group">
-                            <button class="button1">Publish</button>
-                            <button class="button2">Save to Drafts</button>
-                            <button class="button2">Delete</button>
+                                inputt.addEventListener('keydown', function (event) {
+
+                                    if (event.key === 'Enter') {
+
+                                        event.preventDefault();
+                                        const tag = document.createElement('li');
+
+                                        const tagContent = inputt.value.trim();
+
+                                        if (tagContent !== '') {
+
+                                            tag.innerText = tagContent;
+                                            tag.innerHTML += '<button class="delete-button"> x</button>';
+                                            tags.appendChild(tag);
+                                            inputt.value = '';
+                                        }
+                                    }
+                                });
+
+
+                                tags.addEventListener('click', function (event) {
+
+                                    if (event.target.classList.contains('delete-button')) {
+
+                                        event.target.parentNode.remove();
+                                    }
+                                });
+                            </script>
+                            <div class="button-group">
+                                <button class="button1">Publish</button>
+                                <button class="button2">Save to Drafts</button>
+                                <button class="button2">Delete</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <script>
-                    document.querySelector('form').addEventListener('submit', function () {
-                        const tagValues = [];
-                        document.querySelectorAll('#tags li').forEach(li => {
-                            tagValues.push(li.childNodes[0].textContent.trim());
-                        });
-                        document.querySelector('input[name="tags"]').value = JSON.stringify(tagValues);
+                        <script>
+                            document.querySelector('form').addEventListener('submit', function () {
+                                const tagValues = [];
+                                document.querySelectorAll('#tags li').forEach(li => {
+                                    tagValues.push(li.childNodes[0].textContent.trim());
+                                });
+                                document.querySelector('input[name="tags"]').value = JSON.stringify(tagValues);
 
-                        const contributorValues = [];
-                        document.querySelectorAll('#contributors li').forEach(li => {
-                            contributorValues.push(li.childNodes[0].textContent.trim());
-                        });
-                        document.querySelector('input[name="contributors"]').value = JSON.stringify(contributorValues);
-                    });
-                </script>
-            </form>
+                                const contributorValues = [];
+                                document.querySelectorAll('#contributors li').forEach(li => {
+                                    contributorValues.push(li.childNodes[0].textContent.trim());
+                                });
+                                document.querySelector('input[name="contributors"]').value = JSON.stringify(contributorValues);
+                            });
+                        </script>
+                    </form>
+
             <!--- === DRAFTS === --->
             <div id = "drafts" class = "hidden">
                 <div class = "manageHeading draftHeading">
@@ -406,7 +417,118 @@
             </div>
 
             <!-- === PROFILE === -->
-            <div id="profile" class="hidden">
+            <div id = "profile" class = "hidden">
+                <div class = "manageHeading">
+                    <div class = "manageHeadingText">
+                        <h1>Profile & Settings</h1>
+                        <a href = "{{ url('/') }}">Back to Home</a>
+                    </div>
+                        <p>ACCOUNT SETTINGS&nbsp;&nbsp; >&nbsp;&nbsp; Profile & Settings</p>
+                </div>
+                <form action="#" class="profile">
+                    <div class="row">
+                        <div class="col-1">
+                            <label for="name">Name</label>
+                        </div>
+                        <div class="col-2">
+                            <input type="text" placeholder="John Doe" name="name">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <label for="email">User Type</label>
+                        </div>
+                        <div class="col-2">
+                            <input type="text" placeholder="Registered User" name="email" readonly>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <label for="email">Email Address</label>
+                        </div>
+                        <div class="col-2">
+                            <input type="text" placeholder="johndoe@gmail.com" name="email">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <label for="password">Password</label>
+                        </div>
+                        <div class="col-2">
+                            <input type="password" placeholder="********" name="password">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                        </div>
+                        <div class="col-2">
+                            <div class="button-group">
+                                <button class="button2" onclick="openChanges()">Save Changes</button>
+                                <button class="button2">Cancel</button>
+                                <button class="button1" onclick="openDel()">Delete Account</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="confpopup1" id="confpopup1">
+                    <h1>Edit Account Details</h1>
+                    <p>Enter password to confirm changes</p>
+                    <form action="">
+                        <input type="password" name="confpass" required>
+                            <div class="button-group2">
+                                <button class="button1" onclick="confChanges()">Confirm</button>
+                                <button class="button2" onclick="closeChanges()">Cancel</button>
+                            </div>
+                    </form>
+                </div>
+                <div class="confpopup2" id="confpopup2">
+                    <h1>Account Deletion</h1>
+                    <p>ACCOUNT DELETION IS PERMANENT</p>
+                    <p>YOU WILL NOT BE ABLE TO RECOVER ACCOUNT AFTER DELETION</p>
+                    <p>Enter password to confirm account deletion</p>
+                    <form action="">
+                            <input type="password" name="confpass" required>
+                            <div class="button-group2">
+                                <button class="button1" onclick="confDel()">Delete</button>
+                                <button class="button2"onclick="closeDel()"">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+                <div id="overlay"></div>
+                <script>
+                    function openChanges() {
+                        document.getElementById("confpopup1").style.display = "block";
+                        document.getElementById("overlay").style.display = "block";
+                    }
+
+                    function openDel() {
+                        document.getElementById("confpopup2").style.display = "block";
+                        document.getElementById("overlay").style.display = "block";
+                    }
+
+                    function confChanges() {
+                        alert("Account edited succesfully.");
+                        document.getElementById("confpopup1").style.display = "none";
+                        document.getElementById("overlay").style.display = "none";
+                    }
+
+                    function confDel() {
+                        alert("Account deleted succesfully.");
+                        document.getElementById("confpopup2").style.display = "none";
+                        document.getElementById("overlay").style.display = "none";
+                    }
+
+
+                    function closeChanges() {
+                        document.getElementById("confpopup1").style.display = "none";
+                        document.getElementById("overlay").style.display = "none";
+                    }
+
+                    function closeDel() {
+                        document.getElementById("confpopup2").style.display = "none";
+                        document.getElementById("overlay").style.display = "none";
+                    }
+                </script>
             </div>
         </div>
     </div>
