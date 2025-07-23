@@ -220,6 +220,56 @@ li {
     color: rgb(176, 176, 176);
 }
 
+#incorrect {
+    height: 16vh;
+    background-color: white;
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 25%;
+    text-align: center;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    z-index: 5;
+}
+
+#incorrect > h1 {
+    font-weight: 800;
+    font-size: 1vw;
+    color: #442010;
+    font-family: 'Libre Baskerville';
+    user-select: none;
+}
+
+#incorrect > p {
+    font-size: .75vw;
+    color: grey;
+    font-family: 'Libre Franklin';
+    user-select: none;
+}
+
+.incbutton {
+    margin-top: 2%;
+    background-color: #6F4E37;
+    color: white;
+    padding-left: 1.25vw;
+    padding-right: 1.25vw;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    border-color: white;
+    border-width: .10vw;
+    font-family: 'Libre Baskerville';
+    font-size: .5vw;
+    transition: 0.3s;
+    user-select: none;
+}
+
+.incbutton:hover {
+    background-color: #60412a;
+}
+
 #overlay {
   position: fixed;
   display: none;
@@ -231,6 +281,19 @@ li {
   bottom: 0;
   background-color: rgba(0,0,0,0.5);
   z-index: 2;
+}
+
+#overlay2 {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 4;
 }
 
 /*FOOTER*/

@@ -13,7 +13,7 @@
 </head>
 <body>
     <script>
-        
+
         // === DASHBOARD SWITCH CONTENT === //
         function changeContent(contentId, btnSelected) {
             // gonna leave comments for each block of code here kasi baka makalimutan ko how all these work
@@ -96,7 +96,7 @@
 
                 </div>
                 <div class = "managePosts">
-                    
+
                         <div class = "post">
                             <div class = "postImgContainer">
                                 <img class = "postImg" src = "{{asset('storage/images/coffee2.jpg')}}">
@@ -144,15 +144,15 @@
                                 </script>
                                 <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/forma-bold-filled/24/FAB005/archive.png" alt="archive"/></a>
                                 <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/24/FA5252/filled-trash.png" alt="filled-trash"/></a>
-                                
+
                             </div>
 
                         </div>
-                    
 
 
 
-                    
+
+
                 </div>
             </div>
             <!-- === CREATE POSTS === -->
@@ -380,11 +380,15 @@
                         </div>
 
                     </div>
-            
 
 
-                    
+
+
                 </div>
+            </div>
+
+            <!-- === PROFILE === -->
+            <div id="profile" class="hidden">
             </div>
         </div>
     </div>
