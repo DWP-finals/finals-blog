@@ -13,6 +13,8 @@
 </head>
 <body>
     <script>
+        
+        // === DASHBOARD SWITCH CONTENT === //
         function changeContent(contentId, btnSelected) {
             // gonna leave comments for each block of code here kasi baka makalimutan ko how all these work
 
@@ -50,7 +52,7 @@
                 <ul class = "dashboardOptions">
                     <li><a class = "icon active" href = "#" onclick = "changeContent('manage', this)"><img class = "manageIcon" width="24" height="24" src="https://img.icons8.com/material/24/6f4e37/dashboard-layout.png" alt="dashboard-layout"/><p>Manage Posts</p></a></li>
                     <li><a class = "icon " href = "#" onclick = "changeContent('create', this)"><img class = "manageIcon" width="24" height="24" src="https://img.icons8.com/external-solid-adri-ansyah/24/6f4e37/external-ui-essentials-ui-solid-adri-ansyah-4.png" alt="external-ui-essentials-ui-solid-adri-ansyah-4"/><p>Create Post</p></a></li>
-                    <li><a class = "icon " href = "#"><img class = "manageIcon" width="24" height="24" src="https://img.icons8.com/external-febrian-hidayat-glyph-febrian-hidayat/24/6f4e37/external-edit-user-interface-febrian-hidayat-glyph-febrian-hidayat.png" alt="external-edit-user-interface-febrian-hidayat-glyph-febrian-hidayat"/><p>Drafts</p></a></li>
+                    <li><a class = "icon " href = "#" onclick = "changeContent('drafts', this)"><img class = "manageIcon" width="24" height="24" src="https://img.icons8.com/external-febrian-hidayat-glyph-febrian-hidayat/24/6f4e37/external-edit-user-interface-febrian-hidayat-glyph-febrian-hidayat.png" alt="external-edit-user-interface-febrian-hidayat-glyph-febrian-hidayat"/><p>Drafts</p></a></li>
                     <li><a class = "icon " href = "#"><img class = "manageIcon" width="24" height="24" src="https://img.icons8.com/ios-glyphs/24/6f4e37/analytics.png" alt="analytics"/><p>Analytics</p></a></li>
                 </ul>
             </div>
@@ -65,6 +67,7 @@
             </div>
         </div>
         <div class = "content">
+            <!-- === MANAGE POSTS === -->
             <div id = "manage">
                 <div class = "manageHeading">
                     <div class = "manageHeadingText">
@@ -74,8 +77,6 @@
                         <p>DASHBOARD&nbsp;&nbsp; >&nbsp;&nbsp; Manage Posts</p>
                 </div>
                 <div class = "manageSettings">
-
-                    <!--<button type = "button" class = "settingsBtn"><img class = "sortIcon" width="24" height="24" src="https://img.icons8.com/ios-filled/24/FFFFFF/sorting-arrows.png" alt="sorting-arrows"/><p>Sort</p></button>-->
                     <div class = "sortOverlay">
                         <label for = "sortOptions">Sort by: </label>
                         <select id = "sortOptions">
@@ -94,235 +95,66 @@
 
                 </div>
                 <div class = "managePosts">
-                    <div class = "post post-1">
-                        <div class = "postImgContainer">
-                            <img class = "postImg" src = "{{asset('storage/images/coffee2.jpg')}}">
-                        </div>
-                        <div class = "postDetails">
-                            <div class = "postTitleDate">
-                                <p class = "title">Why Starbucks Is Overrated And Sells Awful Drinks Yet I Still Buy From Them</p>
-                                <p class = "date">PUBLISHED &nbsp;• &nbsp;JULY 19, 2025</p>
+                    
+                        <div class = "post">
+                            <div class = "postImgContainer">
+                                <img class = "postImg" src = "{{asset('storage/images/coffee2.jpg')}}">
                             </div>
-                        </div>
-                        <div class = "postActions">
-                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/material-rounded/24/FAB005/edit.png" alt="edit"/></a>
-                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/24/FA5252/filled-trash.png" alt="filled-trash"/></a>
-                        </div>
-
-                    </div>
-                    <div class = "post post-2">
-                        <div class = "postImgContainer">
-                            <img class = "postImg" src = "{{asset('storage/images/coffee1.jpg')}}">
-                        </div>
-                        <div class = "postDetails">
-                            <div class = "postTitleDate">
-                                <p class = "title">kape</p>
-                                <p class = "date">PUBLISHED &nbsp;• &nbsp;JULY 19, 2025</p>
+                            <div class = "postDetails">
+                                <div class = "postTitleDate">
+                                    <p class = "title">Why Starbucks Is Overrated And Sells Awful Drinks Yet I Still Buy From Them</p>
+                                    <p class = "date">PUBLISHED &nbsp;• &nbsp;JULY 19, 2025</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class = "postActions">
-                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/material-rounded/24/FAB005/edit.png" alt="edit"/></a>
-                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/24/FA5252/filled-trash.png" alt="filled-trash"/></a>
-                        </div>
+                            <div class = "postActions">
+                                <select class = "postStatus">
+                                    <option value = "visible" >Set as Visible</option>
+                                    <option value = "archive" >Move to Archive</option>
+                                </select>
+                                <script>
+                                    // === PICKER DROPDOWN AND LABE; FOR MANAGE POST VISIBILTY === ///
+                                    // not sure if i should be using id and class but decided class instead cuz not sure how it will turn out w id being unique
+                                    const classStatus = document.querySelectorAll(".postStatus");
+                                    classStatus.forEach((status) => {
+                                        function changeStatusStyle() {
+                                            const currentStatus = status.options[status.selectedIndex];
+                                            currentStatus.textContent = currentStatus.dataset.label;
 
-                    </div>
-                    <div class = "post post-3">
-                        <div class = "postImgContainer">
-                            <img class = "postImg" src = "{{asset('storage/images/coffee3.jpg')}}">
-                        </div>
-                        <div class = "postDetails">
-                            <div class = "postTitleDate">
-                                <p class = "title">Why Starbucks Is Overrated And Sells Awful Drinks Yet I Still Buy From Them</p>
-                                <p class = "date">PUBLISHED &nbsp;• &nbsp;JULY 19, 2025</p>
+                                            status.classList.remove(
+                                                'bg-green-100', 'border-green-500', 'text-green-500', 'bg-gray-100', 'border-gray-400', 'text-gray-600'
+                                            );
+
+                                            if (status.value === 'visible') {
+                                                status.classList.add('bg-green-100', 'border-green-500', 'text-green-500');
+                                            } else {
+                                                status.classList.add('bg-gray-100', 'border-gray-400', 'text-gray-600');
+                                            }
+                                        }
+                                        status.addEventListener('click', () => {
+                                            for (let opt of status.options) {
+                                                if (opt.value === 'visible') opt.textContent = "VISIBLE";
+                                                if (opt.value === 'archive') opt.textContent = "ARCHIVE";
+                                            }
+                                        });
+                                        status.addEventListener('change', changeStatusStyle);
+                                        changeStatusStyle();
+
+                                    });
+                                </script>
+                                <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/forma-bold-filled/24/FAB005/archive.png" alt="archive"/></a>
+                                <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/24/FA5252/filled-trash.png" alt="filled-trash"/></a>
+                                
                             </div>
-                        </div>
-                        <div class = "postActions">
-                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/material-rounded/24/FAB005/edit.png" alt="edit"/></a>
-                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/24/FA5252/filled-trash.png" alt="filled-trash"/></a>
-                        </div>
 
-                    </div>
-                    <div class = "post post-4">
-                        <div class = "postImgContainer">
-                            <img class = "postImg" src = "{{asset('storage/images/coffee4.jpg')}}">
                         </div>
-                        <div class = "postDetails">
-                            <div class = "postTitleDate">
-                                <p class = "title">Why Starbucks Is Overrated And Sells Awful Drinks Yet I Still Buy From Them</p>
-                                <p class = "date">PUBLISHED &nbsp;• &nbsp;JULY 19, 2025</p>
-                            </div>
-                        </div>
-                        <div class = "postActions">
-                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/material-rounded/24/FAB005/edit.png" alt="edit"/></a>
-                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/24/FA5252/filled-trash.png" alt="filled-trash"/></a>
-                        </div>
+                    
 
-                    </div>
-                    <div class = "post post-5">
-                        <div class = "postImgContainer">
-                            <img class = "postImg" src = "{{asset('storage/images/coffee1.jpg')}}">
-                        </div>
-                        <div class = "postDetails">
-                            <div class = "postTitleDate">
-                                <p class = "title">Why Starbucks Is Overrated And Sells Awful Drinks Yet I Still Buy From Them</p>
-                                <p class = "date">PUBLISHED &nbsp;• &nbsp;JULY 19, 2025</p>
-                            </div>
-                        </div>
-                        <div class = "postActions">
-                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/material-rounded/24/FAB005/edit.png" alt="edit"/></a>
-                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/24/FA5252/filled-trash.png" alt="filled-trash"/></a>
-                        </div>
 
-                    </div>
-                    <div class = "post post-6">
-                        <div class = "postImgContainer">
-                            <img class = "postImg" src = "{{asset('storage/images/coffee3.jpg')}}">
-                        </div>
-                        <div class = "postDetails">
-                            <div class = "postTitleDate">
-                                <p class = "title">Why Starbucks Is Overrated And Sells Awful Drinks Yet I Still Buy From Them</p>
-                                <p class = "date">PUBLISHED &nbsp;• &nbsp;JULY 19, 2025</p>
-                            </div>
-                        </div>
-                        <div class = "postActions">
-                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/material-rounded/24/FAB005/edit.png" alt="edit"/></a>
-                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/24/FA5252/filled-trash.png" alt="filled-trash"/></a>
-                        </div>
 
-                    </div>
-                    <div class = "post post-7">
-                        <div class = "postImgContainer">
-                            <img class = "postImg" src = "{{asset('storage/images/coffee4.jpg')}}">
-                        </div>
-                        <div class = "postDetails">
-                            <div class = "postTitleDate">
-                                <p class = "title">Why Starbucks Is Overrated And Sells Awful Drinks Yet I Still Buy From Them</p>
-                                <p class = "date">PUBLISHED &nbsp;• &nbsp;JULY 19, 2025</p>
-                            </div>
-                        </div>
-                        <div class = "postActions">
-                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/material-rounded/24/FAB005/edit.png" alt="edit"/></a>
-                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/24/FA5252/filled-trash.png" alt="filled-trash"/></a>
-                        </div>
-
-                    </div>
-
-                                        <div class = "post post-7">
-                        <div class = "postImgContainer">
-                            <img class = "postImg" src = "{{asset('storage/images/coffee4.jpg')}}">
-                        </div>
-                        <div class = "postDetails">
-                            <div class = "postTitleDate">
-                                <p class = "title">Why Starbucks Is Overrated And Sells Awful Drinks Yet I Still Buy From Them</p>
-                                <p class = "date">PUBLISHED &nbsp;• &nbsp;JULY 19, 2025</p>
-                            </div>
-                        </div>
-                        <div class = "postActions">
-                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/material-rounded/24/FAB005/edit.png" alt="edit"/></a>
-                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/24/FA5252/filled-trash.png" alt="filled-trash"/></a>
-                        </div>
-
-                    </div>
-                                        <div class = "post post-7">
-                        <div class = "postImgContainer">
-                            <img class = "postImg" src = "{{asset('storage/images/coffee4.jpg')}}">
-                        </div>
-                        <div class = "postDetails">
-                            <div class = "postTitleDate">
-                                <p class = "title">Why Starbucks Is Overrated And Sells Awful Drinks Yet I Still Buy From Them</p>
-                                <p class = "date">PUBLISHED &nbsp;• &nbsp;JULY 19, 2025</p>
-                            </div>
-                        </div>
-                        <div class = "postActions">
-                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/material-rounded/24/FAB005/edit.png" alt="edit"/></a>
-                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/24/FA5252/filled-trash.png" alt="filled-trash"/></a>
-                        </div>
-
-                    </div>
-                                        <div class = "post post-7">
-                        <div class = "postImgContainer">
-                            <img class = "postImg" src = "{{asset('storage/images/coffee4.jpg')}}">
-                        </div>
-                        <div class = "postDetails">
-                            <div class = "postTitleDate">
-                                <p class = "title">Why Starbucks Is Overrated And Sells Awful Drinks Yet I Still Buy From Them</p>
-                                <p class = "date">PUBLISHED &nbsp;• &nbsp;JULY 19, 2025</p>
-                            </div>
-                        </div>
-                        <div class = "postActions">
-                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/material-rounded/24/FAB005/edit.png" alt="edit"/></a>
-                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/24/FA5252/filled-trash.png" alt="filled-trash"/></a>
-                        </div>
-
-                    </div>
-                                        <div class = "post post-7">
-                        <div class = "postImgContainer">
-                            <img class = "postImg" src = "{{asset('storage/images/coffee4.jpg')}}">
-                        </div>
-                        <div class = "postDetails">
-                            <div class = "postTitleDate">
-                                <p class = "title">Why Starbucks Is Overrated And Sells Awful Drinks Yet I Still Buy From Them</p>
-                                <p class = "date">PUBLISHED &nbsp;• &nbsp;JULY 19, 2025</p>
-                            </div>
-                        </div>
-                        <div class = "postActions">
-                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/material-rounded/24/FAB005/edit.png" alt="edit"/></a>
-                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/24/FA5252/filled-trash.png" alt="filled-trash"/></a>
-                        </div>
-
-                    </div>
-                                        <div class = "post post-7">
-                        <div class = "postImgContainer">
-                            <img class = "postImg" src = "{{asset('storage/images/coffee4.jpg')}}">
-                        </div>
-                        <div class = "postDetails">
-                            <div class = "postTitleDate">
-                                <p class = "title">Why Starbucks Is Overrated And Sells Awful Drinks Yet I Still Buy From Them</p>
-                                <p class = "date">PUBLISHED &nbsp;• &nbsp;JULY 19, 2025</p>
-                            </div>
-                        </div>
-                        <div class = "postActions">
-                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/material-rounded/24/FAB005/edit.png" alt="edit"/></a>
-                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/24/FA5252/filled-trash.png" alt="filled-trash"/></a>
-                        </div>
-
-                    </div>
-                                        <div class = "post post-7">
-                        <div class = "postImgContainer">
-                            <img class = "postImg" src = "{{asset('storage/images/coffee4.jpg')}}">
-                        </div>
-                        <div class = "postDetails">
-                            <div class = "postTitleDate">
-                                <p class = "title">Why Starbucks Is Overrated And Sells Awful Drinks Yet I Still Buy From Them</p>
-                                <p class = "date">PUBLISHED &nbsp;• &nbsp;JULY 19, 2025</p>
-                            </div>
-                        </div>
-                        <div class = "postActions">
-                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/material-rounded/24/FAB005/edit.png" alt="edit"/></a>
-                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/24/FA5252/filled-trash.png" alt="filled-trash"/></a>
-                        </div>
-
-                    </div>
-                                        <div class = "post post-7">
-                        <div class = "postImgContainer">
-                            <img class = "postImg" src = "{{asset('storage/images/coffee4.jpg')}}">
-                        </div>
-                        <div class = "postDetails">
-                            <div class = "postTitleDate">
-                                <p class = "title">Why Starbucks Is Overrated And Sells Awful Drinks Yet I Still Buy From Them</p>
-                                <p class = "date">PUBLISHED &nbsp;• &nbsp;JULY 19, 2025</p>
-                            </div>
-                        </div>
-                        <div class = "postActions">
-                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/material-rounded/24/FAB005/edit.png" alt="edit"/></a>
-                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/24/FA5252/filled-trash.png" alt="filled-trash"/></a>
-                        </div>
-
-                    </div>
                     
                 </div>
             </div>
-
+            <!-- === CREATE POSTS === -->
             <div id = "create" class = "hidden">
                 <div class="createHeading">
                     <div class="createHeadingText">
@@ -452,6 +284,105 @@
                         <button class="button2">Save to Drafts</button>
                         <button class="button2">Delete</button>
                     </div>
+                </div>
+            </div>
+
+            <!--- === DRAFTS === --->
+            <div id = "drafts" class = "hidden">
+                <div class = "manageHeading draftHeading">
+                    <div class = "manageHeadingText draftHeadingText">
+                        <h1>Drafts</h1>
+                        <a href = "#">Back to Home</a>
+                    </div>
+                        <p>DASHBOARD&nbsp;&nbsp; >&nbsp;&nbsp; Drafts</p>
+                </div>
+                <div class = "manageSettings draftSettings">
+                    <div class = "sortOverlay">
+                        <label for = "sortOptions">Sort by: </label>
+                        <select id = "sortOptions">
+                            <option value="" selected disabled hidden></option>
+                            <option value = "title">Title</option>
+                            <option value = "date">Last Edited</option>
+                        </select>
+                        <label for = "sortOrder">Order: </label>
+                        <select id = "sortOrder">
+                            <option value="" selected disabled hidden></option>
+                            <option value = "ascending">Ascending</option>
+                            <option value = "descending">Descending</option>
+                        </select>
+                    </div>
+
+
+                </div>
+                <div class = "draftPosts">
+                    <div class = "draft draft-1">
+                        <div class = "draftImgContainer">
+                            <img class = "draftImg" src = "{{asset('storage/images/coffee2.jpg')}}">
+                        </div>
+                        <div class = "draftDetails">
+                            <div class = "draftTitleDate">
+                                <p class = "draftTitle">draftttt</p>
+                                <p class = "draftDate">PUBLISHED &nbsp;• &nbsp;JULY 19, 2025</p>
+                            </div>
+                        </div>
+                        <div class = "draftActions">
+                            <a href = "#"><img class = "draftIcons" width="24" height="24" src="https://img.icons8.com/material-rounded/24/FAB005/edit.png" alt="edit"/></a>
+                            <a href = "#"><img class = "draftIcons" width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/24/FA5252/filled-trash.png" alt="filled-trash"/></a>
+                        </div>
+
+                    </div>
+                    <div class = "draft draft-2">
+                        <div class = "draftImgContainer">
+                            <img class = "draftImg" src = "{{asset('storage/images/coffee2.jpg')}}">
+                        </div>
+                        <div class = "draftDetails">
+                            <div class = "draftTitleDate">
+                                <p class = "draftTitle">draftttt</p>
+                                <p class = "draftDate">PUBLISHED &nbsp;• &nbsp;JULY 19, 2025</p>
+                            </div>
+                        </div>
+                        <div class = "draftActions">
+                            <a href = "#"><img class = "draftIcons" width="24" height="24" src="https://img.icons8.com/material-rounded/24/FAB005/edit.png" alt="edit"/></a>
+                            <a href = "#"><img class = "draftIcons" width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/24/FA5252/filled-trash.png" alt="filled-trash"/></a>
+                        </div>
+
+                    </div>
+                    <div class = "draft draft-3">
+                        <div class = "draftImgContainer">
+                            <img class = "draftImg" src = "{{asset('storage/images/coffee2.jpg')}}">
+                        </div>
+                        <div class = "draftDetails">
+                            <div class = "draftTitleDate">
+                                <p class = "draftTitle">draftttt</p>
+                                <p class = "draftDate">PUBLISHED &nbsp;• &nbsp;JULY 19, 2025</p>
+                            </div>
+                        </div>
+                        <div class = "draftActions">
+                            <a href = "#"><img class = "draftIcons" width="24" height="24" src="https://img.icons8.com/material-rounded/24/FAB005/edit.png" alt="edit"/></a>
+                            <a href = "#"><img class = "draftIcons" width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/24/FA5252/filled-trash.png" alt="filled-trash"/></a>
+                        </div>
+
+                    </div>
+                    <div class = "draft draft-4">
+                        <div class = "draftImgContainer">
+                            <img class = "draftImg" src = "{{asset('storage/images/coffee2.jpg')}}">
+                        </div>
+                        <div class = "draftDetails">
+                            <div class = "draftTitleDate">
+                                <p class = "draftTitle">draftttt</p>
+                                <p class = "draftDate">PUBLISHED &nbsp;• &nbsp;JULY 19, 2025</p>
+                            </div>
+                        </div>
+                        <div class = "draftActions">
+                            <a href = "#"><img class = "draftIcons" width="24" height="24" src="https://img.icons8.com/material-rounded/24/FAB005/edit.png" alt="edit"/></a>
+                            <a href = "#"><img class = "draftIcons" width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/24/FA5252/filled-trash.png" alt="filled-trash"/></a>
+                        </div>
+
+                    </div>
+            
+
+
+                    
                 </div>
             </div>
         </div>

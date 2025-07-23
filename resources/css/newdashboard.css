@@ -174,7 +174,7 @@ hr {
 
 /* === MANAGE POSTS === */
 
-#manage {
+#manage, #drafts {
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -207,9 +207,8 @@ hr {
 .manageHeadingText a {
     color: black;
     position: relative;
-
-
 }
+
 .manageHeading p {
     margin: 0;
     margin-top: -0.5vh;
@@ -254,7 +253,7 @@ hr {
 .manageHeadingText a:hover:after {
     width: 100%;
 }
-.post {
+.post, .draft {
     justify-content: space-between;
     display: flex;
     flex-direction: row;
@@ -269,23 +268,23 @@ hr {
     
 }
 
-.postImgContainer {
+.postImgContainer, .draftImgContainer {
     width: 75px;
     height: 60px;
     flex-shrink: 0;
     overflow: hidden;
     border-radius: 0.5rem;
 }
-.postImg {
+.postImg, .draftImg {
     object-fit: cover;
     width: 100%;
     height: 100%;
 }
-.postIcons {
+.postIcons, .draftIcons {
      width: 24px;
      height: 24px;
 }
-.postActions {
+.postActions, .draftActions {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -295,24 +294,24 @@ hr {
     margin-right: 0;
     
 }
-.postDetails {
+.postDetails, .draftDetails {
     display: flex;
     align-items: center;
     flex: 1;
 
 
 }
-.title {
+.title, .draftTitle {
     font-family: 'Libre Baskerville';
 }
-.date {
+.date, .draftDate {
     font-family: 'Libre Franklin';
     font-size: 0.8em;
     color: #575757;
     
 }
 
-.managePosts {
+.managePosts, .draftPosts {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
