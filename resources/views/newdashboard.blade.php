@@ -165,7 +165,7 @@
                     <div class="createHeading">
                         <div class="createHeadingText">
                             <h1>Create Post</h1>
-                            <a href="/">Back to Home</a>
+                            <a href = "{{ url('/') }}">Back to Home</a>
                         </div>
                         <p>DASHBOARD&nbsp;&nbsp; >&nbsp;&nbsp; Create a Post</p>
                     </div>

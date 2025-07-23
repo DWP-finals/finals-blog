@@ -397,7 +397,7 @@ hr {
 
 .createHeading a {
     font-family: 'Libre Baskerville';
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .createHeading p {
@@ -596,6 +596,9 @@ input[type="text"]:focus, input[type="textarea"], .tags-input > input[type="text
 .button-group .button2:hover {
     background-color: #e3e3e3;
 }
+
+
+/* === PROFILE AND SETTINGS === */
 
 #profile {
     width: 100%;
