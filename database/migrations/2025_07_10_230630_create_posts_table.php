@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('content')->nullable();
-            $table->string('image')->nullable()->comments('image path or URL');
+            $table->string('image_path')->nullable()->comments('image path or URL');
             $table->timestamp('published_date')->nullable();
             $table->enum('status', ['draft', 'published', 'archived'])->default('draft');
             $table->timestamps();

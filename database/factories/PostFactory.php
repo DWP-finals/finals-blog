@@ -22,7 +22,7 @@ class PostFactory extends Factory
         return [
             'title' => str_replace('.', '',$this->faker->realTextBetween(1,10)) . ' ' .$Keyword,
             'content' => $this->faker->realText(),
-            'image' => 'https://coffee.alexflipnote.dev/IMk-3G2_fk8_coffee.jpg',
+            'image_path' => 'https://coffee.alexflipnote.dev/IMk-3G2_fk8_coffee.jpg',
             'published_date' => $this->faker->dateTimeBetween('-1 month', 'now'),
             'status' => $this->faker->randomElement(Status::cases()),
         ];

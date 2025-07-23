@@ -57,8 +57,9 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
-    public function posts() {
-        return $this->belongsToMany(Post::class)->withPivot('author_role');
+    public function contributedPosts() {
+        return $this->belongsToMany(Post::class)
+            ->withPivot('author_role');
     }
 
     public function comments() {
@@ -66,7 +67,7 @@ class User extends Authenticatable
     }
 
     public function analytics() {
-        return $this->posts->pluck('analytics')->filter();
+        return $this->contributedPosts->pluck('analytics')->filter();
     }
 
     public function getAnalyticsForAllAuthoredPosts() {
