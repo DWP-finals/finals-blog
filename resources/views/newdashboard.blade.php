@@ -66,13 +66,14 @@
                 </ul>
             </div>
         </div>
+
         <div class = "content">
             <!-- === MANAGE POSTS === -->
             <div id = "manage">
                 <div class = "manageHeading">
                     <div class = "manageHeadingText">
                         <h1>Manage Posts</h1>
-                        <a href = "#">Back to Home</a>
+                        <a href = "{{ url('/') }}">Back to Home</a>
                     </div>
                         <p>DASHBOARD&nbsp;&nbsp; >&nbsp;&nbsp; Manage Posts</p>
                 </div>
@@ -159,7 +160,7 @@
                 <div class="createHeading">
                     <div class="createHeadingText">
                         <h1>Create Post</h1>
-                        <a href="#">Back to Home</a>
+                        <a href="/">Back to Home</a>
                     </div>
                     <p>DASHBOARD&nbsp;&nbsp; >&nbsp;&nbsp; Create a Post</p>
                 </div>
