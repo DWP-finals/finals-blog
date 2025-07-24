@@ -176,7 +176,7 @@ hr {
 
 /* === MANAGE POSTS AND DRAFTS === */
 
-#manage, #drafts {
+#manage, #drafts, #analytics {
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -256,7 +256,7 @@ hr {
 .manageHeadingText a:hover:after {
     width: 100%;
 }
-.post, .draft {
+.post, .draft, .count {
     justify-content: space-between;
     display: flex;
     flex-direction: row;
@@ -428,6 +428,89 @@ hr {
         display: none;
     }
 }
+
+/* === ANALYTICS === */
+.total {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+}
+.total h1 {
+    font-family: 'Libre Baskerville';
+    font-size: 1em;
+}
+.totalContainer {
+
+    display: flex;
+    flex-direction: row;
+    border-width: 1px;
+    padding: 20px;
+    border-color: black;
+    border-radius: 0.5rem;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    overflow:hidden;
+}
+.totalCount {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+.countIcon {
+    margin-bottom: 2vh;
+}
+.totalCount h1 {
+    font-family: 'Libre Baskerville';
+    font-size: 1.2em;
+}
+.totalCount p {
+    font-family: 'Libre Franklin';
+    font-size: 0.8em;
+}
+.countContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+.countLabel {
+    color: white;
+    background-color:  #6f4e37;
+    display: flex;
+    flex-direction: row;
+    padding: 1rem 3rem;
+    justify-content: space-between;
+    width: 100%;
+    overflow: hidden;
+    align-items: center;
+    border-radius: 1rem 1rem 0 0;
+}
+.countLabel h1{
+    font-family: 'Libre Baskerville';
+    font-size: 1em;
+    margin-right: 50px;
+}
+
+.countIcon {
+    margin: 0;
+}
+
+.labelIcons img {
+    margin-left: 15px;
+}
+.labelIcons,
+.postAnalytics {
+    display: grid;
+    grid-template-columns: 50px 50px 50px;
+    column-gap: 4rem; /* Set fixed spacing between items */
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+    
+}
+
 
 /* === CREATE POST === */
 

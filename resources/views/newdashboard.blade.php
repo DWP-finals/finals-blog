@@ -50,7 +50,7 @@
                     <li><a class = "icon active" href = "#" onclick = "changeContent('manage', this)"><img class = "manageIcon" width="24" height="24" src="https://img.icons8.com/material/24/6f4e37/dashboard-layout.png" alt="dashboard-layout"/><p>Manage Posts</p></a></li>
                     <li><a class = "icon " href = "#" onclick = "changeContent('create', this)"><img class = "manageIcon" width="24" height="24" src="https://img.icons8.com/external-solid-adri-ansyah/24/6f4e37/external-ui-essentials-ui-solid-adri-ansyah-4.png" alt="external-ui-essentials-ui-solid-adri-ansyah-4"/><p>Create Post</p></a></li>
                     <li><a class = "icon " href = "#" onclick = "changeContent('drafts', this)"><img class = "manageIcon" width="24" height="24" src="https://img.icons8.com/external-febrian-hidayat-glyph-febrian-hidayat/24/6f4e37/external-edit-user-interface-febrian-hidayat-glyph-febrian-hidayat.png" alt="external-edit-user-interface-febrian-hidayat-glyph-febrian-hidayat"/><p>Drafts</p></a></li>
-                    <li><a class = "icon " href = "#"><img class = "manageIcon" width="24" height="24" src="https://img.icons8.com/ios-glyphs/24/6f4e37/analytics.png" alt="analytics"/><p>Analytics</p></a></li>
+                    <li><a class = "icon " href = "#" onclick = "changeContent('analytics', this)"><img class = "manageIcon" width="24" height="24" src="https://img.icons8.com/ios-glyphs/24/6f4e37/analytics.png" alt="analytics"/><p>Analytics</p></a></li>
                 </ul>
             </div>
             <hr>
@@ -337,6 +337,72 @@
 
 
                 </div>
+            </div>
+
+            <!--- === ANALYTICS === --->
+            <div id = "analytics" class = "hidden">
+                <div class = "manageHeading">
+                    <div class = "manageHeadingText">
+                        <h1>Analytics</h1>
+                        <a href = "{{ url('/') }}">Back to Home</a>
+                    </div>
+                        <p>DASHBOARD&nbsp;&nbsp; >&nbsp;&nbsp; Analytics</p>
+                </div>
+                <div class = "total">
+                    <h1>Total</h1>
+                    <div class = "totalContainer">
+                        <div class = "totalCount">
+                            <img class = "countIcon" width="60" height="60" src="https://img.icons8.com/ios-filled/60/d16d6a/like.png" alt="like"/>
+                            <h1>300,000</h1>
+                            <p>LIKES</p>
+                        </div>
+                        <div class = "totalCount">
+                            <img class = "countIcon" width="60" height="60" src="https://img.icons8.com/ios-filled/60/77a0e6/speech-bubble-with-dots.png" alt="speech-bubble-with-dots"/>
+                            <h1>400,000</h1>
+                            <p>COMMENTS</p>
+                        </div>
+                        <div class = "totalCount">
+                            <img class = "countIcon" width="60" height="60" src="https://img.icons8.com/material/60/f9d978/visible--v1.png" alt="visible--v1"/>
+                            <h1>5,000,000</h1>
+                            <p>VIEWS</p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class = "countContainer">
+                    <div class = "countLabel">
+                        <h1>Title</h1>
+                        <div class = "labelIcons">
+                            <img class = "countIcon" width="24" height="24" src="https://img.icons8.com/ios-filled/24/ffffff/like.png" alt="like"/>
+                            <img class = "countIcon" width="24" height="24" src="https://img.icons8.com/ios-filled/24/ffffff/speech-bubble-with-dots.png" alt="speech-bubble-with-dots"/>
+                            <img class = "countIcon" width="24" height="24" src="https://img.icons8.com/material/24/ffffff/visible--v1.png" alt="visible--v1"/>
+                        </div>
+                    </div>
+                    <div class = "postCount">
+ 
+
+                        <div class = "count">
+                         
+                            <div class = "postImgContainer">
+                                <img class = "postImg" src = "{{asset('storage/images/coffee2.jpg')}}">
+                            </div>
+                            <div class = "postDetails countDetails">
+                                <div class = "postTitleDate">
+                                    <p class = "title">kap kapsdfgsdfgsdfgsdfgsdfgfd kap kape</p>
+                                    <p class = "date">PUBLISHED &nbsp;• &nbsp;JULY 19, 2025</p>
+                                </div>
+                            </div>
+                            <div class = "postAnalytics">
+                                <h1>44,923480</h1>
+                                <h1>234324480</h1>
+                                <h1>4234230</h1>
+                                
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
             <!--- PROFILE & SETTINGS -->
