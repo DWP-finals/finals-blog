@@ -34,16 +34,20 @@ class PostController extends Controller
 
         Log::info('Saving post...');
 
-        $imagePath = null;
+        $imageData = null;
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('uploads', 'public');
+            $imageData = file_get_contents($request->file('image')->getRealPath());
         }
+
+        $status = $request->input('status', 'draft');
+        $publishedDate = $status === 'published' ? now() : null;
 
         $post = Post::create([
             'title' => $request->input('title'),
             'content' => $request->input('content'),
-            'image_path' => $imagePath,
-            'published_date' => now(),
+            'image_data' => $imageData,
+            'status' => $status,
+            'published_date' => $publishedDate,
         ]);
 
         Log::info('Post model after creation:', $post->toArray());
@@ -66,5 +70,10 @@ class PostController extends Controller
         $post->tags()->sync($tagIds);
 
         return redirect('/newdashboard')->with('success', 'Post created successfully!');
+    }
+
+    public function drafts() {
+        $drafts = Post::where('status', 'draft')->latest()->get();
+        return view('posts.drafts', compact('drafts'));
     }
 }

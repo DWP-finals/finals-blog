@@ -294,9 +294,9 @@
                                 });
                             </script>
                             <div class="button-group">
-                                <button class="button1">Publish</button>
-                                <button class="button2">Save to Drafts</button>
-                                <button class="button2">Delete</button>
+                                <button type="submit" type="status" value="published" class="button1">Publish</button>
+                                <button type="submit" type="status" value="draft" class="button2">Save to Drafts</button>
+                                <button type="button" class="button2">Delete</button>
                             </div>
                         </div>
                     </div>
