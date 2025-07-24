@@ -97,62 +97,71 @@
                 </div>
                 <div class = "managePosts">
                     
-                        <div class = "post">
-                            <div class = "postImgContainer">
-                                <img class = "postImg" src = "{{asset('storage/images/coffee2.jpg')}}">
+                    <div class = "post">
+                        <div class = "postImgContainer">
+                            <img class = "postImg" src = "{{asset('storage/images/coffee2.jpg')}}">
+                        </div>
+                        <div class = "postDetails">
+                            <div class = "postTitleDate">
+                                <p class = "title">Why Starbucks Is Overrated And Sells Awful Drinks Yet I Still Buy From Them</p>
+                                <p class = "date">PUBLISHED &nbsp;• &nbsp;JULY 19, 2025</p>
                             </div>
-                            <div class = "postDetails">
-                                <div class = "postTitleDate">
-                                    <p class = "title">Why Starbucks Is Overrated And Sells Awful Drinks Yet I Still Buy From Them</p>
-                                    <p class = "date">PUBLISHED &nbsp;• &nbsp;JULY 19, 2025</p>
+                        </div>
+                        <div class = "postActions">
+                            <div class="postStatus">
+                                <div class="displayedStatus border">VISIBLE</div> <!-- hardcoded. replace this code to the current status of post according to database -->
+                                <div class="statusOptions">
+                                    <div data-value="visible" data-display="VISIBLE">Set as Visible</div>
+                                    <div data-value="archive" data-display="ARCHIVED">Move to Archive</div>
                                 </div>
-                            </div>
-                            <div class = "postActions">
-                                <select class = "postStatus">
-                                    <option value = "visible" >Set as Visible</option>
-                                    <option value = "archive" >Move to Archive</option>
-                                </select>
-                                <script>
-                                    // === PICKER DROPDOWN AND LABE; FOR MANAGE POST VISIBILTY === ///
-                                    // not sure if i should be using id and class but decided class instead cuz not sure how it will turn out w id being unique
-                                    const classStatus = document.querySelectorAll(".postStatus");
-                                    classStatus.forEach((status) => {
-                                        function changeStatusStyle() {
-                                            const currentStatus = status.options[status.selectedIndex];
-                                            currentStatus.textContent = currentStatus.dataset.label;
+                                <input type="hidden" name="status" value="visible"> <!-- "value = "visible"" to be replaced by dun sa nakalagay sa currentStatus. this is the actual value sent to database -->
+                                </div>
+                            <script>
+                                // === PICKER DROPDOWN AND LABE; FOR MANAGE POST VISIBILTY === ///
+                                
+                                document.querySelectorAll('.postStatus').forEach(jsPostStatus => {
+                                    const display = jsPostStatus.querySelector('.displayedStatus'); // label displayed sa picker 
+                                    const options = jsPostStatus.querySelector('.statusOptions'); // dropdown options
+                                    const hiddenInput = jsPostStatus.querySelector('input[type=hidden]'); // actual value submitted to database
 
-                                            status.classList.remove(
-                                                'bg-green-100', 'border-green-500', 'text-green-500', 'bg-gray-100', 'border-gray-400', 'text-gray-600'
-                                            );
+                                    // toggle to hide and show dropdown
+                                    display.addEventListener('click', () => {
+                                        options.style.display = options.style.display === 'block' ? 'none' : 'block';
+                                    });
 
-                                            if (status.value === 'visible') {
-                                                status.classList.add('bg-green-100', 'border-green-500', 'text-green-500');
-                                            } else {
-                                                status.classList.add('bg-gray-100', 'border-gray-400', 'text-gray-600');
-                                            }
-                                        }
-                                        status.addEventListener('click', () => {
-                                            for (let opt of status.options) {
-                                                if (opt.value === 'visible') opt.textContent = "VISIBLE";
-                                                if (opt.value === 'archive') opt.textContent = "ARCHIVE";
+                                    options.querySelectorAll('div').forEach(option => {
+                                        option.addEventListener('click', () => {
+                                            display.textContent = option.dataset.display; // to display data-display based sa selected option
+                                            hiddenInput.value = option.dataset.value; // assigns hiddenInput based sa data-value of selected option,, this is the one submitted to backend
+                                            options.style.display = 'none';
+
+                                            // tailwind for dynamic styles
+                                            if (hiddenInput.value === 'visible') {
+                                                display.classList.remove('text-gray-900', 'border-gray-900', 'bg-gray-200');
+                                                display.classList.add('text-green-900', 'border-green-900', 'bg-green-200');
+                                            } else if (hiddenInput.value === 'archive') {
+                                                display.classList.remove('text-green-900', 'border-green-900', 'bg-green-200');
+                                                display.classList.add('text-gray-900', 'border-gray-900', 'bg-gray-200');
                                             }
                                         });
-                                        status.addEventListener('change', changeStatusStyle);
-                                        changeStatusStyle();
-
                                     });
-                                </script>
-                                <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/forma-bold-filled/24/FAB005/archive.png" alt="archive"/></a>
-                                <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/24/FA5252/filled-trash.png" alt="filled-trash"/></a>
-                                
-                            </div>
 
+                                    // so dropdown will automatically close when users click outside dropdown area
+                                    document.addEventListener('click', e => {
+                                    if (!jsPostStatus.contains(e.target)) {
+                                        options.style.display = 'none';
+                                    }
+                                    });
+                                });
+
+
+                            </script>
+
+                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/24/FA5252/filled-trash.png" alt="filled-trash"/></a>
+                            
                         </div>
-                    
 
-
-
-                    
+                    </div>
                 </div>
             </div>
             <!-- === CREATE POSTS === -->
@@ -316,7 +325,7 @@
 
                 </div>
                 <div class = "draftPosts">
-                    <div class = "draft draft-1">
+                    <div class = "draft">
                         <div class = "draftImgContainer">
                             <img class = "draftImg" src = "{{asset('storage/images/coffee2.jpg')}}">
                         </div>
@@ -332,55 +341,7 @@
                         </div>
 
                     </div>
-                    <div class = "draft draft-2">
-                        <div class = "draftImgContainer">
-                            <img class = "draftImg" src = "{{asset('storage/images/coffee2.jpg')}}">
-                        </div>
-                        <div class = "draftDetails">
-                            <div class = "draftTitleDate">
-                                <p class = "draftTitle">draftttt</p>
-                                <p class = "draftDate">PUBLISHED &nbsp;• &nbsp;JULY 19, 2025</p>
-                            </div>
-                        </div>
-                        <div class = "draftActions">
-                            <a href = "#"><img class = "draftIcons" width="24" height="24" src="https://img.icons8.com/material-rounded/24/FAB005/edit.png" alt="edit"/></a>
-                            <a href = "#"><img class = "draftIcons" width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/24/FA5252/filled-trash.png" alt="filled-trash"/></a>
-                        </div>
 
-                    </div>
-                    <div class = "draft draft-3">
-                        <div class = "draftImgContainer">
-                            <img class = "draftImg" src = "{{asset('storage/images/coffee2.jpg')}}">
-                        </div>
-                        <div class = "draftDetails">
-                            <div class = "draftTitleDate">
-                                <p class = "draftTitle">draftttt</p>
-                                <p class = "draftDate">PUBLISHED &nbsp;• &nbsp;JULY 19, 2025</p>
-                            </div>
-                        </div>
-                        <div class = "draftActions">
-                            <a href = "#"><img class = "draftIcons" width="24" height="24" src="https://img.icons8.com/material-rounded/24/FAB005/edit.png" alt="edit"/></a>
-                            <a href = "#"><img class = "draftIcons" width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/24/FA5252/filled-trash.png" alt="filled-trash"/></a>
-                        </div>
-
-                    </div>
-                    <div class = "draft draft-4">
-                        <div class = "draftImgContainer">
-                            <img class = "draftImg" src = "{{asset('storage/images/coffee2.jpg')}}">
-                        </div>
-                        <div class = "draftDetails">
-                            <div class = "draftTitleDate">
-                                <p class = "draftTitle">draftttt</p>
-                                <p class = "draftDate">PUBLISHED &nbsp;• &nbsp;JULY 19, 2025</p>
-                            </div>
-                        </div>
-                        <div class = "draftActions">
-                            <a href = "#"><img class = "draftIcons" width="24" height="24" src="https://img.icons8.com/material-rounded/24/FAB005/edit.png" alt="edit"/></a>
-                            <a href = "#"><img class = "draftIcons" width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/24/FA5252/filled-trash.png" alt="filled-trash"/></a>
-                        </div>
-
-                    </div>
-            
 
 
                     
