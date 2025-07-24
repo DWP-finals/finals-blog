@@ -47,7 +47,7 @@
         <div class = "sidebar">
 
             <div>
-                <a class = "logo" href = "#"><img src = "{{asset('storage/images/icons8-coffee-48.png')}}"><h2>Blog</h2></a>
+                <a class = "logo" href = "#"><img height = 50px width=50px src = "{{asset('storage/images/icons8-coffee-beans-100.png')}}"><h2>Blog</h2></a>
                 <h2>Dashboard</h2>
                 <ul class = "dashboardOptions">
                     <li><a class = "icon active" href = "#" onclick = "changeContent('manage', this)"><img class = "manageIcon" width="24" height="24" src="https://img.icons8.com/material/24/6f4e37/dashboard-layout.png" alt="dashboard-layout"/><p>Manage Posts</p></a></li>

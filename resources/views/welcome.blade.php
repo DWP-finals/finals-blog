@@ -14,13 +14,19 @@
         <link rel="icon" href="/resources/assets/icons8-coffee-48.png">
         @vite('resources/css/landing.css')
         @vite('/resources/css/app.css')
-        <!--Tailwind-->
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     </head>
     <body>
+        <div id="incorrect">
+            <h1>Incorrect Credentials</h1>
+            <p>Either your email address, password, or both are incorrect</p>
+            <p>Please try again with the correct credentials.</p>
+            <button class="incbutton" onclick="closeIncorrect()">OK</button>
+        </div>
+        <div id="overlay2"></div>
         <div class="form" id="login">
             <form action="{{ route('login') }}" method="POST" class="form-container">
                 @csrf
@@ -30,7 +36,7 @@
                 <label for="password"><b>Password</b></label>
                 <input type="password" placeholder="Enter password" name="password" required></input>
 
-                <button type="submit" class="button">Log In</button>
+                <button type="submit" class="button" onclick="incorrectCred()">Log In</button>
                 <button type="button" class="button cancel" onclick="closeFormLogIn()">Cancel</button>
                 <p onclick="window.location='{{ url('register') }}'">Create an Account</p>
             </form>
@@ -52,6 +58,16 @@
                 document.getElementById("login").style.display = "none";
                 document.getElementById("overlay").style.display = "none";
             }
+            function incorrectCred() {
+                document.getElementById("incorrect").style.display = "block";
+                document.getElementById("overlay2").style.display = "block";
+            }
+
+            function closeIncorrect() {
+                document.getElementById("incorrect").style.display = "none";
+                document.getElementById("overlay2").style.display = "none";
+            }
+
         </script>
         <div class="hero">
             <div class="header">
@@ -84,6 +100,35 @@
         <div class="featuredsec">
             <h1>FEATURED POSTS</h1>
             <div class="card-container">
+                @forelse($posts as $post)
+                    <div class="card">
+                        @if($post->image_data)
+                            <img src="{{ route('posts.image', $post->id) }}" alt="Post Image" style="width: 100%; height: auto;">
+                        @else
+                            <img src="https://via.placeholder.com/500x400?text=No+Image" alt="Placeholder">
+                        @endif
+
+                        <div class="card-content">
+                            <p class="tags">
+                                @foreach($post->tags as $tag)
+                                    #{{ strtoupper($tag->tag_name) }}
+                                @endforeach
+                            </p>
+                            <h3>{{ $post->title }}</h3>
+                            <p class="info">
+                                {{ strtoupper(optional($post->published_date)->format('F d Y')) }} |
+                                BY {{ strtoupper($post->contributors->first()->name ?? 'UNKNOWN') }}
+                            </p>
+                        </div>
+                    </div>
+                @empty
+                    <p>No featured posts available.</p>
+                @endforelse
+            </div>
+        </div>
+        <!--<div class="featuredsec">
+            <h1>FEATURED POSTS</h1>
+            <div class="card-container">
                 <div class="card">
                     <img src="https://picsum.photos/id/237/500/400">
                     <div class="card-content">
@@ -109,7 +154,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
         <div class="cardsec" id="about">
             <p class="subheading">A hub for all coffee lovers</p>
             <h1>Join the Community</h1>
