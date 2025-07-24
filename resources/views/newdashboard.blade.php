@@ -117,7 +117,7 @@
             </div>
 
             <!-- === CREATE POSTS === -->
-            <div id = "create" class = "hidden">
+            <div id="create" class="hidden">
                 <div class="createHeading">
                     <div class="createHeadingText">
                         <h1>Create Post</h1>
@@ -125,128 +125,137 @@
                     </div>
                     <p>DASHBOARD&nbsp;&nbsp; >&nbsp;&nbsp; Create a Post</p>
                 </div>
-                <div class="formcontainer">
-                    <br>
-                    <label for="input-file" id="drop-area">
-                        <input type="file"  accept="image/*" id="input-file" hidden>
-                        <div id="img-view">
-                            <img src="\storage\images\icons8-cloud-upload-100.png">
-                            <p>DRAG AND DROP OR CLICK</p>
-                            <span>Upload an image from computer</span>
+
+                <form method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data">
+                    @csrf
+                    <div class="formcontainer">
+                        <br>
+                        <label for="input-file" id="drop-area">
+                            <input type="file" accept="image/*" id="input-file" name="image" hidden>
+                            <div id="img-view">
+                                <img src="\storage\images\icons8-cloud-upload-100.png">
+                                <p>DRAG AND DROP OR CLICK</p>
+                                <span>Upload an image from computer</span>
+                            </div>
+                        </label>
+
+                        <label for="title">Title</label>
+                        <input type="text" placeholder="Enter title here" name="title" required>
+
+                        <label for="content">Content</label>
+                        <textarea placeholder="Share your thoughts here" name="content" required></textarea>
+
+                        <label for="contributor">Contributors</label>
+                        <div class="cont-input">
+                            <ul id="contributors"></ul>
+                            <input type="text" id="input-contributor" placeholder="Enter the names of contributors and press the enter key to confirm" />
+                            <input type="hidden" name="contributors" value="[]">
                         </div>
-                    </label>
-                    <script>
-                        const dropArea = document.getElementById("drop-area");
-                        const inputFile = document.getElementById("input-file");
-                        const imageView = document.getElementById("img-view");
 
-                        inputFile.addEventListener("change", uploadImage);
+                        <label for="tags">Tags</label>
+                        <div class="tags-input">
+                            <ul id="tags"></ul>
+                            <input type="text" id="input-tag" placeholder="Enter tag and press the enter key to confirm" />
+                            <input type="hidden" name="tags" value="[]">
+                        </div>
 
-                        function uploadImage() {
-                            let imgLink = URL.createObjectURL(inputFile.files[0]);
-                            imageView.style.backgroundImage = `url(${imgLink})`;
-                            imageView.textContent = " ";
-                            imageView.style.border = "none";
-                            imageView.style.backgroundSize = "cover";
-                            imageView.style.backgroundPosition = "center";
-                            imageView.style.backgroundRepeat = "no-repeat";
-                        }
-
-                        dropArea.addEventListener("dragover", function(e) {
-                            e.preventDefault();
-                        });
-                        dropArea.addEventListener("drop", function(e) {
-                            e.preventDefault();
-                            inputFile.files = e.dataTransfer.files;
-                            uploadImage();
-                        });
-
-                    </script>
-                    <label for="title">Title</label>
-                    <input type="text" placeholder="Enter title here" name="title" required>
-                    <label for="content">Content</label>
-                    <textarea placeholder="Share your thoughts here" name="content" required></textarea>
-                    <label for="contributor">Contributors</label>
-                    <div class="cont-input">
-                        <ul id="contributors"></ul>
-                        <input type="text" id="input-contributor" placeholder="Enter the names of contributors and press the enter key to confirm" />
+                        <div class="button-group">
+                            <button type="submit" type="status" value="published" class="button1">Publish</button>
+                            <button type="submit" type="status" value="draft" class="button2">Save to Drafts</button>
+                            <button type="button" class="button2">Delete</button>
+                        </div>
                     </div>
+                </form>
 
-                    <script>
-                        const conts = document.getElementById('contributors');
-                        const inputc = document.getElementById('input-contributor');
+                {{-- JS Section --}}
+                <script>
+                    const dropArea = document.getElementById("drop-area");
+                    const inputFile = document.getElementById("input-file");
+                    const imageView = document.getElementById("img-view");
 
-                        inputc.addEventListener('keydown', function (event) {
+                    inputFile.addEventListener("change", uploadImage);
 
-                            if (event.key === 'Enter') {
+                    function uploadImage() {
+                        let imgLink = URL.createObjectURL(inputFile.files[0]);
+                        imageView.style.backgroundImage = `url(${imgLink})`;
+                        imageView.textContent = " ";
+                        imageView.style.border = "none";
+                        imageView.style.backgroundSize = "cover";
+                        imageView.style.backgroundPosition = "center";
+                        imageView.style.backgroundRepeat = "no-repeat";
+                    }
 
-                                event.preventDefault();
+                    dropArea.addEventListener("dragover", function(e) {
+                        e.preventDefault();
+                    });
+                    dropArea.addEventListener("drop", function(e) {
+                        e.preventDefault();
+                        inputFile.files = e.dataTransfer.files;
+                        uploadImage();
+                    });
+
+                    const conts = document.getElementById('contributors');
+                    const inputc = document.getElementById('input-contributor');
+                    const hiddenContributors = document.querySelector('input[name="contributors"]');
+
+                    inputc.addEventListener('keydown', function(event) {
+                        if (event.key === 'Enter') {
+                            event.preventDefault();
+                            const contContent = inputc.value.trim();
+                            if (contContent !== '') {
                                 const cont = document.createElement('li');
-
-                                const contContent = inputc.value.trim();
-
-                                if (contContent !== '') {
-
-                                    cont.innerText = contContent;
-                                    cont.innerHTML += '<button class="delete-button"> x</button>';
-                                    conts.appendChild(cont);
-                                    inputc.value = '';
-                                }
+                                cont.textContent = contContent;
+                                cont.innerHTML += '<button class="delete-button"> x</button>';
+                                conts.appendChild(cont);
+                                inputc.value = '';
+                                updateContributorsHidden();
                             }
-                        });
+                        }
+                    });
 
-                        conts.addEventListener('click', function (event) {
+                    conts.addEventListener('click', function(event) {
+                        if (event.target.classList.contains('delete-button')) {
+                            event.target.parentNode.remove();
+                            updateContributorsHidden();
+                        }
+                    });
 
-                            if (event.target.classList.contains('delete-button')) {
+                    function updateContributorsHidden() {
+                        const names = Array.from(conts.querySelectorAll('li')).map(li => li.firstChild.textContent.trim());
+                        hiddenContributors.value = JSON.stringify(names);
+                    }
 
-                                event.target.parentNode.remove();
-                            }
-                        });
-                    </script>
+                    const tagsUl = document.getElementById('tags');
+                    const inputTag = document.getElementById('input-tag');
+                    const hiddenTags = document.querySelector('input[name="tags"]');
 
-                    <label for="tags">Tags</label>
-                    <div class="tags-input">
-                        <ul id="tags"></ul>
-                        <input type="text" id="input-tag" placeholder="Enter tag and press the enter key to confirm" />
-                    </div>
-
-                    <script>
-                        const tags = document.getElementById('tags');
-                        const inputt = document.getElementById('input-tag');
-
-                        inputt.addEventListener('keydown', function (event) {
-
-                            if (event.key === 'Enter') {
-
-                                event.preventDefault();
+                    inputTag.addEventListener('keydown', function(event) {
+                        if (event.key === 'Enter') {
+                            event.preventDefault();
+                            const tagContent = inputTag.value.trim();
+                            if (tagContent !== '') {
                                 const tag = document.createElement('li');
-
-                                const tagContent = inputt.value.trim();
-
-                                if (tagContent !== '') {
-
-                                    tag.innerText = tagContent;
-                                    tag.innerHTML += '<button class="delete-button"> x</button>';
-                                    tags.appendChild(tag);
-                                    inputt.value = '';
-                                }
+                                tag.textContent = tagContent;
+                                tag.innerHTML += '<button class="delete-button"> x</button>';
+                                tagsUl.appendChild(tag);
+                                inputTag.value = '';
+                                updateTagsHidden();
                             }
-                        });
+                        }
+                    });
 
-                        tags.addEventListener('click', function (event) {
+                    tagsUl.addEventListener('click', function(event) {
+                        if (event.target.classList.contains('delete-button')) {
+                            event.target.parentNode.remove();
+                            updateTagsHidden();
+                        }
+                    });
 
-                            if (event.target.classList.contains('delete-button')) {
-
-                                event.target.parentNode.remove();
-                            }
-                        });
-                    </script>
-                    <div class="button-group">
-                        <button class="button1">Publish</button>
-                        <button class="button2">Save to Drafts</button>
-                        <button class="button2">Delete</button>
-                    </div>
-                </div>
+                    function updateTagsHidden() {
+                        const tags = Array.from(tagsUl.querySelectorAll('li')).map(li => li.firstChild.textContent.trim());
+                        hiddenTags.value = JSON.stringify(tags);
+                    }
+                </script>
             </div>
 
             <!--- === DRAFTS === --->
