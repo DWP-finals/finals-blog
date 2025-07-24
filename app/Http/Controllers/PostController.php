@@ -58,6 +58,8 @@ class PostController extends Controller
             Log::info('Post created with ID: ' . $post->id);
         }
 
+        $post->contributors()->attach(auth()->id(), ['author_role' => 'main-author']);
+
         foreach ($request->input('contributors') as $userId) {
             $post->contributors()->attach($userId, ['author_role' => 'co-author']);
         }

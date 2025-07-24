@@ -93,7 +93,7 @@
                     @forelse ($posts as $post)
                         <div class="post">
                             <div class="postImgContainer">
-                                <img class="postImg" src="{{ asset($post->cover_image_path ?? 'storage/images/default.jpg') }}">
+                                <img class="postImg" src="{{ $post->image_data ? route('posts.image', $post->id) : asset('storage/images/default.jpg') }}">
                             </div>
                             <div class="postDetails">
                                 <div class="postTitleDate">
