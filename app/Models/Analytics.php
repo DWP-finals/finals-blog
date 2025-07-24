@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Analytics extends Model
 {
+    use HasFactory;
+    
     protected $fillable = [
         'post_id',
         'views',

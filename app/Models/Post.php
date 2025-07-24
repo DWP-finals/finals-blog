@@ -39,10 +39,8 @@ class Post extends Model
         return $this->hasOne(Analytics::class);
     }
 
-    public function contributors() {
-        return $this->belongsToMany(User::class, 'post_user', 'post_id', 'user_id')
-                    ->withPivot('author_role')
-                    ->withTimestamps();
+    public function contributors(){
+        return $this->belongsToMany(User::class, 'post_user_relationship')
+                    ->withPivot('author_role');
     }
-
 }
