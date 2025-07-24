@@ -25,6 +25,8 @@ Route::get('/explore', [ExploreController::class, 'index']);
 
 Route::get('/posts/{id}/image', [PostController::class, 'showImage'])->name('posts.image');
 
+Route::get('/newdashboard', [DashboardController::class, 'index'])->middleware('auth')->name('newdashboard');
+
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 
 Route::post('/register', [AuthController::class, 'register'])->name('register');

@@ -89,7 +89,38 @@
                         </select>
                     </div>
                 </div>
-                <div class = "managePosts">
+                <div class="managePosts">
+                    @forelse ($posts as $post)
+                        <div class="post">
+                            <div class="postImgContainer">
+                                <img class="postImg" src="{{ asset($post->cover_image_path ?? 'storage/images/default.jpg') }}">
+                            </div>
+                            <div class="postDetails">
+                                <div class="postTitleDate">
+                                    <p class="title">{{ $post->title }}</p>
+                                    <p class="date">
+                                        {{ strtoupper($post->status) }} &nbsp;•&nbsp;
+                                        {{ \Carbon\Carbon::parse($post->updated_at)->format('F j, Y') }}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="postActions">
+                                <div class="postStatus">
+                                    <div class="displayedStatus border">{{ strtoupper($post->status) }}</div>
+                                    <div class="statusOptions">
+                                        <div data-value="visible" data-display="VISIBLE">Set as Visible</div>
+                                        <div data-value="archive" data-display="ARCHIVED">Move to Archive</div>
+                                    </div>
+                                    <input type="hidden" name="status" value="{{ $post->status }}">
+                                </div>
+                                <a href="#"><img class="postIcons" width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/24/FA5252/filled-trash.png" alt="filled-trash"/></a>
+                            </div>
+                        </div>
+                    @empty
+                        <p>No posts found.</p>
+                    @endforelse
+                </div>
+                <!--<div class = "managePosts">
                     <div class = "post">
                         <div class = "postImgContainer">
                             <img class = "postImg" src = "{{asset('storage/images/coffee2.jpg')}}">
@@ -102,17 +133,17 @@
                         </div>
                         <div class = "postActions">
                             <div class="postStatus">
-                                <div class="displayedStatus border">VISIBLE</div> <!-- hardcoded. replace this code to the current status of post according to database -->
+                                <div class="displayedStatus border">VISIBLE</div> /hardcoded. replace this code to the current status of post according to database
                                 <div class="statusOptions">
                                     <div data-value="visible" data-display="VISIBLE">Set as Visible</div>
                                     <div data-value="archive" data-display="ARCHIVED">Move to Archive</div>
                                 </div>
-                                <input type="hidden" name="status" value="visible"> <!-- "value = "visible"" to be replaced by dun sa nakalagay sa currentStatus. this is the actual value sent to database -->
+                                <input type="hidden" name="status" value="visible"> /"value = "visible"" to be replaced by dun sa nakalagay sa currentStatus. this is the actual value sent to database
                                 </div>
                             <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/24/FA5252/filled-trash.png" alt="filled-trash"/></a>
                         </div>
                     </div>
-                </div>
+                </div>-->
             </div>
 
             <!-- === CREATE POSTS === -->
@@ -159,8 +190,8 @@
                         </div>
 
                         <div class="button-group">
-                            <button type="submit" type="status" value="published" class="button1">Publish</button>
-                            <button type="submit" type="status" value="draft" class="button2">Save to Drafts</button>
+                            <button type="submit" name="status" value="published" class="button1">Publish</button>
+                            <button type="submit" name="status" value="draft" class="button2">Save to Drafts</button>
                             <button type="button" class="button2">Delete</button>
                         </div>
                     </div>
