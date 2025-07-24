@@ -13,7 +13,7 @@
 </head>
 <body>
     <script>
-
+        
         // === DASHBOARD SWITCH CONTENT === //
         function changeContent(contentId, btnSelected) {
             // gonna leave comments for each block of code here kasi baka makalimutan ko how all these work
@@ -47,7 +47,7 @@
         <div class = "sidebar">
 
             <div>
-                <a class = "logo" href = "#"><img src = "{{asset('storage/images/icons8-coffee-48.png')}}"><h2>Blog</h2></a>
+                <a class = "logo" href = "#"><img height = 50px width=50px src = "{{asset('storage/images/icons8-coffee-beans-100.png')}}"><h2>Blog</h2></a>
                 <h2>Dashboard</h2>
                 <ul class = "dashboardOptions">
                     <li><a class = "icon active" href = "#" onclick = "changeContent('manage', this)"><img class = "manageIcon" width="24" height="24" src="https://img.icons8.com/material/24/6f4e37/dashboard-layout.png" alt="dashboard-layout"/><p>Manage Posts</p></a></li>
@@ -60,17 +60,12 @@
             <div>
                 <h2>Account Settings</h2>
                 <ul class = "accountOptions">
-                    <li><a class = "icon" href = "#" onclick = "changeContent('profile', this)"><img class = "manageIcon" width="24" height="24" src="https://img.icons8.com/material-rounded/24/6f4e37/guest-male.png" alt="guest-male"/><p>Profile & Settings</p></a></li>
-                    <li><a class = "icon" href = "{{ url('/') }}" onclick="logout()"><img class = "manageIcon" width="24" height="24" src="https://img.icons8.com/material-rounded/24/6f4e37/exit.png" alt="exit"/><p>Log Out</p></a></li>
+                    <li><a class = "icon" href = "#"><img class = "manageIcon" width="24" height="24" src="https://img.icons8.com/material-rounded/24/6f4e37/guest-male.png" alt="guest-male"/><p>Profile</p></a></li>
+                    <li><a class = "icon" href = "#"><img class = "manageIcon" width="24" height="24" src="https://img.icons8.com/forma-bold-filled/24/6f4e37/settings.png" alt="settings"/><p>Settings</p></a></li>
+                    <li><a class = "icon" href = "#"><img class = "manageIcon" width="24" height="24" src="https://img.icons8.com/material-rounded/24/6f4e37/exit.png" alt="exit"/><p>Log Out</p></a></li>
                 </ul>
             </div>
         </div>
-
-        <script>
-            function logout() {
-
-            }
-        </script>
 
         <div class = "content">
             <!-- === MANAGE POSTS === -->
@@ -101,221 +96,206 @@
 
                 </div>
                 <div class = "managePosts">
-
-                        <div class = "post">
-                            <div class = "postImgContainer">
-                                <img class = "postImg" src = "{{asset('storage/images/coffee2.jpg')}}">
+                    
+                    <div class = "post">
+                        <div class = "postImgContainer">
+                            <img class = "postImg" src = "{{asset('storage/images/coffee2.jpg')}}">
+                        </div>
+                        <div class = "postDetails">
+                            <div class = "postTitleDate">
+                                <p class = "title">Why Starbucks Is Overrated And Sells Awful Drinks Yet I Still Buy From Them</p>
+                                <p class = "date">PUBLISHED &nbsp;• &nbsp;JULY 19, 2025</p>
                             </div>
-                            <div class = "postDetails">
-                                <div class = "postTitleDate">
-                                    <p class = "title">Why Starbucks Is Overrated And Sells Awful Drinks Yet I Still Buy From Them</p>
-                                    <p class = "date">PUBLISHED &nbsp;• &nbsp;JULY 19, 2025</p>
+                        </div>
+                        <div class = "postActions">
+                            <div class="postStatus">
+                                <div class="displayedStatus border">VISIBLE</div> <!-- hardcoded. replace this code to the current status of post according to database -->
+                                <div class="statusOptions">
+                                    <div data-value="visible" data-display="VISIBLE">Set as Visible</div>
+                                    <div data-value="archive" data-display="ARCHIVED">Move to Archive</div>
                                 </div>
-                            </div>
-                            <div class = "postActions">
-                                <select class = "postStatus">
-                                    <option value = "visible" >Set as Visible</option>
-                                    <option value = "archive" >Move to Archive</option>
-                                </select>
-                                <script>
-                                    // === PICKER DROPDOWN AND LABE; FOR MANAGE POST VISIBILTY === ///
-                                    // not sure if i should be using id and class but decided class instead cuz not sure how it will turn out w id being unique
-                                    const classStatus = document.querySelectorAll(".postStatus");
-                                    classStatus.forEach((status) => {
-                                        function changeStatusStyle() {
-                                            const currentStatus = status.options[status.selectedIndex];
-                                            currentStatus.textContent = currentStatus.dataset.label;
+                                <input type="hidden" name="status" value="visible"> <!-- "value = "visible"" to be replaced by dun sa nakalagay sa currentStatus. this is the actual value sent to database -->
+                                </div>
+                            <script>
+                                // === PICKER DROPDOWN AND LABE; FOR MANAGE POST VISIBILTY === ///
+                                
+                                document.querySelectorAll('.postStatus').forEach(jsPostStatus => {
+                                    const display = jsPostStatus.querySelector('.displayedStatus'); // label displayed sa picker 
+                                    const options = jsPostStatus.querySelector('.statusOptions'); // dropdown options
+                                    const hiddenInput = jsPostStatus.querySelector('input[type=hidden]'); // actual value submitted to database
 
-                                            status.classList.remove(
-                                                'bg-green-100', 'border-green-500', 'text-green-500', 'bg-gray-100', 'border-gray-400', 'text-gray-600'
-                                            );
+                                    // toggle to hide and show dropdown
+                                    display.addEventListener('click', () => {
+                                        options.style.display = options.style.display === 'block' ? 'none' : 'block';
+                                    });
 
-                                            if (status.value === 'visible') {
-                                                status.classList.add('bg-green-100', 'border-green-500', 'text-green-500');
-                                            } else {
-                                                status.classList.add('bg-gray-100', 'border-gray-400', 'text-gray-600');
-                                            }
-                                        }
-                                        status.addEventListener('click', () => {
-                                            for (let opt of status.options) {
-                                                if (opt.value === 'visible') opt.textContent = "VISIBLE";
-                                                if (opt.value === 'archive') opt.textContent = "ARCHIVE";
+                                    options.querySelectorAll('div').forEach(option => {
+                                        option.addEventListener('click', () => {
+                                            display.textContent = option.dataset.display; // to display data-display based sa selected option
+                                            hiddenInput.value = option.dataset.value; // assigns hiddenInput based sa data-value of selected option,, this is the one submitted to backend
+                                            options.style.display = 'none';
+
+                                            // tailwind for dynamic styles
+                                            if (hiddenInput.value === 'visible') {
+                                                display.classList.remove('text-gray-900', 'border-gray-900', 'bg-gray-200');
+                                                display.classList.add('text-green-900', 'border-green-900', 'bg-green-200');
+                                            } else if (hiddenInput.value === 'archive') {
+                                                display.classList.remove('text-green-900', 'border-green-900', 'bg-green-200');
+                                                display.classList.add('text-gray-900', 'border-gray-900', 'bg-gray-200');
                                             }
                                         });
-                                        status.addEventListener('change', changeStatusStyle);
-                                        changeStatusStyle();
-
                                     });
-                                </script>
-                                <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/forma-bold-filled/24/FAB005/archive.png" alt="archive"/></a>
-                                <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/24/FA5252/filled-trash.png" alt="filled-trash"/></a>
 
-                            </div>
+                                    // so dropdown will automatically close when users click outside dropdown area
+                                    document.addEventListener('click', e => {
+                                    if (!jsPostStatus.contains(e.target)) {
+                                        options.style.display = 'none';
+                                    }
+                                    });
+                                });
 
+
+                            </script>
+
+                            <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/24/FA5252/filled-trash.png" alt="filled-trash"/></a>
+                            
                         </div>
 
-
-
-
-
+                    </div>
                 </div>
             </div>
             <!-- === CREATE POSTS === -->
-                <div id = "create" class = "hidden">
-                    <div class="createHeading">
-                        <div class="createHeadingText">
-                            <h1>Create Post</h1>
-                            <a href = "{{ url('/') }}">Back to Home</a>
-                        </div>
-                        <p>DASHBOARD&nbsp;&nbsp; >&nbsp;&nbsp; Create a Post</p>
+            <div id = "create" class = "hidden">
+                <div class="createHeading">
+                    <div class="createHeadingText">
+                        <h1>Create Post</h1>
+                        <a href="/">Back to Home</a>
                     </div>
-                    <form method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data">
-                    @csrf
-                        <div class="formcontainer">
-                            <br>
-                            <label for="input-file" id="drop-area">
-                                <input type="file"  accept="image/*" id="input-file" name="image" hidden>
-                                <div id="img-view">
-                                    <img src="\storage\images\icons8-cloud-upload-100.png">
-                                    <p>DRAG AND DROP OR CLICK</p>
-                                    <span>Upload an image from computer</span>
-                                </div>
-                            </label>
-                            <script>
-                                const dropArea = document.getElementById("drop-area");
-                                const inputFile = document.getElementById("input-file");
-                                const imageView = document.getElementById("img-view");
+                    <p>DASHBOARD&nbsp;&nbsp; >&nbsp;&nbsp; Create a Post</p>
+                </div>
+                <div class="formcontainer">
+                    <br>
+                    <label for="input-file" id="drop-area">
+                        <input type="file"  accept="image/*" id="input-file" hidden>
+                        <div id="img-view">
+                            <img src="\storage\images\icons8-cloud-upload-100.png">
+                            <p>DRAG AND DROP OR CLICK</p>
+                            <span>Upload an image from computer</span>
+                        </div>
+                    </label>
+                    <script>
+                        const dropArea = document.getElementById("drop-area");
+                        const inputFile = document.getElementById("input-file");
+                        const imageView = document.getElementById("img-view");
 
-                                inputFile.addEventListener("change", uploadImage);
+                        inputFile.addEventListener("change", uploadImage);
 
-                                function uploadImage() {
-                                    let imgLink = URL.createObjectURL(inputFile.files[0]);
-                                    imageView.style.backgroundImage = `url(${imgLink})`;
-                                    imageView.textContent = " ";
-                                    imageView.style.border = "none";
-                                    imageView.style.backgroundSize = "cover";
-                                    imageView.style.backgroundPosition = "center";
-                                    imageView.style.backgroundRepeat = "no-repeat";
+                        function uploadImage() {
+                            let imgLink = URL.createObjectURL(inputFile.files[0]);
+                            imageView.style.backgroundImage = `url(${imgLink})`;
+                            imageView.textContent = " ";
+                            imageView.style.border = "none";
+                            imageView.style.backgroundSize = "cover";
+                            imageView.style.backgroundPosition = "center";
+                            imageView.style.backgroundRepeat = "no-repeat";
+                        }
+
+                        dropArea.addEventListener("dragover", function(e) {
+                            e.preventDefault();
+                        });
+                        dropArea.addEventListener("drop", function(e) {
+                            e.preventDefault();
+                            inputFile.files = e.dataTransfer.files;
+                            uploadImage();
+                        });
+
+                    </script>
+                    <label for="title">Title</label>
+                    <input type="text" placeholder="Enter title here" name="title" required>
+                    <label for="content">Content</label>
+                    <textarea placeholder="Share your thoughts here" name="content" required></textarea>
+                    <label for="contributor">Contributors</label>
+                    <div class="cont-input">
+                        <ul id="contributors"></ul>
+                        <input type="text" id="input-contributor" placeholder="Enter the names of contributors and press the enter key to confirm" />
+                    </div>
+
+                    <script>
+                        const conts = document.getElementById('contributors');
+                        const inputc = document.getElementById('input-contributor');
+
+                        inputc.addEventListener('keydown', function (event) {
+
+                            if (event.key === 'Enter') {
+
+                                event.preventDefault();
+                                const cont = document.createElement('li');
+
+                                const contContent = inputc.value.trim();
+
+                                if (contContent !== '') {
+
+                                    cont.innerText = contContent;
+                                    cont.innerHTML += '<button class="delete-button"> x</button>';
+                                    conts.appendChild(cont);
+                                    inputc.value = '';
                                 }
+                            }
+                        });
 
-                                dropArea.addEventListener("dragover", function(e) {
-                                    e.preventDefault();
-                                });
-                                dropArea.addEventListener("drop", function(e) {
-                                    e.preventDefault();
-                                    inputFile.files = e.dataTransfer.files;
-                                    uploadImage();
-                                });
+                        conts.addEventListener('click', function (event) {
 
-                            </script>
-                            <label for="title">Title</label>
-                            <input type="text" placeholder="Enter title here" name="title" required>
-                            <label for="content">Content</label>
-                            <textarea placeholder="Share your thoughts here" name="content" required></textarea>
-                            <label for="contributor">Contributors</label>
-                            <div class="cont-input">
-                                <ul id="contributors"></ul>
-                                <input type="text" id="input-contributor" placeholder="Enter the names of contributors and press the enter key to confirm" />
-                                <input type="hidden" name="contributors" value="[]">
-                            </div>
+                            if (event.target.classList.contains('delete-button')) {
 
+                                event.target.parentNode.remove();
+                            }
+                        });
+                    </script>
 
-                            <script>
-                                const conts = document.getElementById('contributors');
-                                const inputc = document.getElementById('input-contributor');
-
-                                inputc.addEventListener('keydown', function (event) {
-
-                                    if (event.key === 'Enter') {
-
-                                        event.preventDefault();
-                                        const cont = document.createElement('li');
-
-                                        const contContent = inputc.value.trim();
-
-
-                                        if (contContent !== '') {
-
-                                            cont.innerText = contContent;
-                                            cont.innerHTML += '<button class="delete-button"> x</button>';
-                                            conts.appendChild(cont);
-                                            inputc.value = '';
-                                        }
-
-                                    }
-                                });
-
-
-                                conts.addEventListener('click', function (event) {
-
-                                    if (event.target.classList.contains('delete-button')) {
-                                        event.target.parentNode.remove();
-                                    }
-                                });
-                            </script>
-
-                            <label for="tags">Tags</label>
-                            <div class="tags-input">
-                                <ul id="tags"></ul>
-                                <input type="text" id="input-tag" placeholder="Enter tag and press the enter key to confirm" />
-                                <input type="hidden" name="tags">
-                            </div>
-
-                            <script>
-                                const tags = document.getElementById('tags');
-                                const inputt = document.getElementById('input-tag');
-
-                                inputt.addEventListener('keydown', function (event) {
-
-                                    if (event.key === 'Enter') {
-
-                                        event.preventDefault();
-                                        const tag = document.createElement('li');
-
-                                        const tagContent = inputt.value.trim();
-
-                                        if (tagContent !== '') {
-
-                                            tag.innerText = tagContent;
-                                            tag.innerHTML += '<button class="delete-button"> x</button>';
-                                            tags.appendChild(tag);
-                                            inputt.value = '';
-                                        }
-                                    }
-                                });
-
-
-                                tags.addEventListener('click', function (event) {
-
-                                    if (event.target.classList.contains('delete-button')) {
-
-                                        event.target.parentNode.remove();
-                                    }
-                                });
-                            </script>
-                            <div class="button-group">
-                                <button type="submit" type="status" value="published" class="button1">Publish</button>
-                                <button type="submit" type="status" value="draft" class="button2">Save to Drafts</button>
-                                <button type="button" class="button2">Delete</button>
-                            </div>
-                        </div>
+                    <label for="tags">Tags</label>
+                    <div class="tags-input">
+                        <ul id="tags"></ul>
+                        <input type="text" id="input-tag" placeholder="Enter tag and press the enter key to confirm" />
                     </div>
-                        <script>
-                            document.querySelector('form').addEventListener('submit', function () {
-                                const tagValues = [];
-                                document.querySelectorAll('#tags li').forEach(li => {
-                                    tagValues.push(li.childNodes[0].textContent.trim());
-                                });
-                                document.querySelector('input[name="tags"]').value = JSON.stringify(tagValues);
 
-                                const contributorValues = [];
-                                document.querySelectorAll('#contributors li').forEach(li => {
-                                    contributorValues.push(li.childNodes[0].textContent.trim());
-                                });
-                                document.querySelector('input[name="contributors"]').value = JSON.stringify(contributorValues);
-                            });
-                        </script>
-                    </form>
+                    <script>
+                        const tags = document.getElementById('tags');
+                        const inputt = document.getElementById('input-tag');
+
+                        inputt.addEventListener('keydown', function (event) {
+
+                            if (event.key === 'Enter') {
+
+                                event.preventDefault();
+                                const tag = document.createElement('li');
+
+                                const tagContent = inputt.value.trim();
+
+                                if (tagContent !== '') {
+
+                                    tag.innerText = tagContent;
+                                    tag.innerHTML += '<button class="delete-button"> x</button>';
+                                    tags.appendChild(tag);
+                                    inputt.value = '';
+                                }
+                            }
+                        });
+
+                        tags.addEventListener('click', function (event) {
+
+                            if (event.target.classList.contains('delete-button')) {
+
+                                event.target.parentNode.remove();
+                            }
+                        });
+                    </script>
+                    <div class="button-group">
+                        <button class="button1">Publish</button>
+                        <button class="button2">Save to Drafts</button>
+                        <button class="button2">Delete</button>
+                    </div>
+                </div>
+            </div>
 
             <!--- === DRAFTS === --->
             <div id = "drafts" class = "hidden">
@@ -345,55 +325,7 @@
 
                 </div>
                 <div class = "draftPosts">
-                    <div class = "draft draft-1">
-                        <div class = "draftImgContainer">
-                            <img class = "draftImg" src = "{{asset('storage/images/coffee2.jpg')}}">
-                        </div>
-                        <div class = "draftDetails">
-                            <div class = "draftTitleDate">
-                                <p class = "draftTitle">draftttt</p>
-                                <p class = "draftDate">PUBLISHED &nbsp;• &nbsp;JULY 19, 2025</p>
-                            </div>
-                        </div>
-                        <div class = "draftActions">
-                            <a href = "#"><img class = "draftIcons" width="24" height="24" src="https://img.icons8.com/material-rounded/24/FAB005/edit.png" alt="edit"/></a>
-                            <a href = "#"><img class = "draftIcons" width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/24/FA5252/filled-trash.png" alt="filled-trash"/></a>
-                        </div>
-
-                    </div>
-                    <div class = "draft draft-2">
-                        <div class = "draftImgContainer">
-                            <img class = "draftImg" src = "{{asset('storage/images/coffee2.jpg')}}">
-                        </div>
-                        <div class = "draftDetails">
-                            <div class = "draftTitleDate">
-                                <p class = "draftTitle">draftttt</p>
-                                <p class = "draftDate">PUBLISHED &nbsp;• &nbsp;JULY 19, 2025</p>
-                            </div>
-                        </div>
-                        <div class = "draftActions">
-                            <a href = "#"><img class = "draftIcons" width="24" height="24" src="https://img.icons8.com/material-rounded/24/FAB005/edit.png" alt="edit"/></a>
-                            <a href = "#"><img class = "draftIcons" width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/24/FA5252/filled-trash.png" alt="filled-trash"/></a>
-                        </div>
-
-                    </div>
-                    <div class = "draft draft-3">
-                        <div class = "draftImgContainer">
-                            <img class = "draftImg" src = "{{asset('storage/images/coffee2.jpg')}}">
-                        </div>
-                        <div class = "draftDetails">
-                            <div class = "draftTitleDate">
-                                <p class = "draftTitle">draftttt</p>
-                                <p class = "draftDate">PUBLISHED &nbsp;• &nbsp;JULY 19, 2025</p>
-                            </div>
-                        </div>
-                        <div class = "draftActions">
-                            <a href = "#"><img class = "draftIcons" width="24" height="24" src="https://img.icons8.com/material-rounded/24/FAB005/edit.png" alt="edit"/></a>
-                            <a href = "#"><img class = "draftIcons" width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/24/FA5252/filled-trash.png" alt="filled-trash"/></a>
-                        </div>
-
-                    </div>
-                    <div class = "draft draft-4">
+                    <div class = "draft">
                         <div class = "draftImgContainer">
                             <img class = "draftImg" src = "{{asset('storage/images/coffee2.jpg')}}">
                         </div>
@@ -412,123 +344,8 @@
 
 
 
-
+                    
                 </div>
-            </div>
-
-            <!-- === PROFILE === -->
-            <div id = "profile" class = "hidden">
-                <div class = "manageHeading">
-                    <div class = "manageHeadingText">
-                        <h1>Profile & Settings</h1>
-                        <a href = "{{ url('/') }}">Back to Home</a>
-                    </div>
-                        <p>ACCOUNT SETTINGS&nbsp;&nbsp; >&nbsp;&nbsp; Profile & Settings</p>
-                </div>
-                <form action="#" class="profile">
-                    <div class="row">
-                        <div class="col-1">
-                            <label for="name">Name</label>
-                        </div>
-                        <div class="col-2">
-                            <input type="text" placeholder="John Doe" name="name">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-1">
-                            <label for="email">User Type</label>
-                        </div>
-                        <div class="col-2">
-                            <input type="text" placeholder="Registered User" name="email" readonly>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-1">
-                            <label for="email">Email Address</label>
-                        </div>
-                        <div class="col-2">
-                            <input type="text" placeholder="johndoe@gmail.com" name="email">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-1">
-                            <label for="password">Password</label>
-                        </div>
-                        <div class="col-2">
-                            <input type="password" placeholder="********" name="password">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-1">
-                        </div>
-                        <div class="col-2">
-                            <div class="button-group">
-                                <button class="button2" onclick="openChanges()">Save Changes</button>
-                                <button class="button2">Cancel</button>
-                                <button class="button1" onclick="openDel()">Delete Account</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-                <div class="confpopup1" id="confpopup1">
-                    <h1>Edit Account Details</h1>
-                    <p>Enter password to confirm changes</p>
-                    <form action="">
-                        <input type="password" name="confpass" required>
-                            <div class="button-group2">
-                                <button class="button1" onclick="confChanges()">Confirm</button>
-                                <button class="button2" onclick="closeChanges()">Cancel</button>
-                            </div>
-                    </form>
-                </div>
-                <div class="confpopup2" id="confpopup2">
-                    <h1>Account Deletion</h1>
-                    <p>ACCOUNT DELETION IS PERMANENT</p>
-                    <p>YOU WILL NOT BE ABLE TO RECOVER ACCOUNT AFTER DELETION</p>
-                    <p>Enter password to confirm account deletion</p>
-                    <form action="">
-                            <input type="password" name="confpass" required>
-                            <div class="button-group2">
-                                <button class="button1" onclick="confDel()">Delete</button>
-                                <button class="button2"onclick="closeDel()"">Cancel</button>
-                        </div>
-                    </form>
-                </div>
-                <div id="overlay"></div>
-                <script>
-                    function openChanges() {
-                        document.getElementById("confpopup1").style.display = "block";
-                        document.getElementById("overlay").style.display = "block";
-                    }
-
-                    function openDel() {
-                        document.getElementById("confpopup2").style.display = "block";
-                        document.getElementById("overlay").style.display = "block";
-                    }
-
-                    function confChanges() {
-                        alert("Account edited succesfully.");
-                        document.getElementById("confpopup1").style.display = "none";
-                        document.getElementById("overlay").style.display = "none";
-                    }
-
-                    function confDel() {
-                        alert("Account deleted succesfully.");
-                        document.getElementById("confpopup2").style.display = "none";
-                        document.getElementById("overlay").style.display = "none";
-                    }
-
-
-                    function closeChanges() {
-                        document.getElementById("confpopup1").style.display = "none";
-                        document.getElementById("overlay").style.display = "none";
-                    }
-
-                    function closeDel() {
-                        document.getElementById("confpopup2").style.display = "none";
-                        document.getElementById("overlay").style.display = "none";
-                    }
-                </script>
             </div>
         </div>
     </div>
