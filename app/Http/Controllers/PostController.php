@@ -76,4 +76,14 @@ class PostController extends Controller
         $drafts = Post::where('status', 'draft')->latest()->get();
         return view('posts.drafts', compact('drafts'));
     }
+
+    public function showImage($id) {
+        $post = Post::findOrFail($id);
+
+        if (!$post->image_data) {
+            abort(404);
+        }
+
+        return response($post->image_data)->header('Content-Type', 'image/jpeg');
+    }
 }

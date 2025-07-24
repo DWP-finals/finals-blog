@@ -38,4 +38,11 @@ class Post extends Model
     public function analytics() {
         return $this->hasOne(Analytics::class);
     }
+
+    public function contributors() {
+        return $this->belongsToMany(User::class, 'post_user', 'post_id', 'user_id')
+                    ->withPivot('author_role')
+                    ->withTimestamps();
+    }
+
 }

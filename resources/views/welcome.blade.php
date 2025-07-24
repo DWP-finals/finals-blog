@@ -100,6 +100,35 @@
         <div class="featuredsec">
             <h1>FEATURED POSTS</h1>
             <div class="card-container">
+                @forelse($posts as $post)
+                    <div class="card">
+                        @if($post->image_data)
+                            <img src="{{ route('posts.image', $post->id) }}" alt="Post Image" style="width: 100%; height: auto;">
+                        @else
+                            <img src="https://via.placeholder.com/500x400?text=No+Image" alt="Placeholder">
+                        @endif
+
+                        <div class="card-content">
+                            <p class="tags">
+                                @foreach($post->tags as $tag)
+                                    #{{ strtoupper($tag->tag_name) }}
+                                @endforeach
+                            </p>
+                            <h3>{{ $post->title }}</h3>
+                            <p class="info">
+                                {{ strtoupper(optional($post->published_date)->format('F d Y')) }} |
+                                BY {{ strtoupper($post->contributors->first()->name ?? 'UNKNOWN') }}
+                            </p>
+                        </div>
+                    </div>
+                @empty
+                    <p>No featured posts available.</p>
+                @endforelse
+            </div>
+        </div>
+        <!--<div class="featuredsec">
+            <h1>FEATURED POSTS</h1>
+            <div class="card-container">
                 <div class="card">
                     <img src="https://picsum.photos/id/237/500/400">
                     <div class="card-content">
@@ -125,7 +154,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
         <div class="cardsec" id="about">
             <p class="subheading">A hub for all coffee lovers</p>
             <h1>Join the Community</h1>
