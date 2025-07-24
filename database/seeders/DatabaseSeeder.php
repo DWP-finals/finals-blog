@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Post;
 use App\Models\Tag;
 use App\Models\User;
+use App\Models\Analytics;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -22,7 +23,11 @@ class DatabaseSeeder extends Seeder
             TagSeeder::class,
         ]);
 
-        Post::factory(5)->create();
+        Post::factory(5)->create()->each(function ($post) {
+            Analytics::factory()->create([
+                'post_id' => $post->id,
+            ]);
+        });
         User::factory(2)->create();
 
         $this->assignPostRelationships();

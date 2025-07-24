@@ -20,6 +20,7 @@ Route::get('/newdashboard', [DashboardController::class, 'index'])->name('newdas
 
 Route::get('/register', [RegisterController::class, 'index']);
 
+Route::get('/posts/{id}/image', [PostController::class, 'showImage'])->name('posts.image');
 
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 
