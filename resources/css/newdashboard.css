@@ -416,6 +416,7 @@ hr {
         min-width: 0;
         width: 25px;
     }
+
 }
 
 @media (max-width: 650px) {
@@ -470,6 +471,7 @@ hr {
     font-family: 'Libre Franklin';
     font-size: 0.8em;
 }
+
 .countContainer {
     display: flex;
     flex-direction: column;
@@ -504,13 +506,63 @@ hr {
 .postAnalytics {
     display: grid;
     grid-template-columns: 50px 50px 50px;
-    column-gap: 4rem; /* Set fixed spacing between items */
+    column-gap: 4rem; 
     justify-items: center;
     align-items: center;
     text-align: center;
-    
 }
+.postAnalytics {
+    font-family: 'Libre Franklin';
+    font-size: 0.8em;
+}
+.likes, .comments, .views {
+    display: flex;
+    gap: 1rem;
+}
+.postAnalytics img {
+    display: none;
+}
+.postCount {
+    gap: 6rem;
+}
+.countFooter {
+    height: 50vh;
+    background-color: black;
+}
+.postCount {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    margin-bottom: 100px;
+}
+@media (max-width: 1300px) {
+    .postAnalytics img {
+        display: flex;
+    }
+    .postAnalytics {
+        order: 3;
+        flex: 1 1 100%; 
+        margin-top: 0.2rem;
+        display: flex;
+        justify-items: center;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+    }
 
+  .countImgContainer {
+    flex: 0 0 auto; 
+  }
+
+  .countDetails {
+    flex: 1; 
+    min-width: 0; 
+    overflow: auto;
+  }
+  .countLabel h1, .labelIcons {
+    display: none;
+  }
+
+}
 
 /* === CREATE POST === */
 

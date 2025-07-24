@@ -379,30 +379,37 @@
                         </div>
                     </div>
                     <div class = "postCount">
- 
-
                         <div class = "count">
-                         
-                            <div class = "postImgContainer">
+                          
+                            <div class = "postImgContainer countImgContainer">
                                 <img class = "postImg" src = "{{asset('storage/images/coffee2.jpg')}}">
                             </div>
                             <div class = "postDetails countDetails">
                                 <div class = "postTitleDate">
-                                    <p class = "title">kap kapsdfgsdfgsdfgsdfgsdfgfd kap kape</p>
+                                    <p class = "title">kap kapsdfg sdfgsdfgsdfgsdfgfd kap kape</p>
                                     <p class = "date">PUBLISHED &nbsp;• &nbsp;JULY 19, 2025</p>
                                 </div>
                             </div>
+                            
                             <div class = "postAnalytics">
-                                <h1>44,923480</h1>
-                                <h1>234324480</h1>
-                                <h1>4234230</h1>
+                                <div class = "likes">
+                                    <img width="24" height="24" src="https://img.icons8.com/ios-filled/24/d16d6a/like.png" alt="like"/>
+                                    <h1>44,923480</h1>
+                                </div>
+                                <div class = "comments">
+                                    <img width="24" height="24" src="https://img.icons8.com/ios-filled/24/77a0e6/speech-bubble-with-dots.png" alt="speech-bubble-with-dots"/>
+                                    <h1>234324480</h1>
+                                </div>
+                                <div class = "views">
+                                    <img width="24" height="24" src="https://img.icons8.com/material/24/f9d978/visible--v1.png" alt="visible--v1"/>
+                                    <h1>4234230</h1>
+                                </div>
                                 
                             </div>
                            
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <!--- PROFILE & SETTINGS -->
