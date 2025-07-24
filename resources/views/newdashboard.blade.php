@@ -37,10 +37,7 @@
             btnSelected.classList.add('active'); // add underline to selected button
 
         }
-
     </script>
-
-
 
     <div class = "container">
         <!-- === SIDE BAR === -->
@@ -92,11 +89,8 @@
                             <option value = "descending">Descending</option>
                         </select>
                     </div>
-
-
                 </div>
                 <div class = "managePosts">
-                    
                     <div class = "post">
                         <div class = "postImgContainer">
                             <img class = "postImg" src = "{{asset('storage/images/coffee2.jpg')}}">
@@ -116,54 +110,12 @@
                                 </div>
                                 <input type="hidden" name="status" value="visible"> <!-- "value = "visible"" to be replaced by dun sa nakalagay sa currentStatus. this is the actual value sent to database -->
                                 </div>
-                            <script>
-                                // === PICKER DROPDOWN AND LABE; FOR MANAGE POST VISIBILTY === ///
-                                
-                                document.querySelectorAll('.postStatus').forEach(jsPostStatus => {
-                                    const display = jsPostStatus.querySelector('.displayedStatus'); // label displayed sa picker 
-                                    const options = jsPostStatus.querySelector('.statusOptions'); // dropdown options
-                                    const hiddenInput = jsPostStatus.querySelector('input[type=hidden]'); // actual value submitted to database
-
-                                    // toggle to hide and show dropdown
-                                    display.addEventListener('click', () => {
-                                        options.style.display = options.style.display === 'block' ? 'none' : 'block';
-                                    });
-
-                                    options.querySelectorAll('div').forEach(option => {
-                                        option.addEventListener('click', () => {
-                                            display.textContent = option.dataset.display; // to display data-display based sa selected option
-                                            hiddenInput.value = option.dataset.value; // assigns hiddenInput based sa data-value of selected option,, this is the one submitted to backend
-                                            options.style.display = 'none';
-
-                                            // tailwind for dynamic styles
-                                            if (hiddenInput.value === 'visible') {
-                                                display.classList.remove('text-gray-900', 'border-gray-900', 'bg-gray-200');
-                                                display.classList.add('text-green-900', 'border-green-900', 'bg-green-200');
-                                            } else if (hiddenInput.value === 'archive') {
-                                                display.classList.remove('text-green-900', 'border-green-900', 'bg-green-200');
-                                                display.classList.add('text-gray-900', 'border-gray-900', 'bg-gray-200');
-                                            }
-                                        });
-                                    });
-
-                                    // so dropdown will automatically close when users click outside dropdown area
-                                    document.addEventListener('click', e => {
-                                    if (!jsPostStatus.contains(e.target)) {
-                                        options.style.display = 'none';
-                                    }
-                                    });
-                                });
-
-
-                            </script>
-
                             <a href = "#"><img class = "postIcons" width="24" height="24" src="https://img.icons8.com/fluency-systems-filled/24/FA5252/filled-trash.png" alt="filled-trash"/></a>
-                            
                         </div>
-
                     </div>
                 </div>
             </div>
+
             <!-- === CREATE POSTS === -->
             <div id = "create" class = "hidden">
                 <div class="createHeading">
@@ -349,5 +301,47 @@
             </div>
         </div>
     </div>
+
+<script>
+    // === PICKER DROPDOWN AND LABE; FOR MANAGE POST VISIBILTY === ///
+    // placing it here to ensure it avoid complications later
+
+    document.querySelectorAll('.postStatus').forEach(jsPostStatus => {
+        const display = jsPostStatus.querySelector('.displayedStatus'); // label displayed sa picker 
+        const options = jsPostStatus.querySelector('.statusOptions'); // dropdown options
+        const hiddenInput = jsPostStatus.querySelector('input[type=hidden]'); // actual value submitted to database
+
+        // toggle to hide and show dropdown
+        display.addEventListener('click', () => {
+            options.style.display = options.style.display === 'block' ? 'none' : 'block';
+        });
+
+        options.querySelectorAll('div').forEach(option => {
+            option.addEventListener('click', () => {
+                display.textContent = option.dataset.display; // to display data-display based sa selected option
+                hiddenInput.value = option.dataset.value; // assigns hiddenInput based sa data-value of selected option,, this is the one submitted to backend
+                options.style.display = 'none';
+
+                // tailwind for dynamic styles
+                if (hiddenInput.value === 'visible') {
+                    display.classList.remove('text-gray-900', 'border-gray-900', 'bg-gray-200');
+                    display.classList.add('text-green-900', 'border-green-900', 'bg-green-200');
+                } else if (hiddenInput.value === 'archive') {
+                    display.classList.remove('text-green-900', 'border-green-900', 'bg-green-200');
+                    display.classList.add('text-gray-900', 'border-gray-900', 'bg-gray-200');
+                }
+            });
+        });
+
+        // so dropdown will automatically close when users click outside dropdown area
+        document.addEventListener('click', e => {
+        if (!jsPostStatus.contains(e.target)) {
+            options.style.display = 'none';
+        }
+        });
+    });
+
+
+    </script>
 </body>
 </html>

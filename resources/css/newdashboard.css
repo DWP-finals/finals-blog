@@ -181,6 +181,7 @@ hr {
     gap: 1rem;
     flex:1;
     overflow-x: visible;
+    width: 100%;
 }
 
 .manageHeading h1 {
@@ -264,7 +265,7 @@ hr {
     border-color: #000;
     border-width: thin;
     padding-right: 2.5rem;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     height: 1
 
 }
@@ -280,6 +281,7 @@ hr {
     object-fit: cover;
     width: 100%;
     height: 100%;
+
 }
 .postIcons, .draftIcons {
      width: 24px;
@@ -348,6 +350,7 @@ hr {
     z-index: 1;
     width: 100%;
     top: 110%;
+    left: 0;
 
   }
 
