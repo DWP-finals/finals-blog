@@ -13,7 +13,7 @@
 </head>
 <body>
     <script>
-        
+
         // === DASHBOARD SWITCH CONTENT === //
         function changeContent(contentId, btnSelected) {
             // gonna leave comments for each block of code here kasi baka makalimutan ko how all these work
@@ -57,8 +57,7 @@
             <div>
                 <h2>Account Settings</h2>
                 <ul class = "accountOptions">
-                    <li><a class = "icon" href = "#"><img class = "manageIcon" width="24" height="24" src="https://img.icons8.com/material-rounded/24/6f4e37/guest-male.png" alt="guest-male"/><p>Profile</p></a></li>
-                    <li><a class = "icon" href = "#"><img class = "manageIcon" width="24" height="24" src="https://img.icons8.com/forma-bold-filled/24/6f4e37/settings.png" alt="settings"/><p>Settings</p></a></li>
+                    <li><a class = "icon" href = "#" onclick = "changeContent('profile', this)"><img class = "manageIcon" width="24" height="24" src="https://img.icons8.com/material-rounded/24/6f4e37/guest-male.png" alt="guest-male"/><p>Profile & Settings</p></a></li>
                     <li><a class = "icon" href = "#"><img class = "manageIcon" width="24" height="24" src="https://img.icons8.com/material-rounded/24/6f4e37/exit.png" alt="exit"/><p>Log Out</p></a></li>
                 </ul>
             </div>
@@ -305,8 +304,115 @@
 
 
 
-                    
+
                 </div>
+            </div>
+
+            <!--- PROFILE & SETTINGS -->
+            <div id = "profile" class = "hidden">
+                <div class = "manageHeading">
+                    <div class = "manageHeadingText">
+                        <h1>Profile & Settings</h1>
+                        <a href = "{{ url('/') }}">Back to Home</a>
+                    </div>
+                        <p>ACCOUNT SETTINGS&nbsp;&nbsp; >&nbsp;&nbsp; Profile & Settings</p>
+                </div>
+                <form action="#" class="profile">
+                    <div class="row">
+                        <div class="col-1">
+                            <label for="name">Name</label>
+                        </div>
+                        <div class="col-2">
+                            <input type="text" placeholder="John Doe" name="name">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <label for="email">Email Address</label>
+                        </div>
+                        <div class="col-2">
+                            <input type="text" placeholder="johndoe@gmail.com" name="email" readonly>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                            <label for="password">Password</label>
+                        </div>
+                        <div class="col-2">
+                            <input type="password" placeholder="********" name="password">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1">
+                        </div>
+                        <div class="col-2">
+                            <div class="button-group">
+                                <button class="button2" onclick="openChanges()">Save Changes</button>
+                                <button class="button2">Cancel</button>
+                                <button class="button1" onclick="openDel()">Delete Account</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="confpopup1" id="confpopup1">
+                    <h1>Edit Account Details</h1>
+                    <p>Enter password to confirm changes</p>
+                    <form action="">
+                        <input type="password" name="confpass" required>
+                            <div class="button-group2">
+                                <button class="button1" onclick="confChanges()">Confirm</button>
+                                <button class="button2" onclick="closeChanges()">Cancel</button>
+                            </div>
+                    </form>
+                </div>
+                <div class="confpopup2" id="confpopup2">
+                    <h1>Account Deletion</h1>
+                    <p>ACCOUNT DELETION IS PERMANENT</p>
+                    <p>YOU WILL NOT BE ABLE TO RECOVER ACCOUNT AFTER DELETION</p>
+                    <p>Enter password to confirm account deletion</p>
+                    <form action="">
+                            <input type="password" name="confpass" required>
+                            <div class="button-group2">
+                                <button class="button1" onclick="confDel()">Delete</button>
+                                <button class="button2"onclick="closeDel()"">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+                <div id="overlay"></div>
+                <script>
+                    function openChanges() {
+                        document.getElementById("confpopup1").style.display = "block";
+                        document.getElementById("overlay").style.display = "block";
+                    }
+
+                    function openDel() {
+                        document.getElementById("confpopup2").style.display = "block";
+                        document.getElementById("overlay").style.display = "block";
+                    }
+
+                    function confChanges() {
+                        alert("Account edited succesfully.");
+                        document.getElementById("confpopup1").style.display = "none";
+                        document.getElementById("overlay").style.display = "none";
+                    }
+
+                    function confDel() {
+                        alert("Account deleted succesfully.");
+                        document.getElementById("confpopup2").style.display = "none";
+                        document.getElementById("overlay").style.display = "none";
+                    }
+
+
+                    function closeChanges() {
+                        document.getElementById("confpopup1").style.display = "none";
+                        document.getElementById("overlay").style.display = "none";
+                    }
+
+                    function closeDel() {
+                        document.getElementById("confpopup2").style.display = "none";
+                        document.getElementById("overlay").style.display = "none";
+                    }
+                </script>
             </div>
         </div>
     </div>
@@ -316,7 +422,7 @@
     // placing it here to ensure it avoid complications later
 
     document.querySelectorAll('.postStatus').forEach(jsPostStatus => {
-        const display = jsPostStatus.querySelector('.displayedStatus'); // label displayed sa picker 
+        const display = jsPostStatus.querySelector('.displayedStatus'); // label displayed sa picker
         const options = jsPostStatus.querySelector('.statusOptions'); // dropdown options
         const hiddenInput = jsPostStatus.querySelector('input[type=hidden]'); // actual value submitted to database
 
