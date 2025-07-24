@@ -95,7 +95,7 @@
                 </div>
             </div>
             <h1 class="quote">"Coffee is always a good idea." </h1>
-            <button class="explore">EXPLORE</button>
+            <button class="explore" onclick="window.location='{{ url('explore') }}'">EXPLORE</button>
         </div>
         <div class="featuredsec">
             <h1>FEATURED POSTS</h1>

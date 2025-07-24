@@ -1,0 +1,191 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+.hero {
+    height: 11vh;
+    background-color: #D3C0B3;
+    font-family: 'Libre Baskerville';
+    user-select: none;
+}
+
+.nav {
+    padding-top: 3vh;
+}
+
+.main {
+    width: 100%;
+    height: 65vh;
+    min-height: fit-content;
+}
+
+.leftcol {
+    width: 50%;
+    float: left;
+}
+
+.leftcol > img {
+    width: 75%;
+    margin-top: 5%;
+    margin-left: auto;
+}
+
+.rightcol {
+    margin-top: 2%;
+    padding-right: 10%;
+    padding-left: 5%;
+    width: 50%;
+    float: left;
+}
+
+.rightcol > .tags {
+    color: #D3C0B3;
+    font-size: 1.25em;
+    font-family: 'Libre Franklin'
+}
+
+.rightcol > .title {
+    color: black;
+    font-size: 2em;
+    font-family: 'Libre Baskerville';
+    padding-top: 3%;
+}
+
+.rightcol > .description {
+    color: black;
+    font-size: 1em;
+    font-family: 'Libre Franklin';
+    font-style: italic;
+    padding-top: 5%;
+}
+
+.rightcol > .info {
+    color: gray;
+    font-size: .8em;
+    font-family: 'Libre Franklin';
+    padding-top: 5%;
+}
+
+.readmore {
+    background-color: #6F4E37;
+    color: white;
+    font-family: 'Libre Baskerville';
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    padding-left: 1.25vw;
+    padding-right: 1.25vw;
+    margin-top: 5%;
+    transition: .3s;
+}
+
+.readmore:hover {
+    background-color: #60412a;
+}
+
+/* search */
+
+.searchsec {
+    margin-top: 4%;
+    width: 100%;
+    height: 10vh;
+}
+
+.search {
+    margin-left: 12%;
+    width: 889;
+    display: flex;
+}
+
+.searchTerm {
+    width: 85%;
+    border: 2px solid #60412a;
+    border-right: none;
+    padding-left: 1vw;
+    height: 7vh;
+    border-radius: 1vw 0 0 1vw;
+    outline: none;
+    color: grey;
+}
+
+.searchTerm:focus{
+  color: #60412a;
+}
+
+.searchButton {
+  width: 4vw;
+  height: 7vh;
+  border: 2px solid #60412a;
+  background: #60412a;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 1vw 1vw 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/* more posts */
+
+.featuredsec {
+    margin-top: 3%;
+    margin-bottom: 3%;
+    width: 100%;
+    box-sizing: border-box;
+    -ms-user-select: none;
+}
+
+.featuredsec h1 {
+    margin-left: 11%;
+    color: black;
+    font-family: 'Libre Baskerville';
+    font-size: 1.75vw;
+    user-select: none;
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1vh;
+}
+
+.card {
+    width: 25vw;
+    background-color: white;
+    overflow: hidden;
+    margin: .5vw;
+}
+
+.card img {
+    width: 100%;
+    user-select: none;
+}
+
+.tags {
+    margin-top: 1.5vh;
+    font-family: 'Libre Franklin';
+    color: #D3C0B3;
+    font-size: .75vw;
+}
+
+.card-container h3 {
+    font-family: 'Franklin Baskerville';
+    font-size: 1.75vw;
+    margin-bottom: 1.5vh;
+}
+
+.info {
+    font-family: 'Libre Franklin';
+    color: rgb(145, 145, 145);
+    font-size: .75vw;
+    margin-bottom: 1.5vh;
+}
+
+@media screen and (max-width: 720px) {
+  .card {
+   width: 100%
+  }
+}
+

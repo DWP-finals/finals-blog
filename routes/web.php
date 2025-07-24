@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ExploreController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -19,6 +20,8 @@ Route::get('/article', [ArticleController::class, 'index']);
 Route::get('/newdashboard', [DashboardController::class, 'index'])->name('newdashboard');
 
 Route::get('/register', [RegisterController::class, 'index']);
+
+Route::get('/explore', [ExploreController::class, 'index']);
 
 Route::get('/posts/{id}/image', [PostController::class, 'showImage'])->name('posts.image');
 
