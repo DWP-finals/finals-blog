@@ -175,10 +175,10 @@
                         <label for="content">Content</label>
                         <textarea placeholder="Share your thoughts here" name="content" required></textarea>
 
-                        <label for="contributor">Contributors</label>
+                        <label for="contributor">Contributor IDs</label>
                         <div class="cont-input">
                             <ul id="contributors"></ul>
-                            <input type="text" id="input-contributor" placeholder="Enter the names of contributors and press the enter key to confirm" />
+                            <input type="number" id="input-contributor" placeholder="Enter the names of contributors and press the enter key to confirm" />
                             <input type="hidden" name="contributors" value="[]">
                         </div>
 
@@ -380,7 +380,7 @@
                     </div>
                     <div class = "postCount">
                         <div class = "count">
-                          
+
                             <div class = "postImgContainer countImgContainer">
                                 <img class = "postImg" src = "{{asset('storage/images/coffee2.jpg')}}">
                             </div>
@@ -390,7 +390,7 @@
                                     <p class = "date">PUBLISHED &nbsp;• &nbsp;JULY 19, 2025</p>
                                 </div>
                             </div>
-                            
+
                             <div class = "postAnalytics">
                                 <div class = "likes">
                                     <img width="24" height="24" src="https://img.icons8.com/ios-filled/24/d16d6a/like.png" alt="like"/>
@@ -404,9 +404,9 @@
                                     <img width="24" height="24" src="https://img.icons8.com/material/24/f9d978/visible--v1.png" alt="visible--v1"/>
                                     <h1>4234230</h1>
                                 </div>
-                                
+
                             </div>
-                           
+
                         </div>
                     </div>
                 </div>

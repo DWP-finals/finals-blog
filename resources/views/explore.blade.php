@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Blog | Explore</title>
-
+    <link rel="icon" href="\storage\images\icons8-coffee-beans-100.png">
     @vite('resources/css/explore.css')
     @vite('resources/css/app.css')
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -190,7 +190,7 @@
         </div>
     </div>
     <div class="footer">
-        <img src="\storage\images\icons8-coffee-48.png"></img>
+        <img src="\storage\images\icons8-coffee-beans-100.png" style="width: 48px;"></img>
         <h5>Blog Title</h5>
         <h6>COPYRIGHT © 2025</h6>
         <h6><a target="_blank" href="https://icons8.com/icon/oZJK8H59OkPG/coffee-bean">Coffee Bean</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a></h6>

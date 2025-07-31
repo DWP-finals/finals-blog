@@ -506,7 +506,7 @@ hr {
 .postAnalytics {
     display: grid;
     grid-template-columns: 50px 50px 50px;
-    column-gap: 4rem; 
+    column-gap: 4rem;
     justify-items: center;
     align-items: center;
     text-align: center;
@@ -541,7 +541,7 @@ hr {
     }
     .postAnalytics {
         order: 3;
-        flex: 1 1 100%; 
+        flex: 1 1 100%;
         margin-top: 0.2rem;
         display: flex;
         justify-items: center;
@@ -550,12 +550,12 @@ hr {
     }
 
   .countImgContainer {
-    flex: 0 0 auto; 
+    flex: 0 0 auto;
   }
 
   .countDetails {
-    flex: 1; 
-    min-width: 0; 
+    flex: 1;
+    min-width: 0;
     overflow: auto;
   }
   .countLabel h1, .labelIcons {
@@ -637,7 +637,18 @@ form {
     user-select: none;
 }
 
-input[type="text"], textarea, .tags-input > input[type="text"] {
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+input[type="text"], textarea, .tags-input > input[type="text"], .cont-input > input[type="number"]  {
     min-height: 5vh;
     outline: #3E3E3E;
     font-family: 'Libre Franklin';

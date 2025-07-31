@@ -326,5 +326,6 @@ li {
 .footer img {
     padding-top: 2vh;
     margin: auto;
+    user-select: none;
 }
 
