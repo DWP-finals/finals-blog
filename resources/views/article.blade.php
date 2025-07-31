@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <title>Document</title>
+    <link rel="icon" href="\storage\images\icons8-coffee-beans-100.png">
     <link href="/resources/css/app.css" rel="stylesheet">
     @vite('resources/css/article.css')
     @vite('/resources/css/app.css')
@@ -55,7 +56,7 @@
         </div>
         <div class = "others">
             <h3>Other Posts</h3>
-    
+
             <div class = "other card1"> <!-- other contains img and content of a card -->
                 <div class = "otherImgContainer">
                     <img class = "img1" src = "{{asset('storage/images/coffee5.jpg')}}">
