@@ -11,7 +11,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>insert blog name here</title>
-        <link rel="icon" href="/resources/assets/icons8-coffee-48.png">
+        <link rel="icon" href="\storage\images\icons8-coffee-beans-100.png">
         @vite('resources/css/landing.css')
         @vite('/resources/css/app.css')
         <!-- Fonts -->
@@ -196,7 +196,7 @@
             </div>
         </div>
         <div class="footer">
-            <img src="\storage\images\icons8-coffee-48.png"></img>
+            <img src="\storage\images\icons8-coffee-beans-100.png" style="width: 48px"></img>
             <h5>Blog Title</h5>
             <h6>COPYRIGHT © 2025</h6>
             <h6><a target="_blank" href="https://icons8.com/icon/oZJK8H59OkPG/coffee-bean">Coffee Bean</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a></h6>
