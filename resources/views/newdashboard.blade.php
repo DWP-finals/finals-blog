@@ -192,7 +192,7 @@
                         <div class="button-group">
                             <button type="submit" name="status" value="published" class="button1">Publish</button>
                             <button type="submit" name="status" value="draft" class="button2">Save to Drafts</button>
-                            <button type="button" class="button2">Delete</button>
+                            <button type="button" class="button2">Cancel</button>
                         </div>
                     </div>
                 </form>
